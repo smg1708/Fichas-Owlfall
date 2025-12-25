@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #0f0f0f;
+    height: 80px;
+    max-height: 100%;
+}
+
+.container-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 30px;
+    font-family: "BBH Hegarty", sans-serif;
+    padding-top: 20px;
+}
+
+.container-navbar a {
+    font-style: normal;
+    text-decoration: none;
+    color: white;
+}
+
+#nomeMaior {
+    padding-left: 60px;
+}
+
+.navbar {
+    display: flex;
+    padding-right: 60px;
+    padding-top: 7px;
+    font-size: 18px;
+    gap: 30px;
+}
+
+.topTela {
+    background-image: url("../assets/imgs/1063355.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 110vh;
+}
