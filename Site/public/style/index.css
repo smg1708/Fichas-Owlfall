@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+.header {
+    background-color: #0c0c0c;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    z-index: 9999;
+}
+
+.container-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 30px;
+    font-family: "Pixelify Sans", sans-serif;
+    padding-top: 20px;
+}
+
+.container-navbar a {
+    font-style: normal;
+    text-decoration: none;
+    color: white;
+}
+
+#nomeMaior {
+    padding-left: 60px;
+}
+
+.navbar {
+    display: flex;
+    padding-right: 60px;
+    padding-top: 7px;
+    font-size: 18px;
+    gap: 30px;
+}
+
+.topTela {
+    background-image: url("../assets/imgs//index/background.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 150vh;
+}
+
+.conteudo {
+    background-color: #f7fbc9;
+    min-height: 150vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+}
+
+.palavraInicio {
+    text-align: center;
+    font-size: 150px;
+    font-family: "Pixelify Sans", sans-serif;
+    color: #614511;
+    padding-bottom: 3%;
+}
+
+.fraseInicio {
+    margin: 0% 20%;
+    margin-bottom: 7%;
+    font-size: 18px;
+    text-align: center;
+    font-family: "Pixelify Sans", sans-serif;
+    overflow-wrap: break-word;
+}
+
+.botoes {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+}
+
+.mapa, 
+.hxh,
+.nen,
+.personagens {
+    display: flex;
+    width: 60%;
+    transition: transform 0.3s ease;
+    margin: 5% 20%;
+    border-radius: 20px;
+    border: none;
+}
+
+.mapa:hover,
+.hxh:hover,
+.nen:hover,
+.personagens:hover {
+    transform: scale(1.1);
+}
+
+.mapa img, 
+.hxh img,
+.nen img,
+.personagens img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: none;
+}
+
+.mapaAmpliado {
+    position: fixed;
+    inset: 0;
+    background-color: #00000080;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.mapaAmpliado img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 20px;
+}
+
+.botaoMapa {
+    position: absolute;
+    cursor: pointer;
+    opacity: 0.1%;
+}
+
+.okarun {
+    top: 33%;
+    left: 39.9%;
+    width: 3%;
+}
+
+.nocturn {
+    top: 44.5%;
+    left: 34.9%;
+    width: 4%;
+}
+
+.alborea {
+    top: 57.5%;
+    left: 38.6%;
+    width: 3.5%;
+}
+
+.caveira {
+    top: 63.7%;
+    left: 51.9%;
+    width: 3.5%;
+}
+
+.ventaria {
+    top: 58.4%;
+    left: 59.3%;
+    width: 3.9%;
+}
+
+.strix {
+    top: 45.1%;
+    left: 59.8%;
+    width: 2.7%;
+}
+
+.desconhecido {
+    top: 31.1%;
+    left: 51%;
+    width: 1.5%;
+}
+
+.botoesAmpliado {
+    position: fixed;
+    inset: 0;
+    background-color: #00000080;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.boxBotao {
+    position: fixed;
+    inset: 0;
+    background-color: #00000080;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.boxBotao img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 20px;
+}
+
+.box {
+    width: 60%;
+    height: 60%;
+    background-color: #171717;
+    overflow-y: auto;
+    border-radius: 20px;
+}
+
+.ConteudoTexto {
+    color: #ffffff;
+    font-family: "Pixelify Sans", sans-serif;
+    margin: 5% 10%;
+}
+
+.ConteudoTexto h2 {
+    font-size: 40px;
+}
+
+.ConteudoTexto p {
+    font-size: 28px;
+    overflow-wrap: break-word;
+}
+
+.traco {
+    background-color: aliceblue;
+    margin: 2% 0%;
+    width: 100%;
+    height: 5px;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br" id="html">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> Home | Owlfall </title>
+
+    <script src="js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/index.css">
+    <link rel="stylesheet" type="text/js" href="js/index.js">
+    <link rel="icon" href="./assets/icon/coruja.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+</head>
+<body id="body">
+    
+    <div class="header">
+        <div class="container-navbar">
+            <a href="index.html" id="nomeMaior">Owlfall</a>
+            <div class="navbar">
+                <a href="index.html">Home</a>
+                <a href="personagens.html">Personagens</a>
+                <a href="campanhas.html">Campanhas</a>
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="topTela"></div>
+        <div class="conteudo">
+            <div class="inicio">
+
+                <h2 class="palavraInicio">OWLFALL</h2>
+                <p class="fraseInicio">
+                    Owlfall começou em uma ligação com meus amigos. Sempre gostei 
+                    muito de RPG, e depois de mestrar usando Ordem Paranormal percebi 
+                    que ele não tinha tudo que eu queria para contar minhas histórias.
+                    A vontade de criar meu próprio universo foi crescendo, inspirado 
+                    nas animações e desenhos que sempre amei principalmente Hunter 
+                    x Hunter, que sempre teve um significado enorme pra mim. Foi daí 
+                    que surgiu a ideia: criar um mundo original onde o sistema de 
+                    poder seria o Nen, adaptado para caber no meu RPG.
+                </p>
+
+                <div class="botoes">
+                    <button class="mapa" onclick="mapa()"><img src="assets/imgs/index/mapa.jpg" alt="Mapa Owlfall"></button>
+                    <button class="hxh" onclick="hxh()"><img src="assets/imgs/index/hxh.jpg" alt="Hunter x Hunter"></button>
+                    <button class="nen" onclick="nen()"><img src="assets/imgs/index/nen.png" alt=""></button>
+                    <button class="personagens" onclick="personagens()"><img src="assets/imgs/index/personagens.png" alt=""></button>
+                </div>
+
+                <div class="mapaAmpliado" id="mapaAmpliado" onclick="fecharMapa()">
+                    <img src="assets/imgs/index/mapa.jpg" alt="Mapa Owlfall" onclick="event.stopPropagation()">
+                    <button onclick="event.stopPropagation(), okarun() " class="botaoMapa okarun">Okarun</button>
+                    <button onclick="event.stopPropagation(), nocturn() " class="botaoMapa nocturn" class="nocturn">Nocturn</button>
+                    <button onclick="event.stopPropagation(), alborea() " class="botaoMapa alborea" class="alborea">Alborea</button>
+                    <button onclick="event.stopPropagation(), caveira() " class="botaoMapa caveira" class="">Ilha da caveira</button>
+                    <button onclick="event.stopPropagation(), ventaria() " class="botaoMapa ventaria" class="">Ventaria</button>
+                    <button onclick="event.stopPropagation(), strix() " class="botaoMapa strix" class="">Strix</button>
+                    <button onclick="event.stopPropagation(), desconhecido() " class="botaoMapa desconhecido" class="">???</button>
+                    <div class="botoesAmpliado" id="botoesAmpliado" onclick="event.stopPropagation(), fecharCidade()">
+                        <div class="box">
+                            <div class="ConteudoTexto">
+                                <h2 id="botoesAmpliadoTit"></h2>
+                                <div class="traco"></div>
+                                <p id="botoesAmpliadoText"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="boxBotao" id="boxBotao" style="display: none;" onclick="event.stopPropagation(), fecharBox() ">
+                    <div class="box">
+                        <div class="ConteudoTexto">
+                            <h2 id="boxTit"></h2>
+                            <div class="traco"></div>
+                            <p id="boxText"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
