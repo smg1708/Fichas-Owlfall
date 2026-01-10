@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br" id="html">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> Login | Owlfall </title>
+
+    <script src="js/login.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/cadastro.css">
+    <link rel="icon" href="./assets/icon/coruja.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+</head>
+<body id="body">
+    
+    <div class="header">
+        <div class="container-navbar">
+            <a href="index.html" id="nomeMaior">Owlfall</a>
+            <div class="navbar">
+                <a href="index.html">Home</a>
+                <a href="personagens.html">Personagens</a>
+                <a href="campanhas.html">Campanhas</a>
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="boxCadastro">
+            <p class="cadastroInicio">Digite seu nome</p> 
+            <input id="nome_input" type="text"> <br> <br>
+            <p>Digite seu e-mail</p> 
+            <input id="email_input" type="email"> <br> <br>
+            <p>Digite sua senha</p>
+            <input id="senha_input" type="password"> <br> <br> 
+            <p>Confirme a senha</p> 
+            <input id="confirmacao_senha_input" type="password"> <br> <br>
+            <button onclick="cadastrar()">Cadastrar</button> <br> <br>
+            <span>Já tem um login?</span>
+            <a href="login.html" class="registrar-login">Clique aqui</a>
+          </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

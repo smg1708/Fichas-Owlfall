@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+.header {
+    background-color: #0c0c0c;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+}
+
+.container-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 30px;
+    font-family: "Pixelify Sans", sans-serif;
+    padding-top: 20px;
+}
+
+.container-navbar a {
+    font-style: normal;
+    text-decoration: none;
+    color: white;
+}
+
+#nomeMaior {
+    padding-left: 60px;
+}
+
+.navbar {
+    display: flex;
+    padding-right: 60px;
+    padding-top: 7px;
+    font-size: 18px;
+    gap: 30px;
+}
+
+.traco {
+    background-color: white;
+    width: 100%;
+    height: 85px;
+}
+
+.container {
+    background-color: #121212;
+    color: white;
+    display: flex;
+    font-family: "kavoon", sans-serif;
+    width: 100%;
+    min-height: 91vh;
+
+}
+
+.novoPersonagem {
+    position: absolute;
+    top: 17%;
+    left: 75%;
+}
+
+.novoPersonagem button {
+    border-radius: 10px;
+    border: none;
+    background-color: #41210A;
+    color: white;
+    font-size: 17px;
+    font-family: "kavoon", sans-serif;
+    height: 5vh;
+    width: 110%;
+}
+
+.contador {
+    font-size: 20px;
+    margin: 20% 0%;
+}
+
+.boxPersonagens {
+}
