@@ -51,7 +51,7 @@ html, body {
     background-color: #121212;
     color: white;
     display: flex;
-    font-family: "kavoon", sans-serif;
+    font-family: "Pixelify Sans", sans-serif;
     width: 100%;
     min-height: 91vh;
 
@@ -60,7 +60,7 @@ html, body {
 .novoPersonagem {
     position: absolute;
     top: 17%;
-    left: 75%;
+    left: 76%;
 }
 
 .novoPersonagem button {
@@ -69,15 +69,63 @@ html, body {
     background-color: #41210A;
     color: white;
     font-size: 17px;
-    font-family: "kavoon", sans-serif;
+    font-family: "Pixelify Sans", sans-serif;
     height: 5vh;
     width: 110%;
+    cursor: pointer;
 }
 
 .contador {
-    font-size: 20px;
-    margin: 20% 0%;
+    margin: 10% 15%;
 }
 
 .boxPersonagens {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 15%;
+    margin-left: -24.5%;
+    gap: 3.5%;
+}
+
+.div-box-ficha-personagens {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    height: 140px;
+}
+
+.div-box-ficha-personagens img {
+    width: 110px;
+    height: 110px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: top;
+    background-color: #333;
+}
+
+.div-info-personagem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.div-info-personagem span {
+    font-size: 18px;
+}
+
+.div-info-personagem button {
+    margin-top: 10px;
+    width: 120px;
+    background-color: #41210A;
+    color: white;
+    border: none;
+    padding: 8px 0;
+    border-radius: 8px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 15px;
 }

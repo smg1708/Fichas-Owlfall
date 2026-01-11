@@ -1,0 +1,338 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+.header {
+    background-color: #0c0c0c;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+}
+
+.container-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 30px;
+    font-family: "Pixelify Sans", sans-serif;
+    padding-top: 20px;
+}
+
+.container-navbar a {
+    font-style: normal;
+    text-decoration: none;
+    color: white;
+}
+
+#nomeMaior {
+    padding-left: 60px;
+}
+
+.navbar {
+    display: flex;
+    padding-right: 60px;
+    padding-top: 7px;
+    font-size: 18px;
+    gap: 30px;
+}
+
+.traco {
+    background-color: white;
+    width: 100%;
+    height: 85px;
+}
+
+.container {
+    background-color: #121212;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-family: "Pixelify Sans", sans-serif;
+    width: 100%;
+    min-height: 91vh;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: row;
+    padding-top: 5%;
+    padding-left: 40%;
+    height: 5%;
+    gap: 40px;
+}
+
+.botoes button{
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 25px;
+    font-family: "Pixelify Sans", sans-serif;
+    letter-spacing: 1px;
+}
+
+.escritaA {
+    padding-top: 12%;
+    padding-left: 27%;
+    max-width: 400px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    overflow-wrap: break-word;
+}
+
+.imagemA {
+    position: relative;
+    width: fit-content;
+}
+
+.imagemA img{
+    padding-top: 9%;
+    padding-left: 13%;
+    width: 45%;
+    height: auto;
+}
+
+.imagemA input{
+    appearance: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2vw;
+    text-align: center;
+    width: 5%;
+    height: 8%;
+    -webkit-appearance: none;
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+}
+.for,
+.agi,
+.int,
+.pre,
+.vig {
+    position: absolute;
+}
+
+.agi {
+    right: 62.2%;
+    top: 29%;
+}
+
+.int {
+    right: 49.8%;
+    top: 44.6%;
+}
+
+.for {
+    right: 74.7%;
+    top: 44.6%;
+}
+
+.pre {
+    right: 71.2%;
+    top: 72.5%;
+}
+
+.vig {
+    right: 53.4%;
+    top: 72.5%;
+}
+
+.classes {
+    font-family: "Pixelify Sans", sans-serif;
+
+}
+
+.mundano {
+    position: absolute;
+    top: 29%;
+    left: 27%;
+
+}
+
+.mundano p {
+    font-size: 20px;
+    padding: 0 10px;
+}
+
+.classes button {
+    background-color: #41210A;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    font-family: "Pixelify Sans", sans-serif;
+    padding: 6px 14px;
+    cursor: pointer;
+}
+
+.boxPai-classes {
+    margin-top: 10%;
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 60px;
+    padding: 0 10% 5%;
+}
+
+.boxClasses {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.boxClasses {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.box1-classes,
+.box2-classes,
+.box3-classes,
+.box4-classes,
+.box5-classes,
+.box6-classes {
+    display: flex;
+    flex-direction: column;
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    padding-bottom: 20px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-weight: bold;
+}
+
+.box1-classes h2,
+.box2-classes h2,
+.box3-classes h2,
+.box4-classes h2,
+.box5-classes h2,
+.box6-classes h2 {
+    font-size: 32px;
+    margin: 20px 5% 10px;
+    letter-spacing: 1px;
+}
+
+.box1-classes p,
+.box2-classes p,
+.box3-classes p,
+.box4-classes p,
+.box5-classes p,
+.box6-classes p {
+    font-size: 16px;
+    margin: 10px 5%;
+    line-height: 150%;
+    letter-spacing: 1px;
+}
+
+.traco-classes-box {
+    width: 90%;
+    height: 3px;
+    background-color: #41210A;
+    margin: 10px auto;
+}
+
+.box1-classes button,
+.box2-classes button,
+.box3-classes button,
+.box4-classes button,
+.box5-classes button,
+.box6-classes button {
+    margin: auto auto;
+    width: 50%;
+    padding: 10px 0;
+    background-color: #41210A;
+    color: white;
+    border-radius: 10px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.caracteristicas {
+    display: flex;
+    flex-direction: column;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+.caracteristicas-inicio p {
+    font-size: 18px;
+    padding: 5% 22%;
+    white-space: nowrap;
+}
+
+.caracteristicas button{
+  background: none;
+  background-color: #41210A;
+  color: white;
+  cursor: pointer;
+  border: 5px, solid;
+  border-radius: 10px;
+  border-color: transparent;
+  font-size: 16px;
+  font-family: "Pixelify Sans", sans-serif;
+  margin-left: 2%;
+}
+
+.box-caracteristicas {
+  padding: 0 20%;
+}
+
+#nome-espaco-caracteristicas {
+  margin-right: 25%;
+}
+
+.box-caracteristicas span {
+  font-size: 21px;
+}
+
+.box-caracteristicas input {
+  font-size: 16px;
+  color: white;
+  background-color: #1e1e1e;
+  border-style: none;
+  border-color: white;
+  height: 25px;
+  width: 14.5%;
+  margin-top: 2.5%;
+  margin: 1% 0%;
+  margin-right: 13.6%;
+  line-height: normal;
+  padding: 5px 10px;
+}
+
+.box-caracteristicas textarea {
+  font-size: 18px;
+  font-family: arial;
+  color: white;
+  background-color: #1e1e1e;
+  border-style: none;
+  border-color: white;
+  height: 150px;
+  width: 108%;
+  margin-top: 1.5%;
+  line-height: normal;
+  padding: 5px 10px;
+}
+
+/* @media (max-width: 1200px) {
+  .boxClasses {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .boxClasses {
+    grid-template-columns: 1fr;
+  }
+
+  .mundano p {
+    padding: 5% 10%;
+  }
+} */

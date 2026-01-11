@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br" id="html">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> Login | Owlfall </title>
+
+    <script src="js/criando.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/criando.css">
+    <link rel="icon" href="./assets/icon/coruja.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kavoon&display=swap" rel="stylesheet"/>
+
+</head>
+<body id="body">
+    
+    <div class="header">
+        <div class="container-navbar">
+            <a href="index.html" id="nomeMaior">Owlfall</a>
+            <div class="navbar">
+                <a href="index.html">Home</a>
+                <a href="personagens.html">Personagens</a>
+                <a href="campanhas.html">Campanhas</a>
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </div>
+    <div class="traco"></div>
+    <div class="container">
+        <div class="botoes">
+            <button onclick="atributos()">Atributos</button>
+            <button onclick="classe()">Classe</button>
+            <button onclick="caracteristicas()">Toques finais</button>
+        </div>
+        <div class="atributos" id="atributosId" style="display: flex;">
+            <div class="escritaA">
+                <p>
+                    Quando você cria um personagem, todos os seus atributos começam em 1 
+                    e você recebe 4 pontos para distribuir entre eles como quiser. Você 
+                    também pode reduzir um atributo para 0 para receber 1 ponto adicional. 
+                    O valor máximo inicial que você pode ter em cada atributo é 3.
+                </p>
+            </div>
+            <div class="imagemA">
+                <img src="assets/imgs/criando/atributos.png" alt="Atributos">
+                <input type="number" id="forca" value="1" class="for" max="99">
+                <input type="number" id="agilidade" value="1" class="agi" max="99">
+                <input type="number" id="intelecto" value="1" class="int" max="99">
+                <input type="number" id="presenca" value="1" class="pre" max="99">
+                <input type="number" id="vigor" value="1" class="vig" max="99">
+            </div>
+        </div>
+        <div class="classes" id="classesId" style="display: none;">
+            <div class="mundano">
+                <p>
+                    Sua classe nada mais e que sua forma de nen. <br>
+                    No entanto ainda assim temos as pessoas que ainda não tem nen.  
+                    Ai você aperta aqui ->  
+                    <button onclick="mundano()">Mundano</button>
+                </p>
+            </div>
+
+            <div class="boxPai-classes">
+                
+                <div class="boxClasses">
+                    
+                    <div class="box1-classes">
+                        <h2>Fortificador</h2>
+                        <div class="traco-classes-box"></div>
+                        <div class="mensagem-classes">
+                            <p>
+                                Fortificadores são pessoas de espírito direto, determinação firme e convicções inabaláveis. Sua força vem tanto do corpo quanto da vontade, e por isso tendem a se destacar em combates diretos, onde a clareza das trocas de golpes fala mais alto do que truques elaborados. Valorizam a honestidade e o esforço contínuo, acreditando que tudo deve ser conquistado com o próprio suor. No Nen, são os mais estáveis: conseguem reforçar o corpo, endurecer a pele, ampliar golpes físicos ou criar defesas sólidas como pedra. Apesar disso, costumam ter menor flexibilidade criativa, concentrando-se em um estilo simples e brutalmente eficiente. São pilares em batalha, suportando tormentas que derrubariam qualquer outro tipo, mas também podem ser superados por habilidades que ignoram defesa ou burlam regras básicas do combate.
+                            </p>
+                        </div>
+                        <button onclick="fortificador()">Escolher</button>
+                    </div>
+
+                    <div class="box2-classes">
+                        <h2>Transmutador</h2>
+                        <div class="traco-classes-box"></div>
+                        <div class="mensagem-classes">
+                            <p>
+                                Transmutadores são imprevisíveis, adaptáveis e emocionalmente complexos. Tendem a enxergar possibilidades onde ninguém mais vê, convertendo sua própria aura em propriedades únicas eletricidade, veneno, fios, borracha, vibração, som… qualquer coisa que reflita sua personalidade. Vivem em constante mudança, e isso ecoa no seu estilo de luta: versátil, criativo e capaz de contornar obstáculos que derrubariam outros usuários. São perigosos porque ninguém sabe o que esperar deles. Em contrapartida, a profundidade de suas técnicas exige controle minucioso e preparo emocional, o que significa que podem oscilar entre um poder avassalador e momentos de vulnerabilidade. Dentro do Nen, são os artistas engenhosos, criando técnicas híbridas, combos complexos e efeitos inusitados.
+                            </p>
+                        </div>
+                        <button onclick="transmutador()">Escolher</button>
+                    </div>
+
+                    <div class="box3-classes">
+                        <h2>Emissor</h2>
+                        <div class="traco-classes-box"></div>
+                        <div class="mensagem-classes">
+                            <p>
+                                Emissores são explosivos, impulsivos e diretos, com tendência a agir primeiro e pensar depois. Essa impulsividade se traduz em um tipo de Nen focado na distância: são mestres em lançar sua aura para longe, criando rajadas, ondas de impacto, explosões e tiros concentrados. Em combate, são artilheiros naturais, capazes de obliterar múltiplos inimigos ou destruir barreiras rapidamente. Seu estilo de luta é rápido, agressivo e devastador mas também muito custoso. Emissores consomem aura rapidamente e podem ficar vulneráveis caso o inimigo se aproxime demais. Embora faltem recursos para lutas prolongadas, possuem vantagem absoluta quando conseguem manter o adversário à distância, transformando o campo de batalha num caos calculado.
+                            </p>
+                        </div>
+                        <button onclick="emissor()">Escolher</button>
+                    </div>
+
+                    <div class="box4-classes">
+                        <h2>Conjurador</h2>
+                        <div class="traco-classes-box"></div>
+                        <div class="mensagem-classes">
+                            <p>
+                                Conjuradores costumam ser calmos, lógicos e meticulosos, guiando suas ações com cautela e raciocínio. São os estrategistas silenciosos, aqueles que analisam a situação antes de agir. Sua habilidade mais marcante é a criação de objetos, armas, criaturas ou fenômenos de aura construções tão detalhadas quanto sua própria mentalidade. Conjuradores prosperam quando têm tempo para planejar, já que suas habilidades podem atingir potencial absurdo quando sustentadas por condições, regras e restrições inteligentes. Em compensação, são mais vulneráveis quando pegos de surpresa, antes de conseguirem conjurar o que precisam. Apesar disso, quando totalmente preparados, são capazes de controlar o campo de batalha, ditar o ritmo do combate e até quebrar estratégias inimigas por completo.
+                            </p>
+                        </div>
+                        <button onclick="conjurador()">Escolher</button>
+                    </div>
+
+                    <div class="box5-classes">
+                        <h2>Manipulador</h2>
+                        <div class="traco-classes-box"></div>
+                        <div class="mensagem-classes">
+                            <p>
+                                Manipuladores são, acima de tudo, pessoas inclinadas à influência seja psicológica, emocional ou física. Observadores e calculistas, têm facilidade em entender o comportamento alheio e, a partir disso, criar técnicas que controlam, alteram ou impõem efeitos sobre outros indivíduos ou objetos. São usuários perigosos não pela força bruta, mas por sua capacidade de virar aliados uns contra os outros, fortalecer companheiros ou enfraquecer inimigos com debuffs brutais. Suas habilidades podem exigir condições específicas, mas, quando ativadas, costumam economizar aura e se manter por longos períodos. O lado fraco é que manipulação depende profundamente da situação: se não houver brechas emocionais ou comportamentais, algumas de suas técnicas perdem força. Ainda assim, poucos tipos de Nen podem dominar um campo social ou psicológico como eles.
+                            </p>
+                        </div>
+                        <button onclick="manipulador()">Escolher</button>
+                    </div>
+
+                    <div class="box6-classes">
+                        <h2>Especialista</h2>
+                        <div class="traco-classes-box"></div>
+                        <div class="mensagem-classes">
+                            <p>
+                                Especialistas são os mais raros, incompreendidos e temidos entre os usuários de Nen. Suas habilidades simplesmente não seguem regras comuns: variam de poderes mentais excepcionais a fenômenos impossíveis, passando por manipulações de alma, tempo, memória, emoções, destinos ou realidades internas. São indivíduos que não se encaixam nos padrões das outras classes e isso também se manifesta em sua personalidade: incomuns, excêntricos, profundos ou marcados por traumas e visões de mundo únicas. Não há dois especialistas semelhantes. Em combate, são imprevisíveis, podendo virar a luta de forma absurda com uma única habilidade, mas muitas vezes suas técnicas dependem de condições duras, sacrifícios pessoais ou juramentos perigosos. Por isso, são tanto venerados quanto discriminados. No teu mundo, carregam o peso de serem julgados por aquilo que podem fazer, não pelo que escolheram ser.
+                            </p>
+                        </div>
+                        <button onclick="especialista()">Escolher</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="caracteristicas" id="caracteristicasId" style="display: none;">
+
+            <div class="caracteristicas-inicio">
+                <p>
+                    Até aqui, você definiu as características mecânicas de sua ficha mas um bom personagem é mais do que apenas números. <br> 
+                    Agora, vamos trabalhar na descrição de seu personagem, definindo aspectos como nome, gênero e idade. Esses aspectos não <br> 
+                    possuem efeito em regras, mas deixam o jogo mais envolvente e divertido ->
+                    <button onclick="criarFicha()">Finalizar</button>
+                </p>
+            </div>
+
+            <div class="box-caracteristicas">
+                <span id="nome-espaco-caracteristicas">Nome</span>
+                <span>Jogador</span> <br>
+                <input type="text" id="inp_nome" placeholder="Nome do personagem">
+                <input type="text" id="inp_jogador" placeholder="Nome do jogador"> <br> <br>
+
+                <span>Aparência</span> <br>
+                <textarea type="text" id="inp_aparencia" placeholder="Nome, gênero, idade, descrição fisica..."></textarea> <br> <br>
+
+                <span>Personalidade</span> <br>
+                <textarea type="text" id="inp_personalidade" placeholder="Traços marcantes, opinões, ideias..."></textarea> <br> <br>
+
+                <span>Histórico</span> <br>
+                <textarea type="text" id="inp_descricao" placeholder="Infancia, relação com a familia, eventos bons e ruins..."></textarea> <br> <br>
+
+                <span>Objetivo</span> <br>
+                <textarea type="text" id="inp_objetivo" placeholder="Qual o objetivo do seu personagem"></textarea> 
+            </div>
+        </div>    
+    </div>
+
+</body>
+
+</html>
