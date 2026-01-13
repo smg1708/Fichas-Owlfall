@@ -15,3 +15,11 @@ function caracteristicas() {
     classesId.style.display = "none"
     caracteristicasId.style.display = "flex"
 }
+
+function criarFicha() {
+    window.location = "fichasT.html"
+}
+
+function usuario() {
+    window.location = "usuario.html"
+}

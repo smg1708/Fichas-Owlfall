@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br" id="html">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> Campanhas | Owlfall </title>
+
+    <script src="js/campanhas.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/campanhas.css">
+    <link rel="icon" href="./assets/icon/coruja.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kavoon&display=swap" rel="stylesheet"/>
+
+</head>
+<body id="body">
+    
+    <div class="header">
+        <div class="container-navbar">
+            <a href="index.html" id="nomeMaior">Owlfall</a>
+            <div class="navbar">
+                <a href="index.html">Home</a>
+                <a href="personagens.html">Personagens</a>
+                <a href="campanhas.html">Campanhas</a>
+                <a href="login.html">Login</a>
+            </div>
+            <button onclick="usuario()"><img src="assets/imgs/todos/usuario.png" alt=""></button>
+        </div>
+    </div>
+    <div class="traco"></div>
+    <div class="container">
+        <div class="novaCampanha"><button onclick="novo()">Nova Campanha</button></div>
+        <h2 class="contador">Campanhas: <span id="contador"></span></h2>
+        <div class="boxCampanhas">
+        </div>
+        <div class="criacao" id="criandoId" onclick="fecharCriacao()" style="display: none;">
+            <div class="criando" onclick="event.stopPropagation()">
+                <h1>Criando Campanha</h1>
+                <div class="caracteristicas">
+                    <p>Nome</p>
+                    <input type="text" id="nome" value="Nova Campanha">
+                    <p>Descrição</p>
+                    <textarea id="descricao"></textarea> <br>
+                    <p>Imagem</p>
+                    <button><img src="assets/imgs/fichas/defaultImage.png" alt=""></button>
+                    <div class="botoes">
+                        <button onclick="fecharCriacao()">Cancelar</button>
+                        <button onclick="confirmar()" id="confirmarId">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<!-- <div class="boxFichaCampanhas">
+    <div class="infoCampanha">
+        <h2><b>${campanhas[i].nome}</b></h2>
+       <button onclick="abrirFicha(${fichas[i].idFicha})">
+           Acessar
+       </button>
+   </div>
+</div> -->

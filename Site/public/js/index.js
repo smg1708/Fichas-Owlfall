@@ -165,3 +165,7 @@ function nen() {
 function personagens() {
     window.location = "personagens.html"
 }
+
+function usuario() {
+    window.location = "usuario.html"
+}

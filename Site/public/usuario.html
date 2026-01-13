@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br" id="html">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> Usuario | Owlfall </title>
+
+    <script src="js/usuario.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/usuario.css">
+    <link rel="icon" href="./assets/icon/coruja.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kavoon&display=swap" rel="stylesheet"/>
+
+</head>
+<body id="body">
+    
+    <div class="header">
+        <div class="container-navbar">
+            <a href="index.html" id="nomeMaior">Owlfall</a>
+            <div class="navbar">
+                <a href="index.html">Home</a>
+                <a href="personagens.html">Personagens</a>
+                <a href="campanhas.html">Campanhas</a>
+                <a href="login.html">Login</a>
+            </div>
+            <button onclick="usuario()"><img src="assets/imgs/todos/usuario.png" alt=""></button>
+        </div>
+    </div>
+    <div class="traco"></div>
+    <div class="container">
+        <div class="boxConfiguracoes">
+            <div class="imagem">
+                <img src="assets/imgs/todos/usuario.png" alt="">
+                <button onclick="mudarImagem()" type="file"></button>
+            </div>
+            <div class="configuracoes">        
+                <h2>Nome</h2>
+                <input type="text" id="nome">
+
+                <h2>Senha</h2>
+                <input type="password" id="senha">
+
+                <h2>Email</h2>
+                <input type="email" id="dtNasc">
+
+                <button onclick="confirmar()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -12,6 +12,7 @@ html, body {
     height: 80px;
     width: 100%;
     position: fixed;
+    z-index: 9999;
 }
 
 .container-navbar {
@@ -29,8 +30,21 @@ html, body {
     color: white;
 }
 
+.container-navbar img {
+    background: none;
+    width: 50%;
+    height: auto;
+}
+
+.container-navbar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 5%;
+}
+
 #nomeMaior {
-    padding-left: 60px;
+    padding-left: 55px;
 }
 
 .navbar {
@@ -53,14 +67,14 @@ html, body {
     display: flex;
     font-family: "Pixelify Sans", sans-serif;
     width: 100%;
-    min-height: 91vh;
+    min-height: 92.1vh;
 
 }
 
 .novoPersonagem {
     position: absolute;
     top: 17%;
-    left: 76%;
+    left: 74.8%;
 }
 
 .novoPersonagem button {
@@ -68,7 +82,7 @@ html, body {
     border: none;
     background-color: #41210A;
     color: white;
-    font-size: 17px;
+    font-size: 20px;
     font-family: "Pixelify Sans", sans-serif;
     height: 5vh;
     width: 110%;
@@ -87,7 +101,7 @@ html, body {
     gap: 3.5%;
 }
 
-.div-box-ficha-personagens {
+.box-ficha-personagens {
     background-color: #1e1e1e;
     border-radius: 10px;
     padding: 20px;
@@ -99,7 +113,7 @@ html, body {
     height: 140px;
 }
 
-.div-box-ficha-personagens img {
+.box-ficha-personagens img {
     width: 110px;
     height: 110px;
     border-radius: 10px;
@@ -108,17 +122,17 @@ html, body {
     background-color: #333;
 }
 
-.div-info-personagem {
+.info-personagem {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.div-info-personagem span {
+.info-personagem span {
     font-size: 18px;
 }
 
-.div-info-personagem button {
+.info-personagem button {
     margin-top: 10px;
     width: 120px;
     background-color: #41210A;

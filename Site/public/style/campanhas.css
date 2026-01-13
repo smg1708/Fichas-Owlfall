@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+.header {
+    background-color: #0c0c0c;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    z-index: 9999;
+}
+
+.container-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 30px;
+    font-family: "Pixelify Sans", sans-serif;
+    padding-top: 20px;
+}
+
+.container-navbar a {
+    font-style: normal;
+    text-decoration: none;
+    color: white;
+}
+
+.container-navbar img {
+    background: none;
+    width: 50%;
+    height: auto;
+}
+
+.container-navbar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 5%;
+}
+
+#nomeMaior {
+    padding-left: 55px;
+}
+
+.navbar {
+    display: flex;
+    padding-right: 60px;
+    padding-top: 7px;
+    font-size: 18px;
+    gap: 30px;
+}
+
+.traco {
+    background-color: white;
+    width: 100%;
+    height: 85px;
+}
+
+.container {
+    background-color: #121212;
+    color: white;
+    display: flex;
+    font-family: "Pixelify Sans", sans-serif;
+    flex-direction: column;
+    width: 100%;
+    min-height: 92.1vh;
+}
+
+.novaCampanha {
+    position: absolute;
+    top: 17%;
+    left: 74.8%;
+}
+
+.novaCampanha button {
+    border-radius: 10px;
+    border: none;
+    background-color: #41210A;
+    color: white;
+    font-size: 20px;
+    font-family: "Pixelify Sans", sans-serif;
+    height: 5vh;
+    width: 110%;
+    cursor: pointer;
+}
+
+.contador {
+    font-size: 25px;
+    height: 5%;
+    margin: 0% 15%;
+    margin-top: 10%;
+}
+
+.boxCampanhas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 5%;
+    margin-left: 15%;
+    width: 68.5%;
+    gap: 5rem;
+}
+
+.boxFichaCampanhas {
+    background-image: url("../assets/imgs/campanhas/background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    height: 25vh;
+    }
+
+.infoCampanha {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.infoCampanha button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 120px;
+    background-color: #41210A;
+    color: white;
+    border: none;
+    padding: 8px 0;
+    border-radius: 8px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 15px;
+}
+
+.criacao {
+    position: fixed;
+    inset: 0;
+    background-color: #00000080;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.criando {
+    width: 60%;
+    height: 80%;
+    background-color: #171717;
+    border-radius: 20px;
+    padding: 30px;
+    color: white;
+    font-family: 'Atkinson Hyperlegible Mono';
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 1.5px;
+}
+
+.criando h1 {
+    margin-bottom: 3%;
+}
+
+.caracteristicas {
+    margin-left: 3%;
+    justify-content: center;
+}
+
+.caracteristicas p {
+    font-size: 20px;
+    margin-bottom: 1%;
+}
+
+.caracteristicasHab img {
+    height: 50%;
+    width: 70%;
+    margin: 2%;
+    margin-left: -3%;
+}
+
+.caracteristicas input {
+    background-color: #0c0c0c;
+    border: none;
+    color: white;
+    font-size: 18px;
+    height: 5vh;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    padding-left: 10px;
+    width: 30%;
+}
+
+.caracteristicas textarea {
+    background-color: #0c0c0c;
+    border: none;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 94%;
+    min-height: 25vh;
+    resize: none;
+}
+
+.caracteristicas button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+.botoes {
+    margin-left: 72%;
+}
+
+#confirmarId {
+    background-color: #41210A;
+    border-radius: 20px;
+    height: 5vh;
+    width: 40%;
+    margin-left: 15%;
+}

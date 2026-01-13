@@ -12,6 +12,7 @@ html, body {
     height: 80px;
     width: 100%;
     position: fixed;
+    z-index: 9999;
 }
 
 .container-navbar {
@@ -29,8 +30,21 @@ html, body {
     color: white;
 }
 
+.container-navbar img {
+    background: none;
+    width: 50%;
+    height: auto;
+}
+
+.container-navbar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 5%;
+}
+
 #nomeMaior {
-    padding-left: 60px;
+    padding-left: 55px;
 }
 
 .navbar {
