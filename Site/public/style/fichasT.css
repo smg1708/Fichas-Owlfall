@@ -61,11 +61,19 @@ html, body {
     height: 85px;
 }
 
+.tracoCaracP {
+    background-color: white;
+    margin: 7%;
+    margin-left: -2%;
+    width: 145%;
+    height: 2px;
+}
+
 .tracoCarac {
     background-color: white;
-    margin: 2%;
-    margin-left: -2%;
-    width: 78%;
+    margin: 6.2%;
+    margin-left: -4.1%;
+    width: 109.3%;
     height: 2px;
 }
 
@@ -73,21 +81,25 @@ html, body {
     background-color: #0c0c0c;
     color: white;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     font-family: "Pixelify Sans", sans-serif;
     width: 100%;
     min-height: 92.1vh;
 }
 
-.base {
+.parte1 {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 2%;
 }
 
+.inicio {
+    margin-left: 25%;
+}
+
 .imagemPersonagem {
-    width: 13%;
-    margin-left: 10%;
+    width: 480px;
+    margin-left: 22%;
     background: none;
     border: none;
 }
@@ -96,16 +108,23 @@ html, body {
     width: 100%;
 }
 
-.caracBase{
-    margin-top: 1%;
-    font-size: 20px;
+.caracBase {
+    display: flex;
+    flex-direction: row;
 }
 
-.caracBase p{
+.personagemBase{
+    margin-top: 6.5%;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.personagemBase p{
     margin-bottom: 1%;
 }
 
-.caracBase input{
+.personagemBase input{
     background: none;
     border: none;
     border-bottom: 1px white solid;
@@ -114,10 +133,10 @@ html, body {
     font-family: "Pixelify Sans", sans-serif;
     margin-bottom: 7%;
     padding-left: 7px;
-    width: 70%;
+    width: 180%;
 }
 
-.caracBase {
+.personagemBase {
     margin-left: 2%;
 }
 
@@ -127,12 +146,12 @@ input:focus {
 
 .infoBarras {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
+    margin-top: 7%;
+    margin-left: 20%;
 }
 
 .barrasComponentes {
-    position: relative;
-    z-index: 2;
     width: 100%;
     display: flex;
     align-items: center;
@@ -167,7 +186,7 @@ input:focus {
 .botaoInicialNen {
     display: flex;
     flex-direction: row;
-    margin-bottom: 3%;
+    margin-top: 1%;
 }
 
 .vida,
@@ -175,40 +194,32 @@ input:focus {
 .nen {
     align-items: center;
     display: flex;
-    position: relative;
     height: 40px;
-    padding-left: 7%;
     width: 50%;
 }
 
 .infoBarrasCompletarVd {
     background: darkred;
     border: #f0f0f0 0.1px solid;
-    position: absolute;
-    left: 40.4%;
-    top: 15%;
-    height: 3.5%;
-    width: 20%;
+    height: 18%;
+    width: 106%;
+    margin-left: 20%
 }
 
 .infoBarrasCompletarSan {
     background: darkblue;
     border: #f0f0f0 0.1px solid;
-    position: absolute;
-    left: 40.4%;
-    top: 24%;
-    height: 3.5%;
-    width: 20%;
+    height: 18%;
+    width: 106%;
+    margin-left: 20%
 }
 
 .infoBarrasCompletarNen {
     background: #614511;
     border: #f0f0f0 0.1px solid;
-    position: absolute;
-    left: 40.4%;
-    top: 33%;
-    height: 3.5%;
-    width: 20%;
+    height: 18%;
+    width: 106%;
+    margin-left: 20%
 }
 
 .inputVd,
@@ -217,8 +228,9 @@ input:focus {
     display: flex;
     align-items: center;
     gap: 6px;
-    margin: 0 21%;
-    margin-bottom: 4%;
+    margin-left: 35%;
+    margin-right: 34%;
+    margin-bottom: 1%;
 }
 
 .inputVd input,
@@ -240,130 +252,51 @@ input:focus {
 }
 
 .vdTexto {
-    position: absolute;
     font-size: 20px;
-    top: 12%;
-    right: 48.6%;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-left: 67%
 }
 
 .sanTexto {
-    position: absolute;
     font-size: 20px;
-    top: 21%;
-    right: 47.2%;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-left: 61%
 }
 
 .nenTexto {
-    position: absolute;
     font-size: 20px;
-    top: 30%;
-    right: 48.9%;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-left: 67%
 }
 
-.atributos {
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-    margin-top: 3%;
-    margin-left: 5%;
-}
-
-.atributos img {
-    width: 30%;
-    height: 80%;
-}
-
-.atributos input{
-    appearance: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2.3vw;
-    text-align: center;
-    width: 5%;
-    height: 8%;
-    -webkit-appearance: none;
-}
-
-input[type=number]::-webkit-inner-spin-button { 
-  -webkit-appearance: none;
-}
-#for,
-#agi,
-#int,
-#pre,
-#vig {
-    position: absolute;
-}
-
-#agi {
-    left: 16.6%;
-    top: 51.5%;
-}
-
-#int {
-    left: 24.6%;
-    top: 62%;
-}
-
-#for {
-    left: 8.6%;
-    top: 62%;
-}
-
-#pre {
-    left: 10.9%;
-    top: 81%;
-}
-
-#vig {
-    left: 22.2%;
-    top: 81%;
-}
-
-#fortificador,
-#transmutador,
-#emissor,
-#conjurador,
-#manipulador {
-    color: black;
-    position: absolute;
-    font-size: 25px;
-    font-family: 'Atkinson Hyperlegible Mono';
-}
-
-#fortificador {
-    top: 66.2%;
-    right: 53%;
-}
-
-#transmutador {
-    top: 46.5%;
-    right: 47%;
-}
-
-#emissor {
-    top: 79.7%;
-    right: 51.5%;
-}
-
-#conjurador {
-    top: 63.3%;
-    right: 39.3%;
-}
-
-#manipulador {
-    top: 79.7%;
-    right: 43%;
+.parte2 {
+    margin-top: 3.5%;
 }
 
 .boxCarac {
-    margin-top: -15%;
-    margin-left: 0%;
+    margin-left: 34.7%;
 }
 
 .campanha span {
     font-size: 25px;
+}
+
+.botoesCaracP {
+    display: flex;
+    gap: 20px;
+    margin-top: 6%;
+}
+
+.botoesCaracP button{
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-family: "Pixelify Sans", sans-serif;
+    cursor: pointer;
 }
 
 .botoesCarac {
@@ -384,15 +317,14 @@ input[type=number]::-webkit-inner-spin-button {
 .lista {
     display: flex;
     flex-direction: row;
-    gap: 50px;
-    margin: 2.5%;
+    gap: 60px;
     font-size: 18px;
 }
 
 .lista h6 {
-    margin-left: 4%;
-    margin-right: 3%;
-    font-size: 18px;
+    margin-left: 0%;
+    margin-right: 1%;
+    font-size: 19px;
 }
 
 .boxPericias {
@@ -403,7 +335,7 @@ input[type=number]::-webkit-inner-spin-button {
 .pericias {
     display: flex;
     flex-direction: row;
-    margin: 1.5%;
+    margin: 3.5%;
 }
 
 .pericias input{
@@ -414,27 +346,35 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 18px;
     font-family: 'Atkinson Hyperlegible Mono';
     text-align: center;
-    width: 20%;
-    height: 80%;
+    width: 55%;
+    height: 95%;
 }
 
 .pericias span {
+    margin-left: -10%;
+    text-align: center;
     width: 20%;
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Atkinson Hyperlegible Mono';
 }
 
 #pericia {
-    margin-right: 10%;
+    margin-right: 43.2%;
     font-family: "Pixelify Sans", sans-serif;
 }
 
 #bonus {
-    margin-right: -2%;
+    margin-right: 22.2%;
 }
 
 #treino {
-    margin-right: -1%;
+    margin-left: -1%;
+}
+
+#outros {
+    position: absolute;
+    width: 2.8%;
+    right: 38%;
 }
 
 .criacaoHab,
@@ -543,8 +483,7 @@ input[type=number]::-webkit-inner-spin-button {
     height: 60px;
     width: 25%;
     margin: 8%;
-    margin-left: 75%;
-    
+    margin-left: 85%;
 }
 
 #confirmarHabId,
@@ -557,7 +496,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .boxDescricao p {
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 1%;
     font-size: 18px;
 }
@@ -570,7 +509,7 @@ input[type=number]::-webkit-inner-spin-button {
   border-style: none;
   border-color: white;
   height: 150px;
-  width: 108%;
+  width: 100%;
   margin-top: 1.5%;
   line-height: normal;
   padding: 5px 10px;
@@ -629,4 +568,102 @@ input[type=number]::-webkit-inner-spin-button {
     border-radius: 8px;
     font-family: "Pixelify Sans", sans-serif;
     font-size: 15px;
+}
+
+.atributos {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 3%;
+    margin-left: 18.6%;
+}
+
+.atributos img {
+    width: 65%;
+    height: 80%;
+}
+
+.atributos input{
+    appearance: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.3vw;
+    text-align: center;
+    width: 5%;
+    height: 8%;
+    -webkit-appearance: none;
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+}
+
+#for,
+#agi,
+#int,
+#pre,
+#vig {
+    position: absolute;
+}
+
+#agi {
+    right: 21.9%;
+    top: 17%;
+}
+
+#int {
+    right: 15.4%;
+    top: 25.5%;
+}
+
+#for {
+    right: 28.2%;
+    top: 25.5%;
+}
+
+#pre {
+    right: 26.5%;
+    top: 41%;
+}
+
+#vig {
+    right: 17.2%;
+    top: 41%;
+}
+
+#fortificador,
+#transmutador,
+#emissor,
+#conjurador,
+#manipulador {
+    color: black;
+    position: absolute;
+    font-size: 25px;
+    font-family: 'Atkinson Hyperlegible Mono';
+}
+
+#fortificador {
+    top: 66.2%;
+    right: 53%;
+}
+
+#transmutador {
+    top: 46.5%;
+    right: 47%;
+}
+
+#emissor {
+    top: 79.7%;
+    right: 51.5%;
+}
+
+#conjurador {
+    top: 63.3%;
+    right: 39.3%;
+}
+
+#manipulador {
+    top: 79.7%;
+    right: 43%;
 }
