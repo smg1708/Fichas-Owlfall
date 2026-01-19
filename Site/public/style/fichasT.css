@@ -667,3 +667,239 @@ input[type=number]::-webkit-inner-spin-button {
     top: 79.7%;
     right: 43%;
 }
+
+@media (max-width: 1366px) {
+
+    .container {
+        flex-direction: row;
+    }
+
+    .inicio {
+        margin-left: 2%;
+        margin-right: 5%;
+    }
+
+    .imagemPersonagem {
+        width: 360px;
+        margin-left: 15%;
+    }
+
+    .personagemBase input {
+        width: 120%;
+    }
+
+    .infoBarras {
+        margin-left: -5%;
+    }
+
+    .infoBarrasCompletarVd,
+    .infoBarrasCompletarSan,
+    .infoBarrasCompletarNen {
+        width: 86%;
+        margin-left: 22%;
+    }
+
+    .vdTexto,
+    .nenTexto {
+        margin-left: 61%;
+    }
+    .sanTexto {
+        margin-left: 56.5%;
+    }
+
+    .boxCarac {
+        margin-left: 20%;
+    }
+
+    .tracoCaracP {
+        background-color: white;
+        margin: 7%;
+        margin-left: -2%;
+        width: 130%;
+        height: 2px;
+    }
+
+    .tracoCarac {
+        background-color: white;
+        margin: 6.2%;
+        margin-left: -4.1%;
+        width: 109.3%;
+        height: 2px;
+    }
+
+    .campanha {
+        font-size: 15px;
+    }
+
+    .botoesCaracP button {
+        font-size: 14px;
+    }
+
+    .lista {
+        font-size: 16px;
+        gap: 30px;
+        margin-left: 5%;
+    }
+
+    .lista h6 {
+        font-size: 16px;
+        margin-left: 0%;
+    }
+
+    #pericia {
+        margin-right: 38%;
+        font-size: 16px;
+    }
+
+    #bonus {
+        margin-right: 9.5%;
+    }
+    
+    #bonus input {
+        width: 35%;
+    }
+    
+    #treino {
+        margin-left: -1%;
+    }
+    
+    #treino input {
+        width: 35%;
+    }
+    
+    #outros {
+        width: 3.9%;
+        right: 36.5%;
+    }
+
+    .atributos {
+        margin-left: 14%;
+        gap: 20px;
+    }
+
+    .atributos img {
+        width: 80%;
+    }
+
+    .atributos input {
+        font-size: 2vw;
+    }
+
+    /* ajustes finos dos atributos */
+    #agi { right: 23%; top: 19%; }
+    #for { right: 29%; top: 27%; }
+    #int { right: 17%; top: 27%; }
+    #pre { right: 26%; top: 42%; }
+    #vig { right: 18%; top: 42%; }
+}
+
+@media (max-width: 768px) {
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .parte1,
+    .parte2,
+    .parte3 {
+        width: 100%;
+        margin: 0;
+    }
+
+    .inicio {
+        margin-left: 0;
+        align-items: center;
+    }
+
+    .caracBase {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .imagemPersonagem {
+        width: 260px;
+        margin: 0;
+    }
+
+    .personagemBase {
+        margin-left: 0;
+        width: 90%;
+    }
+
+    .personagemBase input {
+        width: 100%;
+    }
+
+    .infoBarras {
+        margin-left: 0;
+        width: 90%;
+        align-items: center;
+    }
+
+    .infoBarrasCompletarVd,
+    .infoBarrasCompletarSan,
+    .infoBarrasCompletarNen {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .vdTexto,
+    .sanTexto,
+    .nenTexto {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .boxCarac {
+        margin-left: 0;
+        width: 95%;
+    }
+
+    .lista {
+        gap: 20px;
+        font-size: 16px;
+    }
+
+    .lista h6 {
+        gap: 20px;
+        font-size: 17px;
+    }
+
+    .pericias {
+        flex-wrap: wrap;
+    }
+
+    #outros {
+        position: static;
+        width: auto;
+    }
+
+    .atributos {
+        margin-left: 0;
+        align-items: center;
+    }
+
+    .atributos img {
+        width: 90%;
+    }
+
+    .atributos input {
+        font-size: 18px;
+    }
+
+    /* atributos no mobile ficam estáticos */
+    #agi,
+    #for,
+    #int,
+    #pre,
+    #vig,
+    #fortificador,
+    #transmutador,
+    #emissor,
+    #conjurador,
+    #manipulador {
+        position: static;
+        color: white;
+    }
+}

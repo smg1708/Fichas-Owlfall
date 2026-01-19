@@ -126,3 +126,101 @@ html, body {
     color: white;
     text-decoration: none;
 }
+
+/* ===============================
+   BREAKPOINT ATÉ 1366px
+================================ */
+@media (max-width: 1366px) {
+
+  .container-navbar img {
+    width: 60%;
+    background: none;
+    height: auto;
+  }
+
+  /* ===== BOX LOGIN ===== */
+  .boxLogin {
+    width: 38%;
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .boxLogin p {
+    font-size: 22px;
+  }
+
+  .boxLogin input {
+    height: 45px;
+    font-size: 15px;
+  }
+
+  .boxLogin button {
+    height: 45px;
+    font-size: 17px;
+  }
+
+  .boxLogin span,
+  .boxLogin a {
+    font-size: 16px;
+  }
+}
+
+/* ===============================
+   BREAKPOINT ATÉ 768px (MOBILE)
+================================ */
+@media (max-width: 768px) {
+
+  /* ===== HEADER ===== */
+  .navbar {
+    display: none;
+  }
+
+  #nomeMaior {
+    padding-left: 15px;
+    font-size: 24px;
+  }
+
+  .container-navbar button {
+    width: 12%;
+  }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    padding: 20px;
+  }
+
+  /* ===== BOX LOGIN ===== */
+  .boxLogin {
+    width: 90%;
+    height: auto;
+    padding: 25px 0;
+  }
+
+  .boxLogin p {
+    font-size: 20px;
+  }
+
+  .boxLogin input {
+    width: 85%;
+    height: 45px;
+    font-size: 15px;
+  }
+
+  .boxLogin button {
+    width: 90%;
+    height: 45px;
+    font-size: 17px;
+  }
+
+  .boxLogin span,
+  .boxLogin a {
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .boxLogin a {
+    margin-top: 5px;
+  }
+}

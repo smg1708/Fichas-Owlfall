@@ -334,18 +334,252 @@ input[type=number]::-webkit-inner-spin-button {
   padding: 5px 10px;
 }
 
-/* @media (max-width: 1200px) {
+@media (max-width: 1366px) {
+
+  .container-navbar img {
+    background: none;
+    width: 60%;
+    height: auto;
+  }
+
+  /* ===== HEADER ===== */
+  .container-navbar {
+    font-size: 26px;
+  }
+
+  #nomeMaior {
+    padding-left: 25px;
+  }
+
+  .navbar {
+    font-size: 17px;
+    gap: 22px;
+    padding-right: 30px;
+  }
+
+  /* ===== BOTÕES TOPO ===== */
+  .botoes {
+    padding-left: 0;
+    justify-content: center;
+    gap: 28px;
+    padding-top: 2%;
+  }
+
+  .botoes button {
+    font-size: 22px;
+  }
+
+  /* ===== ATRIBUTOS ===== */
+  .atributos {
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .escritaA {
+    padding-left: 20%;
+    padding-top: 8%;
+    max-width: 360px;
+    font-size: 18px;
+  }
+
+  .imagemA img {
+    padding-left: 14%;
+    padding-top: 4%;
+    width: 56%;
+  }
+
+  .imagemA input {
+    font-size: 2.5vw;
+  }
+
+  .agi {
+    right: 55.7%;
+    top: 21%;
+}
+
+.int {
+    right: 40%;
+    top: 37.5%;
+}
+
+.for {
+    right: 71%;
+    top: 37.5%;
+}
+
+.pre {
+    right: 67%;
+    top: 68.5%;
+}
+
+.vig {
+    right: 45%;
+    top: 68.5%;
+}
+
+  /* ===== CLASSES ===== */
+  .mundano {
+    left: 20%;
+    top: 27%;
+  }
+
+  .mundano p {
+    font-size: 18px;
+  }
+
+  .boxPai-classes {
+    margin-top: 12%;
+    padding: 0 6% 5%;
+  }
+
   .boxClasses {
     grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+  }
+
+  .box1-classes h2,
+  .box2-classes h2,
+  .box3-classes h2,
+  .box4-classes h2,
+  .box5-classes h2,
+  .box6-classes h2 {
+    font-size: 27px;
+  }
+
+  .box1-classes p,
+  .box2-classes p,
+  .box3-classes p,
+  .box4-classes p,
+  .box5-classes p,
+  .box6-classes p {
+    font-size: 15px;
+  }
+
+  /* ===== CARACTERÍSTICAS ===== */
+  .caracteristicas-inicio p {
+    padding: 4% 15%;
+    font-size: 17px;
+    white-space: normal;
+  }
+
+  .box-caracteristicas {
+    padding: 0 15%;
+  }
+
+  .box-caracteristicas input {
+    width: 22%;
+    margin-right: 7%;
+  }
+
+  .box-caracteristicas textarea {
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
+
+  /* HEADER */
+  .container-navbar {
+    flex-direction: row;
+    align-items: center;
+    font-size: 22px;
+    padding: 10px;
+  }
+
+  #nomeMaior {
+    padding-left: 10px;
+  }
+
+  .navbar {
+    display: none; /* depois pode virar menu hamburguer */
+  }
+
+  .container-navbar button {
+    width: auto;
+  }
+
+  /* BOTÕES */
+  .botoes {
+    padding-left: 0;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 90px;
+    flex-wrap: wrap;
+  }
+
+  .botoes button {
+    font-size: 20px;
+  }
+
+  /* ATRIBUTOS */
+  .atributos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .escritaA {
+    padding: 20px;
+    max-width: 90%;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .imagemA img {
+    padding-left: 0;
+    width: 80%;
+    margin: auto;
+    display: block;
+  }
+
+  .imagemA input {
+    font-size: 4vw;
+  }
+
+  /* CLASSES */
+  .mundano {
+    position: static;
+    margin: 20px;
+    text-align: center;
+  }
+
+  .boxPai-classes {
+    padding: 0 5%;
+  }
+
   .boxClasses {
     grid-template-columns: 1fr;
   }
 
-  .mundano p {
-    padding: 5% 10%;
+  .box1-classes h2,
+  .box2-classes h2,
+  .box3-classes h2,
+  .box4-classes h2,
+  .box5-classes h2,
+  .box6-classes h2 {
+    font-size: 24px;
   }
-} */
+
+  /* CARACTERÍSTICAS */
+  .caracteristicas-inicio p {
+    padding: 20px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .box-caracteristicas {
+    padding: 0 5%;
+  }
+
+  .box-caracteristicas input {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .box-caracteristicas textarea {
+    width: 100%;
+  }
+
+  #nome-espaco-caracteristicas {
+    margin-right: 0;
+  }
+}

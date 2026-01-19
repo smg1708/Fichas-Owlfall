@@ -132,3 +132,86 @@ html, body {
 .cadastroInicio {
     margin-top: 7%;
 }
+
+/* ===============================
+   BREAKPOINT ATÉ 1366px
+================================ */
+@media (max-width: 1366px) {
+
+  .container-navbar img {
+    background: none;
+    width: 60%;
+    height: auto;
+  }
+  
+  /* ===== BOX CADASTRO ===== */
+  .boxCadastro {
+    width: 38%;
+    height: 30%;
+    margin: 6%;
+    margin-top: 12%;
+  }
+
+  .boxCadastro p {
+    font-size: 18px;
+  }
+
+  .boxCadastro input {
+    height: 32px;
+    font-size: 15px;
+  }
+
+  .boxCadastro button {
+    height: 45px;
+    font-size: 17px;
+  }
+
+  .boxCadastro span,
+  .boxCadastro a {
+    font-size: 16px;
+  }
+}
+
+/* ===============================
+   BREAKPOINT ATÉ 768px (MOBILE)
+================================ */
+@media (max-width: 768px) {
+
+  /* ===== HEADER ===== */
+  .navbar {
+    display: none;
+  }
+
+  #nomeMaior {
+    padding-left: 15px;
+    font-size: 24px;
+  }
+
+  .container-navbar button {
+    width: 12%;
+  }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    padding: 20px;
+  }
+
+  /* ===== BOX CADASTRO ===== */
+  .boxCadastro {
+    width: 90%;
+    height: auto;
+    padding: 25px 0;
+    margin-top: 0;
+  }
+
+  .boxCadastro p {
+    font-size: 18px;
+  }
+
+  .boxCadastro input {
+    width: 85%;
+    height: 45px;
+    font-size: 15px;
+  }
+  
+}

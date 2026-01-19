@@ -143,3 +143,96 @@ html, body {
     font-family: "Pixelify Sans", sans-serif;
     font-size: 15px;
 }
+
+/* ===============================
+   BREAKPOINT ATÉ 1366px
+================================ */
+@media (max-width: 1366px) {
+
+    .container-navbar img {
+        background: none;
+        width: 60%;
+        height: auto;
+    }
+
+  /* ===== BOTÃO NOVO PERSONAGEM ===== */
+  .novoPersonagem {
+    position: absolute;
+    right: 150px;
+    top: 160px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .novoPersonagem button {
+    width: auto;
+    height: auto;
+    padding: 10px 30px;
+    font-size: 18px;
+  }
+
+  /* ===== CONTADOR ===== */
+  .contador {
+    margin: 6% 10% 0;
+    font-size: 22px;
+  }
+
+  /* ===== GRID DE PERSONAGENS ===== */
+  .boxPersonagens {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 10%;
+    width: 80%;
+    gap: 3rem;
+  }
+
+  .boxFichaPersonagens {
+    height: 28vh;
+  }
+}
+
+/* ===============================
+   BREAKPOINT ATÉ 768px (MOBILE)
+================================ */
+@media (max-width: 768px) {
+
+  /* ===== HEADER ===== */
+  .navbar {
+    display: none;
+  }
+
+  #nomeMaior {
+    padding-left: 15px;
+  }
+
+  /* ===== BOTÃO NOVO PERSONAGEM ===== */
+  .novoPersonagem {
+    position: static;
+    margin: 30px auto 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .novoPersonagem button {
+    width: 90%;
+    font-size: 18px;
+  }
+
+  /* ===== CONTADOR ===== */
+  .contador {
+    margin: 30px auto;
+    text-align: center;
+  }
+
+  /* ===== GRID ===== */
+  .boxPersonagens {
+    grid-template-columns: 1fr;
+    margin-left: 5%;
+    width: 90%;
+    gap: 2rem;
+  }
+
+  .boxFichaPersonagens {
+    height: 30vh;
+  }
+}

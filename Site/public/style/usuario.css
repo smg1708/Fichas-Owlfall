@@ -128,3 +128,166 @@ html, body {
     height: 37.6vh;
     opacity: 1%;
 }
+
+/* ===============================
+   BREAKPOINT ATÉ 1366px
+================================ */
+@media (max-width: 1366px) {
+
+    .container-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 30px;
+    font-family: "Pixelify Sans", sans-serif;
+    padding-top: 20px;
+    }
+
+    .container-navbar a {
+        font-style: normal;
+        text-decoration: none;
+        color: white;
+    }
+
+    .container-navbar img {
+        background: none;
+        width: 60%;
+        height: auto;
+    }
+
+    .container-navbar button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 5%;
+    }
+
+    #nomeMaior {
+        padding-left: 55px;
+    }
+
+    .navbar {
+        display: flex;
+        padding-right: 60px;
+        padding-top: 7px;
+        font-size: 18px;
+        gap: 30px;
+    }
+
+  /* ===== BOX CONFIGURAÇÕES ===== */
+  .boxConfiguracoes {
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 5% 20%;
+    height: auto;
+    padding: 30px;
+  }
+
+  .configuracoes h2 {
+    font-size: 20px;
+  }
+
+  .configuracoes input {
+    width: 100%;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  .configuracoes button {
+    width: 70%;
+    height: 45px;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ===== IMAGEM ===== */
+  .imagem button {
+    position: absolute;
+    left: 25.3%;
+    top: 36%;
+    width: 27.4%;
+    height: 58vh;
+  }
+}
+
+/* ===============================
+   BREAKPOINT ATÉ 768px (MOBILE)
+================================ */
+@media (max-width: 768px) {
+
+  /* ===== HEADER ===== */
+  .navbar {
+    display: none;
+  }
+
+  #nomeMaior {
+    padding-left: 15px;
+    font-size: 24px;
+  }
+
+  .container-navbar button {
+    width: 12%;
+  }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    justify-content: center;
+    padding: 20px;
+  }
+
+  /* ===== BOX CONFIGURAÇÕES ===== */
+  .boxConfiguracoes {
+    flex-direction: column;
+    width: 95%;
+    margin: 0;
+    padding: 25px 15px;
+    gap: 20px;
+  }
+
+  /* ===== IMAGEM ===== */
+  .imagem {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  .imagem img {
+    width: 120px;
+    height: auto;
+  }
+
+  .imagem button {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0%;
+  }
+
+  /* ===== FORM ===== */
+  .configuracoes {
+    align-items: center;
+  }
+
+  .configuracoes h2 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .configuracoes input {
+    width: 90%;
+    height: 45px;
+    font-size: 16px;
+  }
+
+  .configuracoes button {
+    width: 80%;
+    height: 45px;
+    font-size: 18px;
+    margin: 20px auto 0;
+  }
+}
