@@ -110,13 +110,50 @@
                             </div>
                         </div>
                     </div>
+                    <div class="boxDefesa">
+                        <div class="defesaImagem">
+                            <img src="assets/imgs/fichas/escudo.png" alt="">
+                            <input type="text" id="defesa" value="15">
+                        </div>
+                        <div class="reacao">
+                            <div class="containerDefesa">
+                                <h3>DEFESA</h3>
+                                <span>= 10 + AGI +</span>
+                                <input type="text" id="equip" value="0">
+                                <span>+</span>
+                                <input type="text" id="outrosDef" class="inpOutros" value="0"> <br>
+                                <p>equip.&nbsp;&nbsp;&nbsp;&nbsp;outr.</p>
+                            </div>
+                            <div class="bloqueio">
+                                <h3>BLOQUEIO</h3>
+                                <input type="text" id="bloqueioDef" value="20">
+                            </div>
+                            <div class="esquiva">
+                                <h3>ESQUIVA</h3>
+                                <input type="text" id="esquivaDef" value="20">
+                            </div>
+                        </div>
+                        <div class="boxProte">
+                            <span>Proteção</span> <input type="text" id="protecao"> <br> <br>
+                            <span>Resistencia</span> <input type="text" id="resistencia">
+                        </div>
+                        <div class="valorSentimental">
+                            <h3>Valor Sentimental</h3>
+                            <div class="imagensSentimental">
+                                <button class="botaoSentimental"><img src="assets/imgs/todos/usuario.png" alt="" id="sentimental1"></button>
+                                <button class="botaoSentimental"><img src="assets/imgs/todos/usuario.png" alt="" id="sentimental2"></button>
+                                <button class="botaoSentimental"><img src="assets/imgs/todos/usuario.png" alt="" id="sentimental3"></button>
+                                <button class="botaoSentimental"><img src="assets/imgs/todos/usuario.png" alt="" id="sentimental4"></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="parte2">
             <div class="boxCarac">
-                <h3 class="campanha">Campanha:</h3>
                 <div class="periciasFull" id="periciasTotal">
+                    <h3 class="campanhaP">Campanha:</h3>
                     <div class="botoesCaracP">
                         <button onclick="pericias()">PERÍCIAS</button>
                         <button onclick="habilidades()">HABILIDADES</button>
@@ -300,6 +337,7 @@
                     </div>
                 </div>
                 <div class="boxHabilidades" style="display: none;" id="habilidadesTotal">
+                    <h3 class="campanha">Campanha:</h3>
                     <div class="botoesCarac">
                         <button onclick="pericias()">PERÍCIAS</button>
                         <button onclick="habilidades()">HABILIDADES</button>
@@ -327,6 +365,7 @@
                     </div>
                 </div>
                 <div class="boxInventario" style="display: none;" id="inventarioTotal">
+                    <h3 class="campanha">Campanha:</h3>
                     <div class="botoesCarac">
                         <button onclick="pericias()">PERÍCIAS</button>
                         <button onclick="habilidades()">HABILIDADES</button>
@@ -335,6 +374,11 @@
                     </div>
                     <div class="tracoCarac"></div>
                     <button onclick="novaInv()" class="novaInvBotao">Adicionar</button>
+                    <div class="carga">
+                        <h3>CARGA MAX.</h3>
+                        <input type="text" id="cargaAtual">
+                        <input type="text" id="Max">
+                    </div>
                     <div class="criacaoInv" id="criandoInvId" onclick="fecharCriacaoInv()" style="display: none;">
                         <div class="criandoInv" onclick="event.stopPropagation()">
                             <h1>Criando Inventario</h1>
@@ -354,6 +398,7 @@
                     </div>
                 </div>
                 <div class="boxDescricao" style="display: none;" id="descricaoTotal">
+                    <h3 class="campanha">Campanha:</h3>    
                     <div class="botoesCarac">
                         <button onclick="pericias()">PERÍCIAS</button>
                         <button onclick="habilidades()">HABILIDADES</button>
