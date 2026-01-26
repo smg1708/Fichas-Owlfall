@@ -34,6 +34,7 @@ html, body {
     background: none;
     width: 50%;
     height: auto;
+    border-radius: 50%;
 }
 
 .container-navbar button {
@@ -337,9 +338,10 @@ input[type=number]::-webkit-inner-spin-button {
 @media (max-width: 1366px) {
 
   .container-navbar img {
-    background: none;
-    width: 60%;
-    height: auto;
+      background: none;
+      width: 70%;
+      height: auto;
+      border-radius: 50%;
   }
 
   /* ===== HEADER ===== */

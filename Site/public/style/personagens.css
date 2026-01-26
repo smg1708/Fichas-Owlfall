@@ -34,6 +34,7 @@ html, body {
     background: none;
     width: 50%;
     height: auto;
+    border-radius: 50%;
 }
 
 .container-navbar button {
@@ -151,8 +152,9 @@ html, body {
 
     .container-navbar img {
         background: none;
-        width: 60%;
+        width: 70%;
         height: auto;
+        border-radius: 50%;
     }
 
   /* ===== BOTÃO NOVO PERSONAGEM ===== */

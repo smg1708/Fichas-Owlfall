@@ -7,7 +7,6 @@
     
     <title> Usuario | Owlfall </title>
 
-    <script src="js/usuario.js"></script>
     <link rel="stylesheet" type="text/css" href="style/usuario.css">
     <link rel="icon" href="./assets/icon/coruja.jpg" />
 
@@ -41,8 +40,8 @@
     <div class="container">
         <div class="boxConfiguracoes">
             <div class="imagem">
-                <img src="assets/imgs/todos/usuario.png" id="imgPerfil" onclick="mudarImagem()" onerror="this.src='assets/imgs/todos/usuario.png'">
-                <input type="file" id="inpImagem" onchange="salvarImagem()" hidden>
+                <img src="assets/imgs/todos/usuario.png" id="imgPerfil" onclick="mudarImagemPerfil()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                <input type="file" id="inpImagem" onchange="salvarImagemPerfil()" hidden>
             </div>
             <div class="configuracoes">
                 <h2>Nome</h2>
@@ -60,5 +59,13 @@
     </div>
 
 </body>
+
+<script src="js/usuarioPerfil.js"></script>
+<script>
+    if (!sessionStorage.ID_USUARIO) {
+        alert("Você precisa estar logado!");
+        window.location = "login.html";
+    }
+</script>
 
 </html>

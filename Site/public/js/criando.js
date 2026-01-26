@@ -1,3 +1,8 @@
+if (!sessionStorage.ID_USUARIO) {
+  alert("Você precisa estar logado!");
+  window.location = "login.html";
+}
+
 function criarFicha() {
     window.location = "fichasT.html"
 }

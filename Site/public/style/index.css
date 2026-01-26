@@ -34,6 +34,7 @@ html, body {
     background: none;
     width: 50%;
     height: auto;
+    border-radius: 50%;
 }
 
 .container-navbar button {
@@ -152,44 +153,44 @@ html, body {
 }
 
 .okarun {
-    top: 33%;
-    left: 39.9%;
-    width: 3%;
-}
-
-.nocturn {
-    top: 44.5%;
-    left: 34.9%;
+    top: 29%;
+    left: 37.4%;
     width: 4%;
 }
 
+.nocturn {
+    top: 44%;
+    left: 31.3%;
+    width: 4.4%;
+}
+
 .alborea {
-    top: 57.5%;
-    left: 38.6%;
-    width: 3.5%;
+    top: 59.2%;
+    left: 35.7%;
+    width: 4.5%;
 }
 
 .caveira {
-    top: 63.7%;
-    left: 51.9%;
-    width: 3.5%;
+    top: 67.7%;
+    left: 52.3%;
+    width: 4%;
 }
 
 .ventaria {
-    top: 58.4%;
-    left: 59.3%;
-    width: 3.9%;
+    top: 60.4%;
+    left: 61.7%;
+    width: 4.9%;
 }
 
 .strix {
-    top: 45.1%;
-    left: 59.8%;
+    top: 44.1%;
+    left: 62.8%;
     width: 2.7%;
 }
 
 .desconhecido {
-    top: 31.1%;
-    left: 51%;
+    top: 27.1%;
+    left: 51.5%;
     width: 1.5%;
 }
 
@@ -251,65 +252,84 @@ html, body {
 
 @media (max-width: 1366px) {
 
+    .container-navbar {
+        font-size: 22px;
+    }
+
+    .navbar {
+        font-size: 16px;
+        gap: 20px;
+        padding-right: 30px;
+    }
+
     .container-navbar img {
         background: none;
-        width: 60%;
+        width: 70%;
         height: auto;
+        border-radius: 50%;
+    }
+
+    .conteudoTexto h2 {
+        font-size: 32px;
+    }
+
+    .conteudoTexto p {
+        font-size: 20px;
+    }
+
+    .box {
+        width: 80%;
+        height: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .header {
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .container-navbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        font-size: 20px;
+    }
+
+    .navbar {
+        padding: 0;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .container-navbar button {
+        width: auto;
+    }
+
+    .palavraInicio {
+        text-align: center;
+    }
+
+    .botoes {
+        grid-template-columns: 1fr;
+    }
+
+    .box {
+        width: 95%;
+        height: 80%;
+    }
+
+    .conteudoTexto h2 {
+        font-size: 24px;
+    }
+
+    .conteudoTexto p {
+        font-size: 16px;
     }
 
     .mapaAmpliado img {
-        max-width: 90%;
-        max-height: 90%;
-        zoom: 5;
-        border-radius: 20px;
-        transform: scale(1.25)
-    }
-
-    .botaoMapa {
-        position: absolute;
-        cursor: pointer;
-        opacity: 0.1%;
-    }
-
-    .okarun {
-        top: 28%;
-        left: 38.2%;
-        width: 4%;
-    }
-
-    .nocturn {
-        top: 44.5%;
-        left: 34.9%;
-        width: 4%;
-    }
-
-    .alborea {
-        top: 57.5%;
-        left: 38.6%;
-        width: 3.5%;
-    }
-
-    .caveira {
-        top: 63.7%;
-        left: 51.9%;
-        width: 3.5%;
-    }
-
-    .ventaria {
-        top: 58.4%;
-        left: 60.3%;
-        width: 4.9%;
-    }
-
-    .strix {
-        top: 42.1%;
-        left: 61.8%;
-        width: 2.7%;
-    }
-
-    .desconhecido {
-        top: 27.6%;
-        left: 51%;
-        width: 1.5%;
+        transform: scale(1);
     }
 }

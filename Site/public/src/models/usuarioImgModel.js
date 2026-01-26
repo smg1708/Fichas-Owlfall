@@ -1,6 +1,6 @@
 var database = require("../database/config")
 
-function salvarImagem(idUsuario, imagem) {
+function salvarImagemPerfil(idUsuario, imagem) {
   
   const instrucao = `
     update usuario set imagem = ?
@@ -11,7 +11,7 @@ function salvarImagem(idUsuario, imagem) {
 
 }
 
-function buscarImagem(idUsuario) {
+function buscarImagemPerfil(idUsuario) {
 
   const sql = `
     select imagem from usuario 
@@ -24,6 +24,6 @@ function buscarImagem(idUsuario) {
 
 
 module.exports = {
-  salvarImagem,
-  buscarImagem
+  salvarImagemPerfil,
+  buscarImagemPerfil
 }

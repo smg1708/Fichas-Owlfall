@@ -3,10 +3,10 @@ var router = express.Router();
 const upload = require('../config/configUpload');
 const usuarioImgController = require('../controller/usuarioImgController');
 
-router.put('/imagem', upload.single('fotoPersonagem'), (req, res) => {
-    usuarioImgController.salvarImagem(req, res);
+router.put('/imagemPerfil', upload.single('fotoPerfil'), (req, res) => {
+    usuarioImgController.salvarImagemPerfil(req, res);
 });
 
-router.get('/imagem/:idUsuario', usuarioImgController.buscarImagem);
+router.get('/imagemPerfil/:idUsuario', usuarioImgController.buscarImagemPerfil);
 
 module.exports = router;

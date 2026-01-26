@@ -1,33 +1,48 @@
+const fs = require("fs");
+const path = require("path");
 var usuarioImgModel = require("../models/usuarioImgModel");
 
-function salvarImagem(req, res) {
+function salvarImagemPerfil(req, res) {
   var idUsuario = req.body.idUsuario;
-  const imagem = req.file.filename;
+  const novaImagem = req.file?.filename;
   
-  if (!idUsuario) {
-    return res.status(400).json({ erro: "ID do usuário não recebido" });
-  }
-
-  if (!imagem) {
+  if (!idUsuario || !novaImagem) {
     return res.status(400).json({ erro: "Nenhuma imagem enviada" });
   }
 
-  usuarioImgModel.salvarImagem(idUsuario, imagem)
-  .then(resultado => {
-    res.status(200).json({
-      msg: "Imagem enviada com sucesso",
-      imagem: imagem
-    });
-  }).catch(err => {
-    console.error(err);
-    res.status(500).send(err);
-  });
-}
+  usuarioImgModel.buscarImagemPerfil(idUsuario)
+    .then(resultado => {
+      const imagemAntiga = resultado[0]?.imagem;
 
-function buscarImagem(req, res) {
+      if (imagemAntiga && imagemAntiga !== "usuario.png") {
+        const caminhoImagem = path.join(__dirname, "../../assets/imgsBd", imagemAntiga);
+
+        fs.unlink(caminhoImagem, (err) => {
+          if (err) {
+            console.log("Erro ao apagar imagem antiga:", err.message);
+          } else {
+            console.log("Imagem antiga apagada:", imagemAntiga);
+          }
+        });
+      }
+
+      return usuarioImgModel.salvarImagemPerfil(idUsuario, novaImagem);
+    })
+    .then(resultado => {
+      res.status(200).json({
+        msg: "Imagem enviada com sucesso",
+        imagem: novaImagem
+      });
+    }).catch(err => {
+      console.error(err);
+      res.status(500).send(err);
+    });
+  }
+
+function buscarImagemPerfil(req, res) {
   const idUsuario = req.params.idUsuario;
 
-  usuarioImgModel.buscarImagem(idUsuario)
+  usuarioImgModel.buscarImagemPerfil(idUsuario)
     .then(resultado => {
       if (resultado.length > 0 && resultado[0].imagem) {
         res.json({ imagem: resultado[0].imagem });
@@ -39,6 +54,6 @@ function buscarImagem(req, res) {
 }
 
 module.exports = {
-  salvarImagem,
-  buscarImagem
-}
+  salvarImagemPerfil,
+  buscarImagemPerfil
+};

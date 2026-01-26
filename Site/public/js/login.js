@@ -1,4 +1,3 @@
-
 function entrar() {
     var email = email_input.value
     var senha = senha_input.value

@@ -76,11 +76,13 @@ html, body {
     background-color: #171717;
     border-radius: 20px;
     display: flex;
-    flex-direction: row;
-    margin-top: 10%;
-    margin-left: 29%;
-    width: 45%;
-    height: 450px;
+    gap: 40px;
+    padding: 40px;
+    margin: 120px auto 0 auto;
+    width: 100%;
+    max-width: 900px;
+    max-height: 450px;
+    height: auto;
 }
 
 .configuracoes {
@@ -99,8 +101,8 @@ html, body {
     border-radius: 10px;
     font-size: 20px;
     margin-bottom: 5%;
-    width: 125%;
-    height: 10%;
+    width: 350px;
+    height: 50px;
     padding-left: 15px;
 }
 
@@ -112,8 +114,8 @@ html, body {
     cursor: pointer;
     font-size: 24px;
     font-family: "Pixelify Sans", sans-serif;
-    margin-top: 15%;
-    margin-left: 25%;
+    margin-top: 5%;
+    margin-left: 10%;
     width: 80%;
     height: 12%;
     letter-spacing: 1px;
@@ -139,165 +141,118 @@ html, body {
 
 
 
-/* ===============================
-   BREAKPOINT ATÉ 1366px
-================================ */
 @media (max-width: 1366px) {
 
     .container-navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: 30px;
-    font-family: "Pixelify Sans", sans-serif;
-    padding-top: 20px;
+        font-size: 30px;
     }
 
-    .container-navbar a {
-        font-style: normal;
-        text-decoration: none;
-        color: white;
+    .navbar {
+        font-size: 18px;
+        padding-right: 30px;
+        gap: 20px;
     }
 
     .container-navbar img {
         background: none;
-        width: 60%;
+        width: 70%;
         height: auto;
+        border-radius: 50%;
     }
 
-    .container-navbar button {
-        background: none;
+    .boxConfiguracoes {
+        max-width: 720px;
+        gap: 30px;
+        padding: 30px;
+        margin-bottom: 5%;
+    }
+
+    .configuracoes input{
         border: none;
-        cursor: pointer;
-        width: 5%;
+        border-radius: 10px;
+        font-size: 20px;
+        margin-bottom: 5%;
+        width: 300px;
+        height: 35px;
+        padding-left: 5px;
     }
 
-    #nomeMaior {
-        padding-left: 55px;
+    .configuracoes button{
+        background-color: #41210A;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+        font-size: 24px;
+        font-family: "Pixelify Sans", sans-serif;
+        margin-top: 5%;
+        margin-left: 20%;
+        width: 60%;
+        height: 12%;
+        letter-spacing: 1px;
+    }
+
+    #imgPerfil {
+        width: 320px;
+        height: 320px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .container-navbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        font-size: 20px;
+        padding-top: 10px;
+    }
+
+    .container-navbar img {
+        background: none;
+        width: 70%;
+        height: auto;
+        border-radius: 50%;
     }
 
     .navbar {
-        display: flex;
-        padding-right: 60px;
-        padding-top: 7px;
-        font-size: 18px;
-        gap: 30px;
+        padding: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
     }
 
-  /* ===== BOX CONFIGURAÇÕES ===== */
-  .boxConfiguracoes {
-    width: 55%;
-    margin-left: auto;
-    margin-right: auto;
-    margin: 5% 20%;
-    height: auto;
-    padding: 30px;
-  }
+    #nomeMaior {
+        padding-left: 0;
+    }
 
-  .configuracoes h2 {
-    font-size: 20px;
-  }
+    .container {
+        justify-content: center;
+        padding: 20px;
+    }
 
-  .configuracoes input {
-    width: 100%;
-    height: 45px;
-    font-size: 18px;
-  }
+    .boxConfiguracoes {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 100px;
+        width: 100%;
+        max-width: 100%;
+        gap: 20px;
+        padding: 20px;
+    }
 
-  .configuracoes button {
-    width: 70%;
-    height: 45px;
-    font-size: 20px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    .configuracoes {
+        align-items: center;
+        text-align: center;
+    }
 
-  /* ===== IMAGEM ===== */
-  .imagem button {
-    position: absolute;
-    left: 25.3%;
-    top: 36%;
-    width: 27.4%;
-    height: 58vh;
-  }
-}
+    .configuracoes input,
+    .configuracoes button {
+        max-width: 100%;
+    }
 
-/* ===============================
-   BREAKPOINT ATÉ 768px (MOBILE)
-================================ */
-@media (max-width: 768px) {
-
-  /* ===== HEADER ===== */
-  .navbar {
-    display: none;
-  }
-
-  #nomeMaior {
-    padding-left: 15px;
-    font-size: 24px;
-  }
-
-  .container-navbar button {
-    width: 12%;
-  }
-
-  /* ===== CONTAINER ===== */
-  .container {
-    justify-content: center;
-    padding: 20px;
-  }
-
-  /* ===== BOX CONFIGURAÇÕES ===== */
-  .boxConfiguracoes {
-    flex-direction: column;
-    width: 95%;
-    margin: 0;
-    padding: 25px 15px;
-    gap: 20px;
-  }
-
-  /* ===== IMAGEM ===== */
-  .imagem {
-    display: flex;
-    justify-content: center;
-    position: relative;
-  }
-
-  .imagem img {
-    width: 120px;
-    height: auto;
-  }
-
-  .imagem button {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0%;
-  }
-
-  /* ===== FORM ===== */
-  .configuracoes {
-    align-items: center;
-  }
-
-  .configuracoes h2 {
-    font-size: 18px;
-    text-align: center;
-  }
-
-  .configuracoes input {
-    width: 90%;
-    height: 45px;
-    font-size: 16px;
-  }
-
-  .configuracoes button {
-    width: 80%;
-    height: 45px;
-    font-size: 18px;
-    margin: 20px auto 0;
-  }
+    #imgPerfil {
+        width: 160px;
+        height: 160px;
+    }
 }
