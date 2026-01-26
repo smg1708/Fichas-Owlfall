@@ -31,7 +31,7 @@
                 <a href="campanhas.html">Campanhas</a>
                 <a href="login.html">Login</a>
             </div>
-            <button onclick="usuario()"><img src="assets/imgs/todos/usuario.png" alt=""></button>
+            <button onclick="usuario()"><img src="assets/imgs/todos/usuario.png" alt="" id="imgPerfilNav"></button>
         </div>
     </div>
     <div class="traco"></div>
@@ -48,6 +48,31 @@
                         <p>Classe</p>
                         <input type="text" id="classe">
                     </div>
+                </div>
+                <div class="nivel">
+                    <h3>Nivel</h3>
+                    <select id="selectNivel">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                    </select>
                 </div>
                 <div class="infoBarras">
                     <span class="vdTexto">Vida</span>
@@ -346,6 +371,8 @@
                     </div>
                     <div class="tracoCarac"></div>
                     <button onclick="novaHab()" class="novaHabBotao">Nova Habilidade</button>
+                    <div class="containerHabilidades">
+                    </div>
                     <div class="criacaoHab" id="criandoHabId" onclick="fecharCriacaoHab()" style="display: none;">
                         <div class="criandoHab" onclick="event.stopPropagation()">
                             <h1>Criando Habilidade</h1>
@@ -374,6 +401,8 @@
                     </div>
                     <div class="tracoCarac"></div>
                     <button onclick="novaInv()" class="novaInvBotao">Adicionar</button>
+                    <div class="containerInventario">
+                    </div>
                     <div class="carga">
                         <h3>CARGA MAX.</h3>
                         <input type="text" id="cargaAtual">
@@ -412,8 +441,8 @@
                     <textarea id="aparencia" placeholder="Loiro, alto"></textarea>
                     <p>Personalidade</p>
                     <textarea id="personalidade" placeholder="Amigavel, curioso"></textarea>
-                    <p>Histórico</p>
-                    <textarea id="historico" placeholder="Viveu uma vida normal"></textarea>
+                    <p>História</p>
+                    <textarea id="historia" placeholder="Viveu uma vida normal"></textarea>
                     <p>Objetivo</p>
                     <textarea id="objetivo" placeholder="Ganhar um trofeu"></textarea>
                 </div>
@@ -443,3 +472,29 @@
 
 </html>
 
+
+
+
+<!-- <div class="boxHabilidadesFicha">
+    <button class="imgFicha"><img src="assets/imgs/fichas/defaultImage.png" alt=""></button>
+    <div class="infoPersonagem">
+        <span><b>${fichas[i].nome}</b></span> <br>
+
+        <button onclick="abrirBotaoHab(${fichas[i].idFicha})">
+            Acessar Habilidade
+        </button>
+    </div>
+</div> -->
+
+
+
+<!-- <div class="boxInventarioFicha">
+    <button class="imgFicha"><img src="assets/imgs/fichas/defaultImage.png" alt=""></button>
+    <div class="infoPersonagem">
+        <span><b>${fichas[i].nome}</b></span> <br>
+
+        <button onclick="abrirBotaoInv(${fichas[i].idFicha})">
+            Acessar Item
+        </button>
+    </div>
+</div> -->

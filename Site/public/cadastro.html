@@ -7,7 +7,6 @@
     
     <title> Cadastro | Owlfall </title>
 
-    <script src="js/login.js"></script>
     <link rel="stylesheet" type="text/css" href="style/cadastro.css">
     <link rel="icon" href="./assets/icon/coruja.jpg" />
 
@@ -30,7 +29,7 @@
                 <a href="campanhas.html">Campanhas</a>
                 <a href="login.html">Login</a>
             </div>
-            <button onclick="usuario()"><img src="assets/imgs/todos/usuario.png" alt=""></button>
+            <button onclick="usuario()"><img src="assets/imgs/todos/usuario.png" alt="" id="imgPerfilNav"></button>
         </div>
     </div>
     <div class="container">
@@ -43,13 +42,15 @@
             <input id="senha_input" type="password"> <br> <br> 
             <p>Confirme a senha</p> 
             <input id="confirmacao_senha_input" type="password"> <br> <br>
-            <button onclick="cadastrar()">Cadastrar</button> <br> <br>
+            <button onclick="verificar()">Cadastrar</button> <br> <br>
             <span>Já tem um login?</span>
             <a href="login.html" class="registrar-login">Clique aqui</a>
           </div>
         </div>
     </div>
 
+    <script src="js/cadastro.js"></script>
+    
 </body>
 
 </html>

@@ -34,17 +34,17 @@
                 <a href="campanhas.html">Campanhas</a>
                 <a href="login.html">Login</a>
             </div>
-            <button onclick="usuario()"><img src="assets/imgs/todos/usuario.png" alt=""></button>
+            <button onclick="usuario()"><img src="assets/imgs/todos/usuario.png" alt="" id="imgPerfilNav"></button>
         </div>
     </div>
     <div class="traco"></div>
     <div class="container">
         <div class="boxConfiguracoes">
             <div class="imagem">
-                <img src="assets/imgs/todos/usuario.png" alt="">
-                <button onclick="mudarImagem()" type="file"></button>
+                <img src="assets/imgs/todos/usuario.png" id="imgPerfil" onclick="mudarImagem()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                <input type="file" id="inpImagem" onchange="salvarImagem()" hidden>
             </div>
-            <div class="configuracoes">        
+            <div class="configuracoes">
                 <h2>Nome</h2>
                 <input type="text" id="nome">
 

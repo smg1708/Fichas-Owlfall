@@ -106,6 +106,7 @@ html, body {
     border-radius: 20px;
     border: none;
     background-color: #483D8B;
+    cursor: pointer;
 }
 
 .boxLogin span {

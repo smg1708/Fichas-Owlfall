@@ -150,6 +150,23 @@ input:focus {
     outline: none;
 }
 
+.nivel {
+    display: flex;
+    flex-direction: row;
+    margin-left: 32%;
+    margin-top: 5%;
+    margin-bottom: -4%;
+}
+
+.nivel h3 {
+    margin-right: 3%;
+}
+
+.nivel select {
+    font-family: 'Atkinson Hyperlegible Mono';
+    font-size: 15px;
+}
+
 .infoBarras {
     display: flex;
     flex-direction: column; 
@@ -259,30 +276,29 @@ input:focus {
 
 .vdTexto {
     font-size: 20px;
-    margin-top: 1.5%;
     margin-bottom: 1.5%;
-    margin-left: 57%
+    margin-left: 55%
 }
 
 .sanTexto {
     font-size: 20px;
     margin-top: 1.5%;
     margin-bottom: 1.5%;
-    margin-left: 51%
+    margin-left: 50%
 }
 
 .nenTexto {
     font-size: 20px;
     margin-top: 1.5%;
     margin-bottom: 1.5%;
-    margin-left: 57%
+    margin-left: 55%
 }
 
 .reacao {
     display: flex;
     flex-direction: row;
     position: absolute;
-    top: 70.5%;
+    top: 73%;
     left: 16%;
 }
 
@@ -540,8 +556,9 @@ input:focus {
     display: flex;
     flex-direction: row;
     position: absolute;
-    top: 25%;
+    top: 32%;
     left: 39.5%;
+    width: 15%;
 }
 
 .carga input {
@@ -551,9 +568,66 @@ input:focus {
     font-size: 15px;
     text-align: center;
     height: 30px;
-    margin-top: -1%;
+    margin-top: -2%;
     margin-left: 5%;
-    width: 8%;
+    width: 10%;
+}
+
+.containerHabilidades,
+.containerInventario {
+    margin-left: 15%;
+}
+
+.boxHabilidadesFicha,
+.boxInventarioFicha {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    height: 60px;
+    margin-bottom: 15%;
+    width: 300px;
+}
+
+.imgFicha img {
+    width: 80px;
+    height: auto;
+}
+
+.imgFicha:hover img {
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.imgFicha,
+.imgFicha img {
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.infoPersonagem {
+    margin: 5% 2%;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 18px;
+}
+
+.infoPersonagem button{
+    background: #41210A;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 16px;
+    margin-top: 7%;
+    margin-left: 8%;
+    width: 80%;
+    height: 40px;
 }
 
 .criacaoHab,
@@ -674,6 +748,7 @@ input:focus {
     height: 60px;
     width: 40%;
     margin: 8%;
+    margin-bottom: 12%;
     margin-left: 95%;
 }
 
