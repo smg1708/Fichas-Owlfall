@@ -83,9 +83,9 @@
                                     <button><img src="assets/imgs/fichas/flechaEsquerda.png" alt=""></button>
                                 </div>
                                 <div class="inputVd">
-                                    <input type="text" id="vidaAtual" value="100">
+                                    <input type="text" id="vidaAtual">
                                     <span>/</span>
-                                    <input type="text" id="vidaMax" value="100">
+                                    <input type="text" id="vidaMax">
                                 </div>
                                 <div class="botaoFinalVd">
                                     <button><img src="assets/imgs/fichas/flechaDireita.png" alt=""></button>
@@ -103,9 +103,9 @@
                                     <button><img src="assets/imgs/fichas/flechaEsquerda.png" alt=""></button>
                                 </div>
                                 <div class="inputSan">
-                                    <input type="text" id="sanidadeAtual" value="100">
+                                    <input type="text" id="sanidadeAtual">
                                     <span>/</span>
-                                    <input type="text" id="sanidadeMax" value="100">
+                                    <input type="text" id="sanidadeMax">
                                 </div>
                                 <div class="botaoFinalSan">
                                     <button><img src="assets/imgs/fichas/flechaDireita.png" alt=""></button>
@@ -123,9 +123,9 @@
                                     <button><img src="assets/imgs/fichas/flechaEsquerda.png" alt=""></button>
                                 </div>
                                 <div class="inputNen">
-                                    <input type="text" id="nenAtual" value="100">
+                                    <input type="text" id="nenAtual">
                                     <span>/</span>
-                                    <input type="text" id="nenMax" value="100">
+                                    <input type="text" id="nenMax">
                                 </div>
                                 <div class="botaoFinalNen">
                                     <button><img src="assets/imgs/fichas/flechaDireita.png" alt=""></button>
@@ -137,7 +137,7 @@
                     <div class="boxDefesa">
                         <div class="defesaImagem">
                             <img src="assets/imgs/fichas/escudo.png" alt="">
-                            <input type="text" id="defesa" value="15">
+                            <input type="text" id="defesa">
                         </div>
                         <div class="reacao">
                             <div class="containerDefesa">
@@ -150,11 +150,11 @@
                             </div>
                             <div class="bloqueio">
                                 <h3>BLOQUEIO</h3>
-                                <input type="text" id="bloqueioDef" value="20">
+                                <input type="text" id="bloqueioDef">
                             </div>
                             <div class="esquiva">
                                 <h3>ESQUIVA</h3>
-                                <input type="text" id="esquivaDef" value="20">
+                                <input type="text" id="esquivaDef">
                             </div>
                         </div>
                         <div class="boxProte">
@@ -177,7 +177,7 @@
         <div class="parte2">
             <div class="boxCarac">
                 <div class="periciasFull" id="periciasTotal">
-                    <h3 class="campanhaP">Campanha:</h3>
+                    <h3 class="campanhaP" id="campanha">Campanha:&nbsp;</h3>
                     <div class="botoesCaracP">
                         <button onclick="pericias()">PERÍCIAS</button>
                         <button onclick="habilidades()">HABILIDADES</button>
@@ -210,9 +210,9 @@
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Atlete/acroba</span>
-                            <span id="bonus">(<input type="text" id="bonusAtlete/acroba">)</span>
-                            <span id="treino">(<input type="text" id="treinoAtlete/acroba">)</span>
-                            <span id="outros">(<input type="text" id="outrosAtlete/acroba">)</span>
+                            <span id="bonus">(<input type="text" id="bonusAtleteAcroba">)</span>
+                            <span id="treino">(<input type="text" id="treinoAtleteAcroba">)</span>
+                            <span id="outros">(<input type="text" id="outrosAtleteAcroba">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
@@ -221,14 +221,6 @@
                             <span id="bonus">(<input type="text" id="bonusCiencias">)</span>
                             <span id="treino">(<input type="text" id="treinoCiencias">)</span>
                             <span id="outros">(<input type="text" id="outrosCiencias">)</span>
-                        </div>
-                    </div>
-                    <div class="boxPericias">
-                        <div class="pericias">
-                            <span id="pericia">Adestramento</span>
-                            <span id="bonus">(<input type="text" id="bonusAdestramento">)</span>
-                            <span id="treino">(<input type="text" id="treinoAdestramento">)</span>
-                            <span id="outros">(<input type="text" id="outrosAdestramento">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
@@ -361,7 +353,7 @@
                     </div>
                 </div>
                 <div class="boxHabilidades" style="display: none;" id="habilidadesTotal">
-                    <h3 class="campanha">Campanha:</h3>
+                    <h3 class="campanha" id="campanha">Campanha:&nbsp;</h3>
                     <div class="botoesCarac">
                         <button onclick="pericias()">PERÍCIAS</button>
                         <button onclick="habilidades()">HABILIDADES</button>
@@ -377,11 +369,11 @@
                             <h1>Criando Habilidade</h1>
                             <div class="caracteristicasHab">
                                 <p>Nome</p>
-                                <input type="text" id="nome" value="Nova Habilidade">
+                                <input type="text" id="nomeHab" value="Nova Habilidade">
                                 <p>Descrição</p>
                                 <textarea id="descricaoHab"></textarea> <br>
                                 <p>Imagem</p>
-                                <button><img src="assets/imgs/fichas/defaultImage.png" alt=""></button>
+                                <button><img src="assets/imgs/fichas/defaultImage.png" alt="" id="imagemHab"></button>
                                 <div class="botoesHab">
                                     <button onclick="fecharCriacaoHab()">Cancelar</button>
                                     <button onclick="confirmarHab()" id="confirmarHabId">Confirmar</button>
@@ -391,7 +383,7 @@
                     </div>
                 </div>
                 <div class="boxInventario" style="display: none;" id="inventarioTotal">
-                    <h3 class="campanha">Campanha:</h3>
+                    <h3 class="campanha" id="campanha">Campanha:&nbsp;</h3>
                     <div class="botoesCarac">
                         <button onclick="pericias()">PERÍCIAS</button>
                         <button onclick="habilidades()">HABILIDADES</button>
@@ -412,11 +404,11 @@
                             <h1>Criando Inventario</h1>
                             <div class="caracteristicasInv">
                                 <p>Nome</p>
-                                <input type="text" id="nome" value="Nova Inventario">
+                                <input type="text" id="nomeInv" value="Nova Inventario">
                                 <p>Descrição</p>
                                 <textarea id="descricaoInv"></textarea> <br>
                                 <p>Imagem</p>
-                                <button><img src="assets/imgs/fichas/defaultImage.png" alt=""></button>
+                                <button><img src="assets/imgs/fichas/defaultImage.png" alt="" id="imagemInv"></button>
                                 <div class="botoesInv">
                                     <button onclick="fecharCriacaoInv()">Cancelar</button>
                                     <button onclick="confirmarInv()" id="confirmarInvId">Confirmar</button>
@@ -426,7 +418,7 @@
                     </div>
                 </div>
                 <div class="boxDescricao" style="display: none;" id="descricaoTotal">
-                    <h3 class="campanha">Campanha:</h3>    
+                    <h3 class="campanha" id="campanha">Campanha:&nbsp;</h3>    
                     <div class="botoesCarac">
                         <button onclick="pericias()">PERÍCIAS</button>
                         <button onclick="habilidades()">HABILIDADES</button>
@@ -452,16 +444,16 @@
                 <img src="assets/imgs/fichas/atributos.png" alt="">
                 <img src="assets/imgs/fichas/atributosTransmutador.png" alt="">
                 <div class="inputAtrib">
-                    <input type="text" id="agi" value="1">
-                    <input type="text" id="for" value="1">
-                    <input type="text" id="int" value="1">
-                    <input type="text" id="pre" value="1">
-                    <input type="text" id="vig" value="1">
-                    <input type="text" id="fortificador" value="1">
-                    <input type="text" id="transmutador" value="1">
-                    <input type="text" id="emissor" value="1">
-                    <input type="text" id="conjurador" value="1">
-                    <input type="text" id="manipulador" value="1">
+                    <input type="text" id="agil">
+                    <input type="text" id="forc">
+                    <input type="text" id="inte">
+                    <input type="text" id="prec">
+                    <input type="text" id="vigo">
+                    <input type="text" id="fort" value="0">
+                    <input type="text" id="tran" value="1">
+                    <input type="text" id="emis" value="-1">
+                    <input type="text" id="conj" value="0">
+                    <input type="text" id="mani" value="-1">
                 </div>
             </div>
         </div>

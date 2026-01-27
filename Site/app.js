@@ -17,6 +17,7 @@ var app = express();
 
 var usuarioRouter = require("./public/src/routes/usuario");
 var usuarioImgRouter = require("./public/src/routes/usuarioImg");
+var fichaRouter = require("./public/src/routes/ficha");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -26,6 +27,7 @@ app.use(cors());
 
 app.use("/", usuarioRouter);
 app.use("/", usuarioImgRouter);
+app.use("/", fichaRouter);
 
 
 app.listen(PORTA_APP, function () {

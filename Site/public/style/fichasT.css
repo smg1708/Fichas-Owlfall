@@ -874,71 +874,71 @@ input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
-#for,
-#agi,
-#int,
-#pre,
-#vig {
+#forc,
+#agil,
+#inte,
+#prec,
+#vigo {
     position: absolute;
 }
 
-#agi {
+#agil {
     right: 51.5%;
     top: 7.4%;
 }
 
-#for {
+#forc {
     right: 65.6%;
     top: 15.4%;
 }
 
-#int {
+#inte {
     right: 37%;
     top: 15.4%;
 }
 
-#pre {
+#prec {
     right: 41.2%;
     top: 30.4%;
 }
 
-#vig {
+#vigo {
     right: 61.6%;
     top: 30.4%;
 }
 
-#fortificador,
-#transmutador,
-#emissor,
-#conjurador,
-#manipulador {
+#fort,
+#tran,
+#emis,
+#conj,
+#mani {
     color: black;
     position: absolute;
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'Atkinson Hyperlegible Mono';
 }
 
-#transmutador {
+#tran {
     top: 51.5%;
     right: 50%;
 }
 
-#fortificador {
+#fort {
     top: 66.8%;
     right: 60.8%;
 }
 
-#conjurador {
+#conj {
     top: 64.3%;
     right: 36%;
 }
 
-#emissor {
+#emis {
     top: 77.2%;
     right: 58%;
 }
 
-#manipulador {
+#mani {
     top: 77.2%;
     right: 42.5%;
 }
@@ -1155,44 +1155,44 @@ input[type=number]::-webkit-inner-spin-button {
         font-size: 2vw;
     }
 
-    #agi { right: 46.5%; top: 7.3%; }
-    #for { right: 63.5%; top: 15.5%; }
-    #int { right: 29.2%; top: 15.5%; }
-    #pre { right: 58.7%; top: 31%; }
-    #vig { right: 34.2%; top: 31%; }
+    #agil { right: 46.5%; top: 7.3%; }
+    #forc { right: 63.5%; top: 15.5%; }
+    #inte { right: 29.2%; top: 15.5%; }
+    #prec { right: 58.7%; top: 31%; }
+    #vigo { right: 34.2%; top: 31%; }
 
-    #fortificador,
-    #transmutador,
-    #emissor,
-    #conjurador,
-    #manipulador {
-        color: red;
+    #fort,
+    #tran,
+    #emis,
+    #conj,
+    #mani {
+        color: black;
         position: absolute;
-        font-size: 20px;
+        font-size: 14px;
         font-family: 'Atkinson Hyperlegible Mono';
     }
 
-    #transmutador {
-        top: 51%;
-        right: 45%;
+    #tran {
+        top: 51.5%;
+        left: 50.5%;
     }
 
-    #fortificador {
-        top: 67%;
-        right: 57.8%;
+    #fort {
+        top: 67.3%;
+        right: 57.4%;
     }
 
-    #conjurador {
-        top: 64.3%;
+    #conj {
+        top: 64.7%;
         right: 28%;
     }
 
-    #emissor {
+    #emis {
         top: 77.5%;
         right: 54.5%;
     }
 
-    #manipulador {
+    #mani {
         top: 77.7%;
         right: 36%;
     }
