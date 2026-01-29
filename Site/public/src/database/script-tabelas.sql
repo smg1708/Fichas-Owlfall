@@ -106,6 +106,41 @@ CREATE TABLE fichaCampanha (
     FOREIGN KEY (fkCampanha) REFERENCES campanha(idCampanha)
 );
 
+INSERT INTO atributo (nome) VALUES 
+	('agilidade'),
+	('força'),
+	('intelecto'),
+	('presença'),
+	('vigor'),
+	('fortificador'),
+	('transmutador'),
+	('emissor'),
+	('conjurador'),
+	('manipulador'),
+	('especialista');
+    
+INSERT INTO pericia (nome) VALUES
+	('adestramento'),
+	('artes'),
+	('atletismo/Acrobacia'),
+	('ciências'),
+	('diplomacia'),
+	('enganação'),
+	('fortitude'),
+	('furtividade'),
+	('iniciativa'),
+	('intimidação'),
+	('investigação'),
+	('luta'),
+	('medicina'),
+	('percepção'),
+	('pilotagem'),
+	('pontaria'),
+	('profissão'),
+	('reflexos'),
+	('sobrevivência'),
+	('espírito');
+
 CREATE VIEW vw_ficha AS
 	SELECT 
 		f.idFicha,
@@ -127,11 +162,13 @@ CREATE VIEW vw_ficha AS
 
 CREATE VIEW vw_personagens AS
 	SELECT 
+        f.fkUsuario,
 		f.idFicha,
 		f.nomePersonagem,
 		f.classe,
 		f.nivel,
-		f.criado
+		f.criado,
+        f.imagem
 	FROM ficha f;
 
 CREATE VIEW vw_status AS

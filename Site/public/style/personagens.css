@@ -98,8 +98,8 @@ html, body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin: 15%;
-    margin-left: -24.5%;
-    gap: 3.5%;
+    margin-left: -19.2%;
+    gap: 8.5%;
 }
 
 .box-ficha-personagens {
@@ -112,6 +112,7 @@ html, body {
     align-items: center;
     gap: 20px;
     height: 140px;
+    width: 108%;
 }
 
 .box-ficha-personagens img {
@@ -131,6 +132,7 @@ html, body {
 
 .info-personagem span {
     font-size: 18px;
+    letter-spacing: 1.5px;
 }
 
 .info-personagem button {
@@ -138,11 +140,23 @@ html, body {
     width: 120px;
     background-color: #41210A;
     color: white;
+    cursor: pointer;
     border: none;
     padding: 8px 0;
     border-radius: 8px;
     font-family: "Pixelify Sans", sans-serif;
     font-size: 15px;
+}
+
+#classe {
+    font-size: 15px;
+    margin-top: 2%;
+}
+
+#registro {
+    color: #bebebe ;
+    font-size: 12px;
+    margin-top: 4%;
 }
 
 /* ===============================

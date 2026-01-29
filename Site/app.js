@@ -17,6 +17,8 @@ var app = express();
 
 var usuarioRouter = require("./public/src/routes/usuario");
 var usuarioImgRouter = require("./public/src/routes/usuarioImg");
+var criandoRouter = require("./public/src/routes/criando");
+var personagensRouter = require("./public/src/routes/personagens");
 var fichaRouter = require("./public/src/routes/ficha");
 
 app.use(express.json());
@@ -27,6 +29,8 @@ app.use(cors());
 
 app.use("/", usuarioRouter);
 app.use("/", usuarioImgRouter);
+app.use("/", criandoRouter);
+app.use("/", personagensRouter);
 app.use("/", fichaRouter);
 
 

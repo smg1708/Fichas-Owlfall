@@ -3,10 +3,10 @@ var idUsuario = sessionStorage.ID_USUARIO
 var statusMax = {}
 var classes = ""
 
-// if (!sessionStorage.ID_USUARIO) {
-//   alert("Você precisa estar logado!");
-//   window.location = "login.html";
-// }
+if (!sessionStorage.ID_USUARIO) {
+  alert("Você precisa estar logado!");
+  window.location = "login.html";
+}
 
 function mundano() {
 
@@ -114,7 +114,11 @@ function especialista() {
 }
 
 function criacao() {
+    if (classes == "") {
+        mundano()
+    }
     return {
+        idUsuario: sessionStorage.ID_USUARIO,
         nome: inp_nome.value,
         jogador: inp_jogador.value,
         classe: classes,
@@ -124,11 +128,11 @@ function criacao() {
         descricao: inp_descricao.value,
         objetivo: inp_objetivo.value,
         atributos: {
-            agilidade: Number(inp_agilidade.value),
-            forca: Number(inp_forca.value),
-            intelecto: Number(inp_intelecto.value),
-            presenca: Number(inp_presenca.value),
-            vigor: Number(inp_vigor.value)
+            agilidade: Number(agilidade.value),
+            forca: Number(forca.value),
+            intelecto: Number(intelecto.value),
+            presenca: Number(presenca.value),
+            vigor: Number(vigor.value)
         }
     }
 }
@@ -136,12 +140,12 @@ function criacao() {
 function criarFicha() {
     const ficha = criacao()
 
-    fetch("/criando", {
+    fetch("/criar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(ficha)
+        body: JSON.stringify(ficha), 
     })
     .then(res => res.json())
     .then(() => {
