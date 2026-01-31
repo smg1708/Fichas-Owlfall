@@ -37,8 +37,11 @@
     <div class="container">
         <div class="parte1">
             <div class="inicio">
-                <div class="caracBase">
-                    <button class="imagemPersonagem"><img src="assets/imgs/todos/usuario.png" alt=""></button>
+                <div class="caracBase"> 
+                    <div class="imagemPersonagem">
+                        <img  src="assets/imgs/todos/usuario.png" id="imgPersonagem" onclick="mudarImagemPerfil()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                        <input type="file" id="inpImagemPersonagem" onchange="salvarImagemPerfil()" hidden>
+                    </div>
                     <div class="personagemBase">
                         <p>Nome</p> 
                         <input id="nome">
@@ -164,10 +167,14 @@
                         <div class="valorSentimental">
                             <h3>Valor Sentimental</h3>
                             <div class="imagensSentimental">
-                                <button class="botaoSentimental"><img src="assets/imgs/todos/usuario.png" alt="" id="sentimental1"></button>
-                                <button class="botaoSentimental"><img src="assets/imgs/todos/usuario.png" alt="" id="sentimental2"></button>
-                                <button class="botaoSentimental"><img src="assets/imgs/todos/usuario.png" alt="" id="sentimental3"></button>
-                                <button class="botaoSentimental"><img src="assets/imgs/todos/usuario.png" alt="" id="sentimental4"></button>
+                                <img  src="assets/imgs/todos/usuario.png" id="sentimental1" onclick="mudarImagemPerfil()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                                <input type="file" id="inpImagemSentimental1" onchange="salvarImagemPerfil()" hidden>
+                                <img  src="assets/imgs/todos/usuario.png" id="sentimental2" onclick="mudarImagemPerfil()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                                <input type="file" id="inpImagemSentimental2" onchange="salvarImagemPerfil()" hidden>
+                                <img  src="assets/imgs/todos/usuario.png" id="sentimental3" onclick="mudarImagemPerfil()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                                <input type="file" id="inpImagemSentimental3" onchange="salvarImagemPerfil()" hidden>
+                                <img  src="assets/imgs/todos/usuario.png" id="sentimental4" onclick="mudarImagemPerfil()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                                <input type="file" id="inpImagemSentimental4" onchange="salvarImagemPerfil()" hidden>
                             </div>
                         </div>
                     </div>
@@ -194,161 +201,161 @@
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Adestramento</span>
-                            <span id="bonus">(<input type="text" id="bonusAdestramento">)</span>
-                            <span id="treino">(<input type="text" id="treinoAdestramento">)</span>
-                            <span id="outros">(<input type="text" id="outrosAdestramento">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusAdestramento">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoAdestramento">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosAdestramento">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Artes</span>
-                            <span id="bonus">(<input type="text" id="bonusArtes">)</span>
-                            <span id="treino">(<input type="text" id="treinoArtes">)</span>
-                            <span id="outros">(<input type="text" id="outrosArtes">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusArtes">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoArtes">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosArtes">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Atlete/acroba</span>
-                            <span id="bonus">(<input type="text" id="bonusAtleteAcroba">)</span>
-                            <span id="treino">(<input type="text" id="treinoAtleteAcroba">)</span>
-                            <span id="outros">(<input type="text" id="outrosAtleteAcroba">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusAtleteAcrob">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoAtleteAcrob">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosAtleteAcrob">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Ciências</span>
-                            <span id="bonus">(<input type="text" id="bonusCiencias">)</span>
-                            <span id="treino">(<input type="text" id="treinoCiencias">)</span>
-                            <span id="outros">(<input type="text" id="outrosCiencias">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusCiencias">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoCiencias">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosCiencias">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Diplomacia</span>
-                            <span id="bonus">(<input type="text" id="bonusDiplomacia">)</span>
-                            <span id="treino">(<input type="text" id="treinoDiplomacia">)</span>
-                            <span id="outros">(<input type="text" id="outrosDiplomacia">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusDiplomacia">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoDiplomacia">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosDiplomacia">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Enganação</span>
-                            <span id="bonus">(<input type="text" id="bonusEnganacao">)</span>
-                            <span id="treino">(<input type="text" id="treinoEnganacao">)</span>
-                            <span id="outros">(<input type="text" id="outrosEnganacao">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusEnganacao">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoEnganacao">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosEnganacao">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Fortitude</span>
-                            <span id="bonus">(<input type="text" id="bonusFortitude">)</span>
-                            <span id="treino">(<input type="text" id="treinoFortitude">)</span>
-                            <span id="outros">(<input type="text" id="outrosFortitude">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusFortitude">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoFortitude">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosFortitude">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Furtividade</span>
-                            <span id="bonus">(<input type="text" id="bonusFurtividade">)</span>
-                            <span id="treino">(<input type="text" id="treinoFurtividade">)</span>
-                            <span id="outros">(<input type="text" id="outrosFurtividade">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusFurtividade">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoFurtividade">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosFurtividade">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Iniciativa</span>
-                            <span id="bonus">(<input type="text" id="bonusIniciativa">)</span>
-                            <span id="treino">(<input type="text" id="treinoIniciativa">)</span>
-                            <span id="outros">(<input type="text" id="outrosIniciativa">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusIniciativa">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoIniciativa">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosIniciativa">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Intimidação</span>
-                            <span id="bonus">(<input type="text" id="bonusIntimidacao">)</span>
-                            <span id="treino">(<input type="text" id="treinoIntimidacao">)</span>
-                            <span id="outros">(<input type="text" id="outrosIntimidacao">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusIntimidacao">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoIntimidacao">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosIntimidacao">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Investigação</span>
-                            <span id="bonus">(<input type="text" id="bonusInvestigacao">)</span>
-                            <span id="treino">(<input type="text" id="treinoInvestigacao">)</span>
-                            <span id="outros">(<input type="text" id="outrosInvestigacao">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusInvestigacao">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoInvestigacao">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosInvestigacao">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Luta</span>
-                            <span id="bonus">(<input type="text" id="bonusLuta">)</span>
-                            <span id="treino">(<input type="text" id="treinoLuta">)</span>
-                            <span id="outros">(<input type="text" id="outrosLuta">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusLuta">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoLuta">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosLuta">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Medicina</span>
-                            <span id="bonus">(<input type="text" id="bonusMedicina">)</span>
-                            <span id="treino">(<input type="text" id="treinoMedicina">)</span>
-                            <span id="outros">(<input type="text" id="outrosMedicina">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusMedicina">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoMedicina">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosMedicina">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Percepção</span>
-                            <span id="bonus">(<input type="text" id="bonusPercepcao">)</span>
-                            <span id="treino">(<input type="text" id="treinoPercepcao">)</span>
-                            <span id="outros">(<input type="text" id="outrosPercepcao">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusPercepcao">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoPercepcao">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosPercepcao">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Pilotagem</span>
-                            <span id="bonus">(<input type="text" id="bonusPilotagem">)</span>
-                            <span id="treino">(<input type="text" id="treinoPilotagem">)</span>
-                            <span id="outros">(<input type="text" id="outrosPilotagem">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusPilotagem">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoPilotagem">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosPilotagem">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Pontaria</span>
-                            <span id="bonus">(<input type="text" id="bonusPontaria">)</span>
-                            <span id="treino">(<input type="text" id="treinoPontaria">)</span>
-                            <span id="outros">(<input type="text" id="outrosPontaria">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusPontaria">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoPontaria">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosPontaria">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Profissão</span>
-                            <span id="bonus">(<input type="text" id="bonusProfissao">)</span>
-                            <span id="treino">(<input type="text" id="treinoProfissao">)</span>
-                            <span id="outros">(<input type="text" id="outrosProfissao">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusProfissao">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoProfissao">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosProfissao">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Reflexos</span>
-                            <span id="bonus">(<input type="text" id="bonusReflexos">)</span>
-                            <span id="treino">(<input type="text" id="treinoReflexos">)</span>
-                            <span id="outros">(<input type="text" id="outrosReflexos">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusReflexos">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoReflexos">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosReflexos">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Sobrevivência</span>
-                            <span id="bonus">(<input type="text" id="bonusSobrevivencia">)</span>
-                            <span id="treino">(<input type="text" id="treinoSobrevivencia">)</span>
-                            <span id="outros">(<input type="text" id="outrosSobrevivencia">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusSobrevivencia">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoSobrevivencia">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosSobrevivencia">)</span>
                         </div>
                     </div>
                     <div class="boxPericias">
                         <div class="pericias">
                             <span id="pericia">Espirito</span>
-                            <span id="bonus">(<input type="text" id="bonusEspirito">)</span>
-                            <span id="treino">(<input type="text" id="treinoEspirito">)</span>
-                            <span id="outros">(<input type="text" id="outrosEspirito">)</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusEspirito">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoEspirito">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosEspirito">)</span>
                         </div>
                     </div>
                 </div>

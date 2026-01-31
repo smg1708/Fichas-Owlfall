@@ -1,6 +1,210 @@
+// if (!sessionStorage.ID_USUARIO) {
+//   alert("Você precisa estar logado!");
+//   window.location = "login.html";
+// }
+
+window.onload = carregarFicha;
+
+var timeoutSave = null
+const idFicha = sessionStorage.ID_FICHA;
+
+document.querySelectorAll("input, textarea, select").forEach(el => {
+    el.addEventListener("change", marcarAlteracao)
+    el.addEventListener("input", marcarAlteracao)
+})
+
+window.addEventListener("beforeunload", function () {
+    const ficha = pegarFicha()
+    navigator.sendBeacon(`/atualizar/${ficha.idFicha}`, JSON.stringify(ficha))
+})
+
+function getPericia(dados, nome) {
+    return dados.pericias?.[nome] ?? { bonus: 0, treino: 0, outros: 0 }
+}
+
+function carregarFicha() {
+    fetch(`/carregar?idFicha=${idFicha}`,{
+    })
+    .then(function(resposta){
+        return resposta.json()
+    })
+    .then(function(dados){
+        console.log(dados)
+
+            if (dados.base.imagem) {
+                if (dados.base.imagem.startsWith("http")) {
+                    imgPersonagem.src = dados.base.imagem
+                } else {
+                    imgPersonagem.src = `/assets/imgsBd/${dados.base.imagem}`
+                }
+            } if (dados.base.sentimental1) {
+                if (dados.base.sentimental1.startsWith("http")) {
+                    sentimental1.src = dados.base.sentimental1
+                } else {
+                    sentimental1.src = `/assets/imgsBd/${dados.base.sentimental1}`
+                }
+            } if (dados.base.sentimental2) {
+                if (dados.base.sentimental2.startsWith("http")) {
+                    sentimental2.src = dados.base.sentimental2
+                } else {
+                    sentimental2.src = `/assets/imgsBd/${dados.base.sentimental2}`
+                }
+            } if (dados.base.sentimental3) {
+                if (dados.base.sentimental3.startsWith("http")) {
+                    sentimental3.src = dados.base.sentimental3
+                } else {
+                    sentimental3.src = `/assets/imgsBd/${dados.base.sentimental3}`
+                }
+            } if (dados.base.sentimental4) {
+                if (dados.base.sentimental4.startsWith("http")) {
+                    sentimental4.src = dados.base.sentimental4
+                } else {
+                    sentimental4.src = `/assets/imgsBd/${dados.base.sentimental4}`
+                }
+            }
+            nome.value = dados.base.nomePersonagem
+            jogador.value = dados.base.jogador
+            classe.value = dados.base.classe
+            selectNivel.value = dados.base.nivel
+            
+            vidaAtual.value = dados.status.vidaAtual
+            vidaMax.value = dados.status.vidaMax
+            sanidadeAtual.value = dados.status.sanidadeAtual
+            sanidadeMax.value = dados.status.sanidadeMax
+            nenAtual.value = dados.status.nenAtual
+            nenMax.value = dados.status.nenMax
+            
+            defesa.value = dados.reacao.defesa
+            equip.value = dados.reacao.equipamento
+            outrosDef.value = dados.reacao.outrosDefesa
+            bloqueioDef.value = dados.reacao.bloqueio
+            esquivaDef.value = dados.reacao.esquiva
+            protecao.value = dados.reacao.protecao
+            resistencia.value = dados.reacao.resistencia
+
+            const adestramento = getPericia(dados, "adestramento")
+            bonusAdestramento.value = adestramento.bonus
+            treinoAdestramento.value = adestramento.treino
+            outrosAdestramento.value = adestramento.outros
+
+            const artes = getPericia(dados, "artes")
+            bonusArtes.value = artes.bonus
+            treinoArtes.value = artes.treino
+            outrosArtes.value = artes.outros
+
+            const atletismoAcrobacia = getPericia(dados, "atletismoAcrobacia")
+            bonusAtleteAcrob.value = atletismoAcrobacia.bonus
+            treinoAtleteAcrob.value = atletismoAcrobacia.treino
+            outrosAtleteAcrob.value = atletismoAcrobacia.outros
+
+            const ciencias = getPericia(dados, "ciencias")
+            bonusCiencias.value = ciencias.bonus
+            treinoCiencias.value = ciencias.treino
+            outrosCiencias.value = ciencias.outros
+
+            const diplomacia = getPericia(dados, "diplomacia")
+            bonusDiplomacia.value = diplomacia.bonus
+            treinoDiplomacia.value = diplomacia.treino
+            outrosDiplomacia.value = diplomacia.outros
+
+            const enganacao = getPericia(dados, "enganacao")
+            bonusEnganacao.value = enganacao.bonus
+            treinoEnganacao.value = enganacao.treino
+            outrosEnganacao.value = enganacao.outros
+
+            const fortitude = getPericia(dados, "fortitude")
+            bonusFortitude.value = fortitude.bonus
+            treinoFortitude.value = fortitude.treino
+            outrosFortitude.value = fortitude.outros
+
+            const iniciativa = getPericia(dados, "iniciativa")
+            bonusIniciativa.value = iniciativa.bonus
+            treinoIniciativa.value = iniciativa.treino
+            outrosIniciativa.value = iniciativa.outros
+
+            const intimidacao = getPericia(dados, "intimidacao")
+            bonusIntimidacao.value = intimidacao.bonus
+            treinoIntimidacao.value = intimidacao.treino
+            outrosIntimidacao.value = intimidacao.outros
+
+            const investigacao = getPericia(dados, "investigacao")
+            bonusInvestigacao.value = investigacao.bonus
+            treinoInvestigacao.value = investigacao.treino
+            outrosInvestigacao.value = investigacao.outros
+
+            const luta = getPericia(dados, "luta")
+            bonusLuta.value = luta.bonus
+            treinoLuta.value = luta.treino
+            outrosLuta.value = luta.outros
+
+            const medicina = getPericia(dados, "medicina")
+            bonusMedicina.value = medicina.bonus
+            treinoMedicina.value = medicina.treino
+            outrosMedicina.value = medicina.outros
+
+            const percepcao = getPericia(dados, "percepcao")
+            bonusPercepcao.value = percepcao.bonus
+            treinoPercepcao.value = percepcao.treino
+            outrosPercepcao.value = percepcao.outros
+
+            const pilotagem = getPericia(dados, "pilotagem")
+            bonusPilotagem.value = pilotagem.bonus
+            treinoPilotagem.value = pilotagem.treino
+            outrosPilotagem.value = pilotagem.outros
+
+            const pontaria = getPericia(dados, "pontaria")
+            bonusPontaria.value = pontaria.bonus
+            treinoPontaria.value = pontaria.treino
+            outrosPontaria.value = pontaria.outros
+
+            const profissao = getPericia(dados, "profissao")
+            bonusProfissao.value = profissao.bonus
+            treinoProfissao.value = profissao.treino
+            outrosProfissao.value = profissao.outros
+
+            const reflexos = getPericia(dados, "reflexos")
+            bonusReflexos.value = reflexos.bonus
+            treinoReflexos.value = reflexos.treino
+            outrosReflexos.value = reflexos.outros
+
+            const sobrevivencia = getPericia(dados, "sobrevivencia")
+            bonusSobrevivencia.value = sobrevivencia.bonus
+            treinoSobrevivencia.value = sobrevivencia.treino
+            outrosSobrevivencia.value = sobrevivencia.outros
+
+            const espirito = getPericia(dados, "espirito")
+            bonusEspirito.value = espirito.bonus
+            treinoEspirito.value = espirito.treino
+            outrosEspirito.value = espirito.outros
+
+            agil.value = dados.atributos.agilidade
+            forc.value = dados.atributos.força
+            inte.value = dados.atributos.intelecto
+            prec.value = dados.atributos.presença
+            vigo.value = dados.atributos.vigor
+            
+    })
+}
+
+function marcarAlteracao() {
+    clearTimeout(timeoutSave)
+    var ultimaFicha = null
+
+    timeoutSave = setTimeout(() => {
+        const fichaAtual = pegarFicha()
+
+        if (JSON.stringify(fichaAtual) !== JSON.stringify(ultimaFicha)) {
+            ultimaFicha = fichaAtual
+            atualizarFicha()
+        }
+    }, 1500)
+}
+
 function pegarFicha() {
-    return {
+    const ficha = {
+        idFicha: sessionStorage.ID_FICHA,
         base: {
+            imagem: imgPersonagem.src,
             nome: nome.value,
             jogador: jogador.value,
             classe: classe.value,
@@ -33,10 +237,10 @@ function pegarFicha() {
         },
     
         sentimental: [
-            sentimental1.value,
-            sentimental2.value,
-            sentimental3.value,
-            sentimental4.value
+            sentimental1.src,
+            sentimental2.src,
+            sentimental3.src,
+            sentimental4.src
         ],
     
         pericias: {
@@ -174,22 +378,27 @@ function pegarFicha() {
             mani: mani.value
         }
     };
+    return ficha 
 }
 
-function salvarFicha() {
+function atualizarFicha() {
     const ficha = pegarFicha()
 
-    fetch("/salvar", {
-        method: "POST",
+    fetch(`/atualizar/${ficha.idFicha}`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(ficha)
     })
+    .then(res => 
+        res.json()
+    )
+    .then(data => 
+        console.log("Ficha salva:", data)
+    )
+    .catch(err => 
+        console.error(err)
+    )
 }
-
-// if (!sessionStorage.ID_USUARIO) {
-//   alert("Você precisa estar logado!");
-//   window.location = "login.html";
-// }
 
 function usuario() {
     window.location = "usuario.html"

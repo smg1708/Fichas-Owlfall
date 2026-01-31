@@ -3,8 +3,12 @@ var router = express.Router();
 
 var fichaController = require("../controller/fichaController");
 
-router.post("/salvar", function (req, res) {
-    fichaController.salvar(req, res);
+router.put("/atualizar/:idFicha", function (req, res) {
+    fichaController.atualizarFicha(req, res);
+})
+
+router.get("/carregar", function (req, res) {
+    fichaController.carregarFicha(req, res);
 })
 
 module.exports = router

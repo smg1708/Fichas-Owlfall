@@ -4,7 +4,7 @@ function mostrarPersonagens(idUsuario) {
     console.log("ACESSEI A VISUALIZAÇÃO DOS PERSONAGENS MODEL \n \n\t\t > Se aqui der erro, e alguma credencial do banco");
     
     var sql = `
-        select nomePersonagem, classe, imagem, DATE_FORMAT(criado, '%d/%m/%Y') as criado from vw_personagens
+        select idFicha, nomePersonagem, classe, imagem, DATE_FORMAT(criado, '%d/%m/%Y') as criado from vw_personagens
             where fkUsuario = ${idUsuario};
     `;
     

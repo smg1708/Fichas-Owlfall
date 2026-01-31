@@ -133,7 +133,16 @@ function criacao() {
             intelecto: Number(intelecto.value),
             presenca: Number(presenca.value),
             vigor: Number(vigor.value)
-        }
+        },
+        reacao: {
+            defesa: 10 + Number(agilidade.value),
+            equipamento: 0,
+            outrosDefesa: 0,
+            bloqueio: 0,
+            esquiva: 0,
+            protecao: "",
+            resistencia: ""
+        },
     }
 }
 
@@ -148,8 +157,26 @@ function criarFicha() {
         body: JSON.stringify(ficha), 
     })
     .then(res => res.json())
-    .then(() => {
-        window.location = "fichasT.html"
+    .then((dados) => {
+        const idFicha = dados.idFicha
+
+        sessionStorage.ID_FICHA = idFicha
+
+        if (classes == "mundano") {
+            window.location = "fichas.html?id=" + idFicha;
+        } else if (classes == "fortificador") {
+            window.location = "fichasF.html?id=" + idFicha;
+        } else if (classes == "transmutador") {
+            window.location = "fichasT.html?id=" + idFicha;
+        } else if (classes == "emissor") {
+            window.location = "fichasE.html?id=" + idFicha;
+        } else if (classes == "manipulador") {
+            window.location = "fichasM.html?id=" + idFicha;
+        } else if (classes == "conjurador") {
+            window.location = "fichasC.html?id=" + idFicha;
+        } else if (classes == "especialista") {
+            window.location = "fichasP.html?id=" + idFicha;
+        }
     })
 }
 

@@ -1,3 +1,8 @@
+if (!sessionStorage.ID_USUARIO) {
+  alert("Você precisa estar logado!");
+  window.location = "login.html";
+}
+
 const idUsuario = sessionStorage.ID_USUARIO;
 
 window.onload = mostrarPersonagens;
@@ -24,7 +29,7 @@ function mostrarPersonagens() {
                     <span id="classe">${primeiraLetraMaiuscula(fichas[i].classe || "???")}</span>
                     <span id="registro">Registro: ${fichas[i].criado || "???"}</span>
 
-                <button onclick="abrirFicha(${fichas[i].idFicha})">
+                <button onclick="abrirFicha(${fichas[i].idFicha}, '${fichas[i].classe}')">
                     Acessar Ficha
                 </button>
                 </div>
@@ -38,10 +43,30 @@ function primeiraLetraMaiuscula(texto) {
     return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 }
 
-if (!sessionStorage.ID_USUARIO) {
-  alert("Você precisa estar logado!");
-  window.location = "login.html";
+function abrirFicha(idFicha, classe) {
+  sessionStorage.ID_FICHA = idFicha
+
+  classe = classe.toLowerCase()
+
+  if (classe == "mundano") {
+    window.location = "fichas.html?id=" + idFicha;
+  } else if (classe == "fortificador") {
+    window.location = "fichasF.html?id=" + idFicha;
+  } else if (classe == "transmutador") {
+    window.location = "fichasT.html?id=" + idFicha;
+  } else if (classe == "emissor") {
+    window.location = "fichasE.html?id=" + idFicha;
+  } else if (classe == "manipulador") {
+    window.location = "fichasM.html?id=" + idFicha;
+  } else if (classe == "conjurador") {
+    window.location = "fichasC.html?id=" + idFicha;
+  } else if (classe == "especialista") {
+    window.location = "fichasP.html?id=" + idFicha;
+  } else {
+    alert("Classe inválida: " + classe)
+  }
 }
+
 
 function novo() {
     window.location = "criando.html"

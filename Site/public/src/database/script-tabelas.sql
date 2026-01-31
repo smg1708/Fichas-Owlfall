@@ -24,6 +24,10 @@ CREATE TABLE ficha (
     historia TEXT,
     objetivo TEXT,
     imagem VARCHAR(255),
+    sentimental1 VARCHAR(255),
+    sentimental2 VARCHAR(255),
+    sentimental3 VARCHAR(255),
+    sentimental4 VARCHAR(255),
     criado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
@@ -62,9 +66,9 @@ CREATE TABLE pericia (
 CREATE TABLE fichaPericia (
     fkFicha INT NOT NULL,
     fkPericia INT NOT NULL,
-    bonus INT DEFAULT 0,
-    treino INT DEFAULT 0,
-    outros INT DEFAULT 0,
+    bonus INT NOT NULL DEFAULT 0,
+    treino INT NOT NULL DEFAULT 0,
+    outros INT NOT NULL DEFAULT 0,
     PRIMARY KEY (fkFicha, fkPericia),
     FOREIGN KEY (fkFicha) REFERENCES ficha(idFicha),
     FOREIGN KEY (fkPericia) REFERENCES pericia(idPericia)
@@ -106,6 +110,19 @@ CREATE TABLE fichaCampanha (
     FOREIGN KEY (fkCampanha) REFERENCES campanha(idCampanha)
 );
 
+CREATE TABLE reacaoFicha (
+    idReacao INT PRIMARY KEY AUTO_INCREMENT,
+    fkFicha INT NOT NULL,
+    defesa INT DEFAULT 0,
+    equipamento INT DEFAULT 0,
+    outrosDefesa INT DEFAULT 0,
+    bloqueio INT DEFAULT 0,
+    esquiva INT DEFAULT 0,
+    protecao varchar(255),
+    resistencia varchar(255),
+    FOREIGN KEY (fkFicha) REFERENCES ficha(idFicha)
+);
+
 INSERT INTO atributo (nome) VALUES 
 	('agilidade'),
 	('força'),
@@ -122,7 +139,7 @@ INSERT INTO atributo (nome) VALUES
 INSERT INTO pericia (nome) VALUES
 	('adestramento'),
 	('artes'),
-	('atletismo/Acrobacia'),
+	('atletismoAcrobacia'),
 	('ciências'),
 	('diplomacia'),
 	('enganação'),
@@ -227,3 +244,7 @@ CREATE VIEW vw_geral AS
 		u.email AS emailUsuario
 	FROM ficha f
 	JOIN usuario u ON f.fkUsuario = u.idUsuario;
+
+select * from vw_geral;
+
+SELECT * FROM fichaAtributo WHERE fkFicha = 1;
