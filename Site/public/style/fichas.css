@@ -263,6 +263,7 @@ input:focus {
     background: none;
     border: none;
     color: white;
+    text-align: center;
     font-size: 20px;
     font-family: 'Atkinson Hyperlegible Mono';
     width: 40px;
@@ -545,7 +546,7 @@ input:focus {
 #outros {
     position: absolute;
     width: 4.3%;
-    right: 35.8%;
+    right: 37%;
 }
 
 /* sobe */

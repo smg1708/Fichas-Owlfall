@@ -87,39 +87,81 @@ function atualizarFicha(idFicha, ficha) {
         ])
     )
 
-    for (var nomeAtributo in ficha.atributos) {
-        const valor = ficha.atributos[nomeAtributo]
+    const Atributos = {
+        agil: "Agilidade",
+        forc: "Força",
+        inte: "Intelecto",
+        prec: "Presença",
+        vigo: "Vigor",
+        tran: "Transmutação",
+        fort: "Fortalecimento",
+        emis: "Emissão",
+        conj: "Conjuração",
+        mani: "Manipulação"
+    }
 
-        const sqlAtributo = `
-            UPDATE fichaAtributo fa
-            JOIN atributo a ON fa.fkAtributo = a.idAtributo
-            SET fa.valor = ?
-            WHERE fa.fkFicha = ? AND a.nome = ?;
-        `
+    const sqlAtributo = `
+        UPDATE fichaAtributo fa
+        JOIN atributo a ON fa.fkAtributo = a.idAtributo
+        SET fa.valor = ?
+        WHERE fa.fkFicha = ? AND a.nome = ?;
+    `
+
+    for (var nomeAtributo in ficha.atributos) {
+        const valor = Number(ficha.atributos[nomeAtributo])
+        const nomeBanco = Atributos[nomeAtributo]
+
+        if (!nomeBanco) {
+            console.log("Atributo ignorado:", nomeAtributo)
+            continue
+        }
 
         promises.push(
-            database.executar(sqlAtributo, [valor, idFicha, nomeAtributo])
+            database.executar(sqlAtributo, [valor, idFicha, nomeBanco])
         )
     }
 
-    for (var nomePericia in ficha.pericias) {
-        const p = ficha.pericias[nomePericia]
+    const Pericias = {
+        adestramento: "adestramento",
+        artes: "artes",
+        atletismoAcrobacia: "atletismoAcrobacia",
+        ciencias: "ciencias",
+        diplomacia: "diplomacia",
+        enganacao: "enganacao",
+        fortitude: "fortitude",
+        furtividade: "furtividade",
+        iniciativa: "iniciativa",
+        intimidacao: "intimidacao",
+        investigacao: "investigacao",
+        luta: "luta",
+        medicina: "medicina",
+        percepcao: "percepcao",
+        pilotagem: "pilotagem",
+        pontaria: "pontaria",
+        profissao: "profissao",
+        reflexos: "reflexos",
+        sobrevivencia: "sobrevivencia",
+        espirito: "espirito"
+    }
 
-        const sqlPericia = `
-            UPDATE fichaPericia fp
-            JOIN pericia p ON fp.fkPericia = p.idPericia
-            SET fp.bonus = ?, fp.treino = ?, fp.outros = ?
-            WHERE fp.fkFicha = ? AND p.nome = ?;
-        `
+    const sqlPericia = `
+    INSERT INTO fichaPericia (fkFicha, fkPericia, bonus, treino, outros)
+    VALUES (?, (SELECT idPericia FROM pericia WHERE nome = ?), ?, ?, ?)
+    ON DUPLICATE KEY UPDATE bonus = VALUES(bonus), treino = VALUES(treino), outros = VALUES(outros);
+    `
+
+    for (let nomePericia in ficha.pericias) {
+        const p = ficha.pericias[nomePericia]
+        const nomeBanco = Pericias[nomePericia]
+
+        if (!nomeBanco) continue
+
+        const bonus = Number(p.bonus) || 0
+        const treino = Number(p.treino) || 0
+        const outros = Number(p.outros) || 0
 
         promises.push(
-            database.executar(sqlPericia, [
-                p.bonus,
-                p.treino,
-                p.outros,
-                idFicha,
-                nomePericia
-            ])
+            database.executar(sqlPericia, [idFicha, nomeBanco, bonus, treino, outros])
         )
     }
 

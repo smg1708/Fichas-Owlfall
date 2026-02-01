@@ -5,17 +5,14 @@
 
 window.onload = carregarFicha;
 
+var ultimaFicha = null
 var timeoutSave = null
+
 const idFicha = sessionStorage.ID_FICHA;
 
 document.querySelectorAll("input, textarea, select").forEach(el => {
     el.addEventListener("change", marcarAlteracao)
     el.addEventListener("input", marcarAlteracao)
-})
-
-window.addEventListener("beforeunload", function () {
-    const ficha = pegarFicha()
-    navigator.sendBeacon(`/atualizar/${ficha.idFicha}`, JSON.stringify(ficha))
 })
 
 function getPericia(dados, nome) {
@@ -117,6 +114,11 @@ function carregarFicha() {
             treinoFortitude.value = fortitude.treino
             outrosFortitude.value = fortitude.outros
 
+            const furtividade = getPericia(dados, "furtividade")
+            bonusFurtividade.value = furtividade.bonus
+            treinoFurtividade.value = furtividade.treino
+            outrosFurtividade.value = furtividade.outros
+
             const iniciativa = getPericia(dados, "iniciativa")
             bonusIniciativa.value = iniciativa.bonus
             treinoIniciativa.value = iniciativa.treino
@@ -188,7 +190,6 @@ function carregarFicha() {
 
 function marcarAlteracao() {
     clearTimeout(timeoutSave)
-    var ultimaFicha = null
 
     timeoutSave = setTimeout(() => {
         const fichaAtual = pegarFicha()
@@ -278,6 +279,11 @@ function pegarFicha() {
             bonus: bonusFortitude.value,
             treino: treinoFortitude.value,
             outros: outrosFortitude.value
+            },
+            furtividade: {
+            bonus: bonusFurtividade.value,
+            treino: treinoFurtividade.value,
+            outros: outrosFurtividade.value
             },
             iniciativa: {
             bonus: bonusIniciativa.value,

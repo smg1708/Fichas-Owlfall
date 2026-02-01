@@ -5,17 +5,14 @@
 
 window.onload = carregarFicha;
 
+var ultimaFicha = null
 var timeoutSave = null
+
 const idFicha = sessionStorage.ID_FICHA;
 
 document.querySelectorAll("input, textarea, select").forEach(el => {
     el.addEventListener("change", marcarAlteracao)
     el.addEventListener("input", marcarAlteracao)
-})
-
-window.addEventListener("beforeunload", function () {
-    const ficha = pegarFicha()
-    navigator.sendBeacon(`/atualizar/${ficha.idFicha}`, JSON.stringify(ficha))
 })
 
 function getPericia(dados, nome) {
@@ -32,15 +29,35 @@ function carregarFicha() {
         console.log(dados)
 
             if (dados.base.imagem) {
-                imgPersonagem.src = `/assets/imgsBd/${dados.base.imagem}`
+                if (dados.base.imagem.startsWith("http")) {
+                    imgPersonagem.src = dados.base.imagem
+                } else {
+                    imgPersonagem.src = `/assets/imgsBd/${dados.base.imagem}`
+                }
             } if (dados.base.sentimental1) {
-                sentimental1.src = `/assets/imgsBd/${dados.base.sentimental1}`
+                if (dados.base.sentimental1.startsWith("http")) {
+                    sentimental1.src = dados.base.sentimental1
+                } else {
+                    sentimental1.src = `/assets/imgsBd/${dados.base.sentimental1}`
+                }
             } if (dados.base.sentimental2) {
-                sentimental2.src = `/assets/imgsBd/${dados.base.sentimental2}`
+                if (dados.base.sentimental2.startsWith("http")) {
+                    sentimental2.src = dados.base.sentimental2
+                } else {
+                    sentimental2.src = `/assets/imgsBd/${dados.base.sentimental2}`
+                }
             } if (dados.base.sentimental3) {
-                sentimental3.src = `/assets/imgsBd/${dados.base.sentimental3}`
+                if (dados.base.sentimental3.startsWith("http")) {
+                    sentimental3.src = dados.base.sentimental3
+                } else {
+                    sentimental3.src = `/assets/imgsBd/${dados.base.sentimental3}`
+                }
             } if (dados.base.sentimental4) {
-                sentimental4.src = `/assets/imgsBd/${dados.base.sentimental4}`
+                if (dados.base.sentimental4.startsWith("http")) {
+                    sentimental4.src = dados.base.sentimental4
+                } else {
+                    sentimental4.src = `/assets/imgsBd/${dados.base.sentimental4}`
+                }
             }
             nome.value = dados.base.nomePersonagem
             jogador.value = dados.base.jogador
@@ -157,6 +174,11 @@ function carregarFicha() {
             treinoEspirito.value = espirito.treino
             outrosEspirito.value = espirito.outros
 
+            agil.value = dados.atributos.agilidade
+            forc.value = dados.atributos.força
+            inte.value = dados.atributos.intelecto
+            prec.value = dados.atributos.presença
+            vigo.value = dados.atributos.vigor
             
     })
 }
@@ -169,7 +191,7 @@ function marcarAlteracao() {
 
         if (JSON.stringify(fichaAtual) !== JSON.stringify(ultimaFicha)) {
             ultimaFicha = fichaAtual
-            atualizarFichaSeguro()
+            atualizarFicha()
         }
     }, 1500)
 }

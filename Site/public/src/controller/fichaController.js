@@ -1,6 +1,7 @@
 var fichaModel = require("../models/fichaModel");
 
 function atualizarFicha(req, res) {
+    console.log("BODY RECEBIDO:", req.body)
     const idFicha = req.params.idFicha
     const ficha = req.body
 
@@ -13,9 +14,13 @@ function atualizarFicha(req, res) {
             res.json(resultado)
         )
         .catch(erro => {
-            console.log(erro)
-            res.status(500).json(erro.sqlMessage)
+            console.error("Erro ao atualizar ficha:", erro)
+            res.status(500).json({
+                erro: true,
+                mensagem: erro.sqlMessage || erro.message || "Erro interno no servidor"
+            })
         })
+
 }
 
 function carregarFicha(req, res) {
