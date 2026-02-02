@@ -13,7 +13,7 @@ function atualizarFicha(idFicha, ficha) {
             nivel = ?,
             aparencia = ?,
             personalidade = ?,
-            historia = ?,
+            descricao = ?,
             objetivo = ?,
             imagem = ?,
             sentimental1 = ?,
@@ -31,7 +31,7 @@ function atualizarFicha(idFicha, ficha) {
             ficha.base.nivel,
             ficha.historia.aparencia,
             ficha.historia.personalidade,
-            ficha.historia.historia,
+            ficha.historia.descricao,
             ficha.historia.objetivo,
             ficha.base.imagem,
             ficha.sentimental[0],
@@ -207,7 +207,7 @@ function carregarFicha(idFicha) {
     const ficha = {}
 
     return database.executar(`
-        SELECT idFicha, nomePersonagem, jogador, classe, nivel, aparencia, personalidade, historia, objetivo, imagem, sentimental1, sentimental2, sentimental3, sentimental4
+        SELECT idFicha, nomePersonagem, jogador, classe, nivel, anotacoes, aparencia, personalidade, descricao, objetivo, imagem, sentimental1, sentimental2, sentimental3, sentimental4
         FROM ficha WHERE idFicha = ?;
     `, [idFicha])
 
@@ -301,7 +301,127 @@ function carregarFicha(idFicha) {
     })
 }
 
+function salvarImagemFicha(idFicha, imagem) {
+  
+  const instrucao = `
+    update ficha set imagem = ?
+      where idFicha = ?;
+  `;
+
+  return database.executar(instrucao, [imagem, idFicha]);
+
+}
+
+function buscarImagemFicha(idFicha) {
+
+  const sql = `
+    select imagem from ficha 
+      where idFicha = ${idFicha};
+  `;
+
+  return database.executar(sql);
+
+}
+
+function salvarImagemSentimental1(idFicha, imagem) {
+  
+  const instrucao = `
+    update ficha set sentimental1 = ?
+      where idFicha = ?;
+  `;
+
+  return database.executar(instrucao, [imagem, idFicha]);
+
+}
+
+function buscarImagemSentimental1(idFicha) {
+
+  const sql = `
+    select sentimental1 from ficha 
+      where idFicha = ${idFicha};
+  `;
+
+  return database.executar(sql);
+
+}
+
+function salvarImagemSentimental2(idFicha, imagem) {
+  
+  const instrucao = `
+    update ficha set sentimental2 = ?
+      where idFicha = ?;
+  `;
+
+  return database.executar(instrucao, [imagem, idFicha]);
+
+}
+
+function buscarImagemSentimental2(idFicha) {
+
+  const sql = `
+    select sentimental2 from ficha 
+      where idFicha = ${idFicha};
+  `;
+
+  return database.executar(sql);
+
+}
+
+function salvarImagemSentimental3(idFicha, imagem) {
+  
+  const instrucao = `
+    update ficha set sentimental3 = ?
+      where idFicha = ?;
+  `;
+
+  return database.executar(instrucao, [imagem, idFicha]);
+
+}
+
+function buscarImagemSentimental3(idFicha) {
+
+  const sql = `
+    select sentimental3 from ficha 
+      where idFicha = ${idFicha};
+  `;
+
+  return database.executar(sql);
+
+}
+
+function salvarImagemSentimental4(idFicha, imagem) {
+  
+  const instrucao = `
+    update ficha set sentimental4 = ?
+      where idFicha = ?;
+  `;
+
+  return database.executar(instrucao, [imagem, idFicha]);
+
+}
+
+function buscarImagemSentimental4(idFicha) {
+
+  const sql = `
+    select sentimental4 from ficha 
+      where idFicha = ${idFicha};
+  `;
+
+  return database.executar(sql);
+
+}
+
 module.exports = {
     atualizarFicha,
-    carregarFicha
+    carregarFicha,
+    salvarImagemFicha,
+    buscarImagemFicha,
+    salvarImagemSentimental1,
+    buscarImagemSentimental1,
+    salvarImagemSentimental2,
+    buscarImagemSentimental2,
+    salvarImagemSentimental3,
+    buscarImagemSentimental3,
+    salvarImagemSentimental4,
+    buscarImagemSentimental4
 }

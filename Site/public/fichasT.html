@@ -39,8 +39,8 @@
             <div class="inicio">
                 <div class="caracBase"> 
                     <div class="imagemPersonagem">
-                        <img  src="assets/imgs/todos/usuario.png" id="imgPersonagem" onclick="mudarImagemPerfil()" onerror="this.src='assets/imgs/todos/usuario.png'">
-                        <input type="file" id="inpImagemPersonagem" onchange="salvarImagemPerfil()" hidden>
+                        <img  src="assets/imgs/todos/usuario.png" id="imgPersonagem" onclick="mudarImagemFicha()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                        <input type="file" id="inpImagemPersonagem" onchange="salvarImagemFicha()" hidden>
                     </div>
                     <div class="personagemBase">
                         <p>Nome</p> 
@@ -167,14 +167,14 @@
                         <div class="valorSentimental">
                             <h3>Valor Sentimental</h3>
                             <div class="imagensSentimental">
-                                <img  src="assets/imgs/todos/usuario.png" id="sentimental1" onclick="mudarImagemPerfil()" onerror="this.src='assets/imgs/todos/usuario.png'">
-                                <input type="file" id="inpImagemSentimental1" onchange="salvarImagemPerfil()" hidden>
-                                <img  src="assets/imgs/todos/usuario.png" id="sentimental2" onclick="mudarImagemPerfil()" onerror="this.src='assets/imgs/todos/usuario.png'">
-                                <input type="file" id="inpImagemSentimental2" onchange="salvarImagemPerfil()" hidden>
-                                <img  src="assets/imgs/todos/usuario.png" id="sentimental3" onclick="mudarImagemPerfil()" onerror="this.src='assets/imgs/todos/usuario.png'">
-                                <input type="file" id="inpImagemSentimental3" onchange="salvarImagemPerfil()" hidden>
-                                <img  src="assets/imgs/todos/usuario.png" id="sentimental4" onclick="mudarImagemPerfil()" onerror="this.src='assets/imgs/todos/usuario.png'">
-                                <input type="file" id="inpImagemSentimental4" onchange="salvarImagemPerfil()" hidden>
+                                <img  src="assets/imgs/todos/usuario.png" id="sentimental1" onclick="mudarImagemSentimental1()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                                <input type="file" id="inpImagemSentimental1" onchange="salvarImagemSentimental1()" hidden>
+                                <img  src="assets/imgs/todos/usuario.png" id="sentimental2" onclick="mudarImagemSentimental2()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                                <input type="file" id="inpImagemSentimental2" onchange="salvarImagemSentimental2()" hidden>
+                                <img  src="assets/imgs/todos/usuario.png" id="sentimental3" onclick="mudarImagemSentimental3()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                                <input type="file" id="inpImagemSentimental3" onchange="salvarImagemSentimental3()" hidden>
+                                <img  src="assets/imgs/todos/usuario.png" id="sentimental4" onclick="mudarImagemSentimental4()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                                <input type="file" id="inpImagemSentimental4" onchange="salvarImagemSentimental4()" hidden>
                             </div>
                         </div>
                     </div>
@@ -189,7 +189,7 @@
                         <button onclick="pericias()">PERÍCIAS</button>
                         <button onclick="habilidades()">HABILIDADES</button>
                         <button onclick="inventario()">INVENTÁRIO</button>
-                        <button onclick="descricao()">DESCRIÇÃO</button>
+                        <button onclick="descricaoBtn()">DESCRIÇÃO</button>
                     </div>
                     <div class="tracoCaracP"></div   >
                     <div class="lista">
@@ -365,7 +365,7 @@
                         <button onclick="pericias()">PERÍCIAS</button>
                         <button onclick="habilidades()">HABILIDADES</button>
                         <button onclick="inventario()">INVENTÁRIO</button>
-                        <button onclick="descricao()">DESCRIÇÃO</button>
+                        <button onclick="descricaoBtn()">DESCRIÇÃO</button>
                     </div>
                     <div class="tracoCarac"></div>
                     <button onclick="novaHab()" class="novaHabBotao">Nova Habilidade</button>
@@ -395,7 +395,7 @@
                         <button onclick="pericias()">PERÍCIAS</button>
                         <button onclick="habilidades()">HABILIDADES</button>
                         <button onclick="inventario()">INVENTÁRIO</button>
-                        <button onclick="descricao()">DESCRIÇÃO</button>
+                        <button onclick="descricaoBtn()">DESCRIÇÃO</button>
                     </div>
                     <div class="tracoCarac"></div>
                     <button onclick="novaInv()" class="novaInvBotao">Adicionar</button>
@@ -430,7 +430,7 @@
                         <button onclick="pericias()">PERÍCIAS</button>
                         <button onclick="habilidades()">HABILIDADES</button>
                         <button onclick="inventario()">INVENTÁRIO</button>
-                        <button onclick="descricao()">DESCRIÇÃO</button>
+                        <button onclick="descricaoBtn()">DESCRIÇÃO</button>
                     </div>
                     <div class="tracoCarac"></div>
                     <p>Anotações</p>
@@ -440,7 +440,7 @@
                     <p>Personalidade</p>
                     <textarea id="personalidade" placeholder="Amigavel, curioso"></textarea>
                     <p>História</p>
-                    <textarea id="historia" placeholder="Viveu uma vida normal"></textarea>
+                    <textarea id="descricao" placeholder="Viveu uma vida normal"></textarea>
                     <p>Objetivo</p>
                     <textarea id="objetivo" placeholder="Ganhar um trofeu"></textarea>
                 </div>
@@ -456,10 +456,10 @@
                     <input type="text" id="inte">
                     <input type="text" id="prec">
                     <input type="text" id="vigo">
-                    <input type="text" id="fort" value="0">
                     <input type="text" id="tran" value="1">
-                    <input type="text" id="emis" value="-1">
+                    <input type="text" id="fort" value="0">
                     <input type="text" id="conj" value="0">
+                    <input type="text" id="emis" value="-1">
                     <input type="text" id="mani" value="-1">
                 </div>
             </div>

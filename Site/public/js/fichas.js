@@ -1,9 +1,98 @@
-// if (!sessionStorage.ID_USUARIO) {
-//   alert("Você precisa estar logado!");
-//   window.location = "login.html";
-// }
+if (!sessionStorage.ID_USUARIO) {
+  alert("Você precisa estar logado!");
+  window.location = "login.html";
+}
 
-window.onload = carregarFicha;
+window.onload = () => {
+  carregarFicha()
+
+  const idFicha = sessionStorage.ID_FICHA;
+
+  fetch(`/imagemFicha/${idFicha}`)
+    .then(res => res.json())
+    .then(dados => {
+      const imagemFicha = document.getElementById("imgPersonagem");
+
+      if (dados.imagem) {
+        if (imagemFicha) { 
+          imagemFicha.src = `/assets/imgsBd/${dados.imagem}`;
+        }
+      } else {
+        if (imagemFicha) { 
+            imagemFicha.src = `/assets/imgs/todos/usuario.png`;
+        }
+      }
+
+    });
+
+  fetch(`/imagemSentimental1/${idFicha}`)
+    .then(res => res.json())
+    .then(dados => {
+      const sentimental1 = document.getElementById("sentimental1");
+
+      if (dados.sentimental1) {
+        if (sentimental1) { 
+          sentimental1.src = `/assets/imgsBd/${dados.sentimental1}`;
+        }
+      } else {
+        if (sentimental1) { 
+            sentimental1.src = `/assets/imgs/todos/usuario.png`;
+        }
+      }
+
+    });
+
+  fetch(`/imagemSentimental2/${idFicha}`)
+    .then(res => res.json())
+    .then(dados => {
+      const sentimental2 = document.getElementById("sentimental2");
+
+      if (dados.sentimental2) {
+        if (sentimental2) { 
+          sentimental2.src = `/assets/imgsBd/${dados.sentimental2}`;
+        }
+      } else {
+        if (sentimental2) { 
+            sentimental2.src = `/assets/imgs/todos/usuario.png`;
+        }
+      }
+
+    });
+
+  fetch(`/imagemSentimental3/${idFicha}`)
+    .then(res => res.json())
+    .then(dados => {
+      const sentimental3 = document.getElementById("sentimental3");
+
+      if (dados.sentimental3) {
+        if (sentimental3) { 
+          sentimental3.src = `/assets/imgsBd/${dados.sentimental3}`;
+        }
+      } else {
+        if (sentimental3) { 
+            sentimental3.src = `/assets/imgs/todos/usuario.png`;
+        }
+      }
+
+    });
+
+  fetch(`/imagemSentimental4/${idFicha}`)
+    .then(res => res.json())
+    .then(dados => {
+      const sentimental4 = document.getElementById("sentimental4");
+
+      if (dados.sentimental4) {
+        if (sentimental4) { 
+          sentimental4.src = `/assets/imgsBd/${dados.sentimental4}`;
+        }
+      } else {
+        if (sentimental4) { 
+            sentimental4.src = `/assets/imgs/todos/usuario.png`;
+        }
+      }
+
+    });
+};
 
 var ultimaFicha = null
 var timeoutSave = null
@@ -15,11 +104,177 @@ document.querySelectorAll("input, textarea, select").forEach(el => {
     el.addEventListener("input", marcarAlteracao)
 })
 
+function mudarImagemFicha() {
+    inpImagemPersonagem.click();
+}
+
+function mudarImagemSentimental1() {
+    inpImagemSentimental1.click();
+}
+
+function mudarImagemSentimental2() {
+    inpImagemSentimental2.click();
+}
+
+function mudarImagemSentimental3() {
+    inpImagemSentimental3.click();
+}
+
+function mudarImagemSentimental4() {
+    inpImagemSentimental4.click();
+}
+
+function salvarImagemFicha() {
+    var foto = inpImagemPersonagem.files[0]
+    
+    const formData = new FormData();
+    formData.append('idFicha', sessionStorage.ID_FICHA);
+    formData.append('fotoFicha', foto)
+
+    fetch("/imagemFicha", {
+        method: "PUT",
+        body: formData
+    })
+    .then(
+        res => res.json()
+    )
+    .then( dados => {
+        console.log("Imagem salva:", dados);
+        
+        const imagemFicha = document.getElementById("imgPersonagem");
+  
+        if (imagemFicha) {
+            imagemFicha.src = `${dados.imagem}`;
+        }
+      })
+    .catch(
+        err => console.log(err)
+    );
+}
+
+function salvarImagemSentimental1() {
+    var foto = inpImagemSentimental1.files[0]
+    
+    const formData = new FormData();
+    formData.append('idFicha', sessionStorage.ID_FICHA);
+    formData.append('fotoSentimental1', foto)
+
+    fetch("/imagemSentimental1", {
+        method: "PUT",
+        body: formData
+    })
+    .then(
+        res => res.json()
+    )
+    .then( dados => {
+        console.log("Imagem salva:", dados);
+        
+        const sentimental1 = document.getElementById("sentimental1");
+  
+ 	if (sentimental1) {
+        sentimental1.src = `${dados.sentimental1}`
+      }
+    })
+    .catch(
+        err => console.log(err)
+    );
+}
+
+function salvarImagemSentimental2() {
+    var foto = inpImagemSentimental2.files[0]
+    
+    const formData = new FormData();
+    formData.append('idFicha', sessionStorage.ID_FICHA);
+    formData.append('fotoSentimental2', foto)
+
+    fetch("/imagemSentimental2", {
+        method: "PUT",
+        body: formData
+    })
+    .then(
+        res => res.json()
+    )
+    .then( dados => {
+        console.log("Imagem salva:", dados);
+        
+        const sentimental2 = document.getElementById("sentimental2");
+  
+ 	if (sentimental2) {
+        sentimental2.src = `${dados.sentimental2}`
+      }
+    })
+    .catch(
+        err => console.log(err)
+    );
+}
+
+function salvarImagemSentimental3() {
+    var foto = inpImagemSentimental3.files[0]
+    
+    const formData = new FormData();
+    formData.append('idFicha', sessionStorage.ID_FICHA);
+    formData.append('fotoSentimental3', foto)
+
+    fetch("/imagemSentimental3", {
+        method: "PUT",
+        body: formData
+    })
+    .then(
+        res => res.json()
+    )
+    .then( dados => {
+        console.log("Imagem salva:", dados);
+        
+        const sentimental3 = document.getElementById("sentimental3");
+  
+ 	if (sentimental3) {
+        sentimental3.src = `${dados.sentimental3}`
+      }
+    })
+    .catch(
+        err => console.log(err)
+    );
+}
+
+function salvarImagemSentimental4() {
+    var foto = inpImagemSentimental4.files[0]
+    
+    const formData = new FormData();
+    formData.append('idFicha', sessionStorage.ID_FICHA);
+    formData.append('fotoSentimental4', foto)
+
+    fetch("/imagemSentimental4", {
+        method: "PUT",
+        body: formData
+    })
+    .then(
+        res => res.json()
+    )
+    .then( dados => {
+        console.log("Imagem salva:", dados);
+        
+        const sentimental4 = document.getElementById("sentimental4");
+  
+ 	if (sentimental4) {
+        sentimental4.src = `${dados.sentimental4}`
+      }
+    })
+    .catch(
+        err => console.log(err)
+    );
+}
+
 function getPericia(dados, nome) {
     return dados.pericias?.[nome] ?? { bonus: 0, treino: 0, outros: 0 }
 }
 
 function carregarFicha() {
+    const inpAnotacoes = document.getElementById("anotacoes")
+    const inpAparencia = document.getElementById("aparencia")
+    const inpPersonalidade = document.getElementById("personalidade")
+    const inpDescricao = document.getElementById("descricao")
+    const inpObjetivo = document.getElementById("objetivo")
+
     fetch(`/carregar?idFicha=${idFicha}`,{
     })
     .then(function(resposta){
@@ -79,100 +334,111 @@ function carregarFicha() {
             protecao.value = dados.reacao.protecao
             resistencia.value = dados.reacao.resistencia
 
+            inpAnotacoes.value = dados.base.anotacoes
+            inpAparencia.value = dados.base.aparencia
+            inpPersonalidade.value = dados.base.personalidade
+            inpDescricao.value = dados.base.descricao
+            inpObjetivo.value = dados.base.objetivo
+
             const adestramento = getPericia(dados, "adestramento")
-            bonusAdestramento.value = adestramento.bonus
-            treinoAdestramento.value = adestramento.treino
-            outrosAdestramento.value = adestramento.outros
+                bonusAdestramento.value = adestramento.bonus
+                treinoAdestramento.value = adestramento.treino
+                outrosAdestramento.value = adestramento.outros
 
             const artes = getPericia(dados, "artes")
-            bonusArtes.value = artes.bonus
-            treinoArtes.value = artes.treino
-            outrosArtes.value = artes.outros
+                bonusArtes.value = artes.bonus
+                treinoArtes.value = artes.treino
+                outrosArtes.value = artes.outros
 
             const atletismoAcrobacia = getPericia(dados, "atletismoAcrobacia")
-            bonusAtleteAcrob.value = atletismoAcrobacia.bonus
-            treinoAtleteAcrob.value = atletismoAcrobacia.treino
-            outrosAtleteAcrob.value = atletismoAcrobacia.outros
+                bonusAtleteAcrob.value = atletismoAcrobacia.bonus
+                treinoAtleteAcrob.value = atletismoAcrobacia.treino
+                outrosAtleteAcrob.value = atletismoAcrobacia.outros
 
             const ciencias = getPericia(dados, "ciencias")
-            bonusCiencias.value = ciencias.bonus
-            treinoCiencias.value = ciencias.treino
-            outrosCiencias.value = ciencias.outros
+                bonusCiencias.value = ciencias.bonus
+                treinoCiencias.value = ciencias.treino
+                outrosCiencias.value = ciencias.outros
 
             const diplomacia = getPericia(dados, "diplomacia")
-            bonusDiplomacia.value = diplomacia.bonus
-            treinoDiplomacia.value = diplomacia.treino
-            outrosDiplomacia.value = diplomacia.outros
+                bonusDiplomacia.value = diplomacia.bonus
+                treinoDiplomacia.value = diplomacia.treino
+                outrosDiplomacia.value = diplomacia.outros
 
             const enganacao = getPericia(dados, "enganacao")
-            bonusEnganacao.value = enganacao.bonus
-            treinoEnganacao.value = enganacao.treino
-            outrosEnganacao.value = enganacao.outros
+                bonusEnganacao.value = enganacao.bonus
+                treinoEnganacao.value = enganacao.treino
+                outrosEnganacao.value = enganacao.outros
 
             const fortitude = getPericia(dados, "fortitude")
-            bonusFortitude.value = fortitude.bonus
-            treinoFortitude.value = fortitude.treino
-            outrosFortitude.value = fortitude.outros
+                bonusFortitude.value = fortitude.bonus
+                treinoFortitude.value = fortitude.treino
+                outrosFortitude.value = fortitude.outros
+
+            const furtividade = getPericia(dados, "furtividade")
+                bonusFurtividade.value = furtividade.bonus
+                treinoFurtividade.value = furtividade.treino
+                outrosFurtividade.value = furtividade.outros
 
             const iniciativa = getPericia(dados, "iniciativa")
-            bonusIniciativa.value = iniciativa.bonus
-            treinoIniciativa.value = iniciativa.treino
-            outrosIniciativa.value = iniciativa.outros
+                bonusIniciativa.value = iniciativa.bonus
+                treinoIniciativa.value = iniciativa.treino
+                outrosIniciativa.value = iniciativa.outros
 
             const intimidacao = getPericia(dados, "intimidacao")
-            bonusIntimidacao.value = intimidacao.bonus
-            treinoIntimidacao.value = intimidacao.treino
-            outrosIntimidacao.value = intimidacao.outros
+                bonusIntimidacao.value = intimidacao.bonus
+                treinoIntimidacao.value = intimidacao.treino
+                outrosIntimidacao.value = intimidacao.outros
 
             const investigacao = getPericia(dados, "investigacao")
-            bonusInvestigacao.value = investigacao.bonus
-            treinoInvestigacao.value = investigacao.treino
-            outrosInvestigacao.value = investigacao.outros
+                bonusInvestigacao.value = investigacao.bonus
+                treinoInvestigacao.value = investigacao.treino
+                outrosInvestigacao.value = investigacao.outros
 
             const luta = getPericia(dados, "luta")
-            bonusLuta.value = luta.bonus
-            treinoLuta.value = luta.treino
-            outrosLuta.value = luta.outros
+                bonusLuta.value = luta.bonus
+                treinoLuta.value = luta.treino
+                outrosLuta.value = luta.outros
 
             const medicina = getPericia(dados, "medicina")
-            bonusMedicina.value = medicina.bonus
-            treinoMedicina.value = medicina.treino
-            outrosMedicina.value = medicina.outros
+                bonusMedicina.value = medicina.bonus
+                treinoMedicina.value = medicina.treino
+                outrosMedicina.value = medicina.outros
 
             const percepcao = getPericia(dados, "percepcao")
-            bonusPercepcao.value = percepcao.bonus
-            treinoPercepcao.value = percepcao.treino
-            outrosPercepcao.value = percepcao.outros
+                bonusPercepcao.value = percepcao.bonus
+                treinoPercepcao.value = percepcao.treino
+                outrosPercepcao.value = percepcao.outros
 
             const pilotagem = getPericia(dados, "pilotagem")
-            bonusPilotagem.value = pilotagem.bonus
-            treinoPilotagem.value = pilotagem.treino
-            outrosPilotagem.value = pilotagem.outros
+                bonusPilotagem.value = pilotagem.bonus
+                treinoPilotagem.value = pilotagem.treino
+                outrosPilotagem.value = pilotagem.outros
 
             const pontaria = getPericia(dados, "pontaria")
-            bonusPontaria.value = pontaria.bonus
-            treinoPontaria.value = pontaria.treino
-            outrosPontaria.value = pontaria.outros
+                bonusPontaria.value = pontaria.bonus
+                treinoPontaria.value = pontaria.treino
+                outrosPontaria.value = pontaria.outros
 
             const profissao = getPericia(dados, "profissao")
-            bonusProfissao.value = profissao.bonus
-            treinoProfissao.value = profissao.treino
-            outrosProfissao.value = profissao.outros
+                bonusProfissao.value = profissao.bonus
+                treinoProfissao.value = profissao.treino
+                outrosProfissao.value = profissao.outros
 
             const reflexos = getPericia(dados, "reflexos")
-            bonusReflexos.value = reflexos.bonus
-            treinoReflexos.value = reflexos.treino
-            outrosReflexos.value = reflexos.outros
+                bonusReflexos.value = reflexos.bonus
+                treinoReflexos.value = reflexos.treino
+                outrosReflexos.value = reflexos.outros
 
             const sobrevivencia = getPericia(dados, "sobrevivencia")
-            bonusSobrevivencia.value = sobrevivencia.bonus
-            treinoSobrevivencia.value = sobrevivencia.treino
-            outrosSobrevivencia.value = sobrevivencia.outros
+                bonusSobrevivencia.value = sobrevivencia.bonus
+                treinoSobrevivencia.value = sobrevivencia.treino
+                outrosSobrevivencia.value = sobrevivencia.outros
 
             const espirito = getPericia(dados, "espirito")
-            bonusEspirito.value = espirito.bonus
-            treinoEspirito.value = espirito.treino
-            outrosEspirito.value = espirito.outros
+                bonusEspirito.value = espirito.bonus
+                treinoEspirito.value = espirito.treino
+                outrosEspirito.value = espirito.outros
 
             agil.value = dados.atributos.agilidade
             forc.value = dados.atributos.força
@@ -204,7 +470,7 @@ function pegarFicha() {
             nome: nome.value,
             jogador: jogador.value,
             classe: classe.value,
-            nivel: Number(selectNivel.value)
+            nivel: Number(selectNivel.value),
         },
     
         status: {
@@ -274,6 +540,11 @@ function pegarFicha() {
             bonus: bonusFortitude.value,
             treino: treinoFortitude.value,
             outros: outrosFortitude.value
+            },
+            furtividade: {
+            bonus: bonusFurtividade.value,
+            treino: treinoFurtividade.value,
+            outros: outrosFurtividade.value
             },
             iniciativa: {
             bonus: bonusIniciativa.value,
@@ -357,7 +628,7 @@ function pegarFicha() {
             anotacoes: anotacoes.value,
             aparencia: aparencia.value,
             personalidade: personalidade.value,
-            historia: historia.value,
+            descricao: descricao.value,
             objetivo: objetivo.value
         },
     
@@ -367,11 +638,6 @@ function pegarFicha() {
             inte: inte.value,
             prec: prec.value,
             vigo: vigo.value,
-            tran: tran.value,
-            fort: fort.value,
-            emis: emis.value,
-            conj: conj.value,
-            mani: mani.value
         }
     };
     return ficha 
@@ -437,7 +703,7 @@ function inventario() {
     descricaoTotal.style.display = "none";
 }
 
-function descricao() {
+function descricaoBtn() {
     periciasTotal.style.display = "none";
     habilidadesTotal.style.display = "none";
     inventarioTotal.style.display = "none";

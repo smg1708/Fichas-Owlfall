@@ -6,7 +6,7 @@ function criarFicha(ficha) {
     const { idUsuario, nome, jogador, classe, statusMax, aparencia, personalidade, descricao, objetivo, atributos, reacao } = ficha
 
     const sqlFicha = `
-        INSERT INTO ficha (fkUsuario, nomePersonagem, jogador, classe, aparencia, personalidade, historia, objetivo)
+        INSERT INTO ficha (fkUsuario, nomePersonagem, jogador, classe, aparencia, personalidade, descricao, objetivo)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?);
     `
 
