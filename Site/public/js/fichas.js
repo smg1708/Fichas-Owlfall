@@ -104,6 +104,55 @@ document.querySelectorAll("input, textarea, select").forEach(el => {
     el.addEventListener("input", marcarAlteracao)
 })
 
+function subirVida() {
+    vidaAtual.value = Number(vidaAtual.value) + 1
+}
+
+function subirMaisVida() {
+    vidaAtual.value = Number(vidaAtual.value) + 5
+}
+
+function subirSanidade() {
+    sanidadeAtual.value = Number(sanidadeAtual.value) + 1
+}
+
+function subirMaisSanidade() {
+    sanidadeAtual.value = Number(sanidadeAtual.value) + 5
+}
+
+function subirNen() {
+    nenAtual.value = Number(nenAtual.value) + 1
+}
+
+function subirMaisNen() {
+    nenAtual.value = Number(nenAtual.value) + 5
+}
+
+function abaixarVida() {
+    vidaAtual.value = Number(vidaAtual.value) - 1
+}
+
+function abaixarMaisVida() {
+    vidaAtual.value = Number(vidaAtual.value) - 5
+}
+
+function abaixarSanidade() {
+    sanidadeAtual.value = Number(sanidadeAtual.value) - 1
+}
+
+function abaixarMaisSanidade() {
+    sanidadeAtual.value = Number(sanidadeAtual.value) - 5
+}
+
+function abaixarNen() {
+    nenAtual.value = Number(nenAtual.value) - 1
+}
+
+function abaixarMaisNen() {
+    nenAtual.value = Number(nenAtual.value) - 5
+}
+
+
 function mudarImagemFicha() {
     inpImagemPersonagem.click();
 }
