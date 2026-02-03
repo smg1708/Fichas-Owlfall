@@ -247,4 +247,4 @@ CREATE VIEW vw_geral AS
 
 select * from vw_geral;
 
-SELECT * FROM fichaAtributo WHERE fkFicha = 1;
+SELECT * FROM fichaAtributo WHERE fkFicha = 2;
