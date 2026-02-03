@@ -3,14 +3,14 @@ var database = require("../database/config")
 function criarFicha(ficha) {
     console.log("ACESSEI O MODEL DE CRIAÇÃO DE FICHA")
 
-    const { idUsuario, nome, jogador, classe, statusMax, aparencia, personalidade, descricao, objetivo, atributos, reacao } = ficha
+    const { idUsuario, nome, jogador, classe, statusMax, anotacoes, aparencia, personalidade, descricao, objetivo, atributos, reacao } = ficha
 
     const sqlFicha = `
-        INSERT INTO ficha (fkUsuario, nomePersonagem, jogador, classe, aparencia, personalidade, descricao, objetivo)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+        INSERT INTO ficha (fkUsuario, nomePersonagem, jogador, classe, anotacoes, aparencia, personalidade, descricao, objetivo)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
     `
 
-    return database.executar(sqlFicha, [idUsuario, nome, jogador, classe, aparencia, personalidade, descricao, objetivo])
+    return database.executar(sqlFicha, [idUsuario, nome, jogador, classe, anotacoes, aparencia, personalidade, descricao, objetivo])
         .then(resultadoFicha => {
             const idFicha = resultadoFicha.insertId
 

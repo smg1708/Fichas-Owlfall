@@ -157,6 +157,8 @@
                 <input type="text" id="inp_nome" placeholder="Nome do personagem">
                 <input type="text" id="inp_jogador" placeholder="Nome do jogador"> <br> <br>
 
+                <input type="hidden" id="inp_anotacoes"></input> <br> <br>
+
                 <span>Aparência</span> <br>
                 <textarea type="text" id="inp_aparencia" placeholder="Nome, gênero, idade, descrição fisica..."></textarea> <br> <br>
 
@@ -170,13 +172,15 @@
                 <textarea type="text" id="inp_objetivo" placeholder="Qual o objetivo do seu personagem"></textarea> 
             </div>
 
-            <input type="hidden" id="defesa" value="0">
-            <input type="hidden" id="equip" value="0">
-            <input type="hidden" id="outrosDef" value="0">
-            <input type="hidden" id="bloqueioDef" value="0">
-            <input type="hidden" id="esquivaDef" value="0">
-            <input type="hidden" id="protecao" value="0">
-            <input type="hidden" id="resistencia" value="0">
+            <div id="completarEscondido">
+                <input type="hidden" id="defesa" value="0">
+                <input type="hidden" id="equip" value="0">
+                <input type="hidden" id="outrosDef" value="0">
+                <input type="hidden" id="bloqueioDef" value="0">
+                <input type="hidden" id="esquivaDef" value="0">
+                <input type="hidden" id="protecao" value="0">
+                <input type="hidden" id="resistencia" value="0">
+            </div>
 
         </div>    
     </div>

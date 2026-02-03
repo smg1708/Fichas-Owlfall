@@ -36,6 +36,14 @@ function fortificador() {
     classesId.style.display = "none"
     caracteristicasId.style.display = "flex"
 
+    completarEscondido.innerHTML = `
+        <input type="hidden" id="fort" value="1">
+        <input type="hidden" id="tran" value="0">
+        <input type="hidden" id="emis" value="0">
+        <input type="hidden" id="conj" value="-1">
+        <input type="hidden" id="mani" value="-1">
+    `
+
 }
 
 function transmutador() {
@@ -50,6 +58,14 @@ function transmutador() {
     atributosId.style.display = "none"
     classesId.style.display = "none"
     caracteristicasId.style.display = "flex"
+
+    completarEscondido.innerHTML = `
+        <input type="hidden" id="tran" value="1">
+        <input type="hidden" id="fort" value="0">
+        <input type="hidden" id="conj" value="0">
+        <input type="hidden" id="emis" value="-1">
+        <input type="hidden" id="mani" value="-2">
+    `
 
 }
 
@@ -66,6 +82,14 @@ function emissor() {
     classesId.style.display = "none"
     caracteristicasId.style.display = "flex"
 
+    completarEscondido.innerHTML = `
+        <input type="hidden" id="emis" value="1">
+        <input type="hidden" id="fort" value="0">
+        <input type="hidden" id="mani" value="0">
+        <input type="hidden" id="tran" value="-1">
+        <input type="hidden" id="conj" value="-2">
+    `
+
 }
 
 function manipulador() {
@@ -80,6 +104,14 @@ function manipulador() {
     atributosId.style.display = "none"
     classesId.style.display = "none"
     caracteristicasId.style.display = "flex"
+
+    completarEscondido.innerHTML = `
+        <input type="hidden" id="mani" value="1">
+        <input type="hidden" id="emis" value="0">
+        <input type="hidden" id="fort" value="-1">
+        <input type="hidden" id="conj" value="-1">
+        <input type="hidden" id="tran" value="-2">
+    `
 
 }
 
@@ -96,6 +128,14 @@ function conjurador() {
     classesId.style.display = "none"
     caracteristicasId.style.display = "flex"
 
+    completarEscondido.innerHTML = `
+        <input type="hidden" id="conj" value="1">
+        <input type="hidden" id="tran" value="0">
+        <input type="hidden" id="fort" value="-1">
+        <input type="hidden" id="mani" value="-1">
+        <input type="hidden" id="emis" value="-2">
+    `
+
 }
 
 function especialista() {
@@ -111,6 +151,15 @@ function especialista() {
     classesId.style.display = "none"
     caracteristicasId.style.display = "flex"
 
+    completarEscondido.innerHTML = `
+        <input type="hidden" id="espe" value="1">
+        <input type="hidden" id="mani" value="0">
+        <input type="hidden" id="conj" value="0">
+        <input type="hidden" id="tran" value="-1">
+        <input type="hidden" id="emis" value="-1">
+        <input type="hidden" id="fort" value="-2">
+    `
+
 }
 
 function criacao() {
@@ -123,6 +172,7 @@ function criacao() {
         jogador: inp_jogador.value,
         classe: classes,
         statusMax: statusMax,
+        anotacoes: document.getElementById("inp_anotacoes").value,
         aparencia: document.getElementById("inp_aparencia").value,
         personalidade: document.getElementById("inp_personalidade").value,
         descricao: document.getElementById("inp_descricao").value,
@@ -132,7 +182,12 @@ function criacao() {
             forca: Number(forca.value),
             intelecto: Number(intelecto.value),
             presenca: Number(presenca.value),
-            vigor: Number(vigor.value)
+            vigor: Number(vigor.value),
+            transmutador: Number(tran.value),
+            fortificador: Number(fort.value),
+            emissor: Number(emis.value),
+            conjurador: Number(conj.value),
+            manipulador: Number(mani.value)
         },
         reacao: {
             defesa: 10 + Number(agilidade.value),

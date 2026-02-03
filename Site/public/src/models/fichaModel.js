@@ -11,6 +11,7 @@ function atualizarFicha(idFicha, ficha) {
             jogador = ?,
             classe = ?,
             nivel = ?,
+            anotacoes = ?,
             aparencia = ?,
             personalidade = ?,
             descricao = ?,
@@ -29,6 +30,7 @@ function atualizarFicha(idFicha, ficha) {
             ficha.base.jogador,
             ficha.base.classe,
             ficha.base.nivel,
+            ficha.historia.anotacoes,
             ficha.historia.aparencia,
             ficha.historia.personalidade,
             ficha.historia.descricao,
@@ -88,16 +90,16 @@ function atualizarFicha(idFicha, ficha) {
     )
 
     const Atributos = {
-        agil: "Agilidade",
-        forc: "Força",
-        inte: "Intelecto",
-        prec: "Presença",
-        vigo: "Vigor",
-        tran: "Transmutação",
-        fort: "Fortalecimento",
-        emis: "Emissão",
-        conj: "Conjuração",
-        mani: "Manipulação"
+        agil: "agilidade",
+        forc: "força",
+        inte: "intelecto",
+        prec: "presença",
+        vigo: "vigor",
+        tran: "transmutador",
+        fort: "fortificador",
+        emis: "emissor",
+        conj: "conjurador",
+        mani: "manipulador"
     }
 
     const sqlAtributo = `
