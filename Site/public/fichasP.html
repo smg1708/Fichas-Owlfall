@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-br" id="html">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> Ficha | Owlfall </title>
+
+    <link rel="stylesheet" type="text/css" href="style/fichasP.css">
+    <link rel="icon" href="./assets/icon/coruja.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kavoon&display=swap" rel="stylesheet"/>
+
+</head>
+<body id="body">
+    
+    <div class="header">
+        <div class="container-navbar">
+            <a href="index.html" id="nomeMaior">Owlfall</a>
+            <div class="navbar">
+                <a href="index.html">Home</a>
+                <a href="personagens.html">Personagens</a>
+                <a href="campanhas.html">Campanhas</a>
+                <a href="login.html">Login</a>
+            </div>
+            <button onclick="usuario()"><img src="assets/imgs/todos/usuario.png" alt="" id="imgPerfilNav"></button>
+        </div>
+    </div>
+    <div class="traco"></div>
+    <div class="container">
+        <div class="parte1">
+            <div class="inicio">
+                <div class="caracBase"> 
+                    <div class="imagemPersonagem">
+                        <img  src="assets/imgs/todos/usuario.png" id="imgPersonagem" onclick="mudarImagemFicha()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                        <input type="file" id="inpImagemPersonagem" onchange="salvarImagemFicha()" hidden>
+                    </div>
+                    <div class="personagemBase">
+                        <p>Nome</p> 
+                        <input id="nome">
+                        <p>Jogador</p>
+                        <input type="text" id="jogador">
+                        <p>Classe</p>
+                        <input type="text" id="classe">
+                    </div>
+                </div>
+                <div class="nivel">
+                    <h3>Nivel</h3>
+                    <select id="selectNivel">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                    </select>
+                </div>
+                <div class="infoBarras">
+                    <span class="vdTexto">Vida</span>
+                    <div class="infoBarrasCompletarVd">
+                        <div class="barrasComponentes">
+                            <div class="vida">
+                                <div class="botaoInicialVd">
+                                    <button onclick="abaixarMaisVida()"><img src="assets/imgs/fichas/flechaEsquerdaMais.png" alt=""></button>
+                                    <button onclick="abaixarVida()"><img src="assets/imgs/fichas/flechaEsquerda.png" alt=""></button>
+                                </div>
+                                <div class="inputVd">
+                                    <input type="text" id="vidaAtual">
+                                    <span>/</span>
+                                    <input type="text" id="vidaMax">
+                                </div>
+                                <div class="botaoFinalVd">
+                                    <button onclick="subirVida()"><img src="assets/imgs/fichas/flechaDireita.png" alt=""></button>
+                                    <button onclick="subirMaisVida()"><img src="assets/imgs/fichas/flechaDireitaMais.png" alt=""></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="sanTexto">Sanidade</span>
+                    <div class="infoBarrasCompletarSan">
+                        <div class="barrasComponentes">
+                            <div class="sanidade">
+                                <div class="botaoInicialSan">
+                                    <button onclick="abaixarMaisSanidade()"><img src="assets/imgs/fichas/flechaEsquerdaMais.png" alt=""></button>
+                                    <button onclick="abaixarSanidade()"><img src="assets/imgs/fichas/flechaEsquerda.png" alt=""></button>
+                                </div>
+                                <div class="inputSan">
+                                    <input type="text" id="sanidadeAtual">
+                                    <span>/</span>
+                                    <input type="text" id="sanidadeMax">
+                                </div>
+                                <div class="botaoFinalSan">
+                                    <button onclick="subirSanidade()"><img src="assets/imgs/fichas/flechaDireita.png" alt=""></button>
+                                    <button onclick="subirMaisSanidade()"><img src="assets/imgs/fichas/flechaDireitaMais.png" alt=""></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="nenTexto">Nen</span>
+                    <div class="infoBarrasCompletarNen">
+                        <div class="barrasComponentes">
+                            <div class="nen">
+                                <div class="botaoInicialNen">
+                                    <button onclick="abaixarMaisNen()"><img src="assets/imgs/fichas/flechaEsquerdaMais.png" alt=""></button>
+                                    <button onclick="abaixarNen()"><img src="assets/imgs/fichas/flechaEsquerda.png" alt=""></button>
+                                </div>
+                                <div class="inputNen">
+                                    <input type="text" id="nenAtual">
+                                    <span>/</span>
+                                    <input type="text" id="nenMax">
+                                </div>
+                                <div class="botaoFinalNen">
+                                    <button onclick="subirNen()"><img src="assets/imgs/fichas/flechaDireita.png" alt=""></button>
+                                    <button onclick="subirMaisNen()"><img src="assets/imgs/fichas/flechaDireitaMais.png" alt=""></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boxDefesa">
+                        <div class="defesaImagem">
+                            <img src="assets/imgs/fichas/escudo.png" alt="">
+                            <input type="text" id="defesa">
+                        </div>
+                        <div class="reacao">
+                            <div class="containerDefesa">
+                                <h3>DEFESA</h3>
+                                <span>= 10 + AGI +</span>
+                                <input type="text" id="equip" value="0">
+                                <span>+</span>
+                                <input type="text" id="outrosDef" class="inpOutros" value="0"> <br>
+                                <p>equip.&nbsp;&nbsp;&nbsp;&nbsp;outr.</p>
+                            </div>
+                            <div class="bloqueio">
+                                <h3>BLOQUEIO</h3>
+                                <input type="text" id="bloqueioDef">
+                            </div>
+                            <div class="esquiva">
+                                <h3>ESQUIVA</h3>
+                                <input type="text" id="esquivaDef">
+                            </div>
+                        </div>
+                        <div class="boxProte">
+                            <span>Proteção</span> <input type="text" id="protecao"> <br> <br>
+                            <span>Resistencia</span> <input type="text" id="resistencia">
+                        </div>
+                        <div class="valorSentimental">
+                            <h3>Valor Sentimental</h3>
+                            <div class="imagensSentimental">
+                                <img  src="assets/imgs/todos/usuario.png" id="sentimental1" onclick="mudarImagemSentimental1()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                                <input type="file" id="inpImagemSentimental1" onchange="salvarImagemSentimental1()" hidden>
+                                <img  src="assets/imgs/todos/usuario.png" id="sentimental2" onclick="mudarImagemSentimental2()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                                <input type="file" id="inpImagemSentimental2" onchange="salvarImagemSentimental2()" hidden>
+                                <img  src="assets/imgs/todos/usuario.png" id="sentimental3" onclick="mudarImagemSentimental3()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                                <input type="file" id="inpImagemSentimental3" onchange="salvarImagemSentimental3()" hidden>
+                                <img  src="assets/imgs/todos/usuario.png" id="sentimental4" onclick="mudarImagemSentimental4()" onerror="this.src='assets/imgs/todos/usuario.png'">
+                                <input type="file" id="inpImagemSentimental4" onchange="salvarImagemSentimental4()" hidden>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="parte2">
+            <div class="boxCarac">
+                <div class="periciasFull" id="periciasTotal">
+                    <h3 class="campanhaP" id="campanha">Campanha:&nbsp;</h3>
+                    <div class="botoesCaracP">
+                        <button onclick="pericias()">PERÍCIAS</button>
+                        <button onclick="habilidades()">HABILIDADES</button>
+                        <button onclick="inventario()">INVENTÁRIO</button>
+                        <button onclick="descricaoBtn()">DESCRIÇÃO</button>
+                    </div>
+                    <div class="tracoCaracP"></div   >
+                    <div class="lista">
+                        <h6>Péricias</h6>
+                        <p>Bônus</p>
+                        <p>Treino</p>
+                        <p>Outros</p>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Adestramento</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusAdestramento">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoAdestramento">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosAdestramento">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Artes</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusArtes">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoArtes">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosArtes">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Atlete/acroba</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusAtleteAcrob">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoAtleteAcrob">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosAtleteAcrob">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Ciências</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusCiencias">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoCiencias">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosCiencias">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Diplomacia</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusDiplomacia">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoDiplomacia">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosDiplomacia">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Enganação</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusEnganacao">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoEnganacao">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosEnganacao">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Fortitude</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusFortitude">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoFortitude">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosFortitude">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Furtividade</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusFurtividade">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoFurtividade">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosFurtividade">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Iniciativa</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusIniciativa">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoIniciativa">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosIniciativa">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Intimidação</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusIntimidacao">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoIntimidacao">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosIntimidacao">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Investigação</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusInvestigacao">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoInvestigacao">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosInvestigacao">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Luta</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusLuta">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoLuta">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosLuta">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Medicina</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusMedicina">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoMedicina">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosMedicina">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Percepção</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusPercepcao">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoPercepcao">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosPercepcao">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Pilotagem</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusPilotagem">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoPilotagem">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosPilotagem">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Pontaria</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusPontaria">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoPontaria">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosPontaria">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Profissão</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusProfissao">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoProfissao">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosProfissao">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Reflexos</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusReflexos">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoReflexos">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosReflexos">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Sobrevivência</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusSobrevivencia">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoSobrevivencia">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosSobrevivencia">)</span>
+                        </div>
+                    </div>
+                    <div class="boxPericias">
+                        <div class="pericias">
+                            <span id="pericia">Espirito</span>
+                            <span id="bonus">(<input type="text" value="0" id="bonusEspirito">)</span>
+                            <span id="treino">(<input type="text" value="0" id="treinoEspirito">)</span>
+                            <span id="outros">(<input type="text" value="0" id="outrosEspirito">)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="boxHabilidades" style="display: none;" id="habilidadesTotal">
+                    <h3 class="campanha" id="campanha">Campanha:&nbsp;</h3>
+                    <div class="botoesCarac">
+                        <button onclick="pericias()">PERÍCIAS</button>
+                        <button onclick="habilidades()">HABILIDADES</button>
+                        <button onclick="inventario()">INVENTÁRIO</button>
+                        <button onclick="descricaoBtn()">DESCRIÇÃO</button>
+                    </div>
+                    <div class="tracoCarac"></div>
+                    <button onclick="novaHab()" class="novaHabBotao">Nova Habilidade</button>
+                    <div class="containerHabilidades">
+                    </div>
+                    <div class="criacaoHab" id="criandoHabId" onclick="fecharCriacaoHab()" style="display: none;">
+                        <div class="criandoHab" onclick="event.stopPropagation()">
+                            <h1>Criando Habilidade</h1>
+                            <div class="caracteristicasHab">
+                                <p>Nome</p>
+                                <input type="text" id="nomeHab" value="Nova Habilidade">
+                                <p>Descrição</p>
+                                <textarea id="descricaoHab"></textarea> <br>
+                                <p>Imagem</p>
+                                <button><img src="assets/imgs/fichas/defaultImage.png" alt="" id="imagemHab"></button>
+                                <div class="botoesHab">
+                                    <button onclick="fecharCriacaoHab()">Cancelar</button>
+                                    <button onclick="confirmarHab()" id="confirmarHabId">Confirmar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="boxInventario" style="display: none;" id="inventarioTotal">
+                    <h3 class="campanha" id="campanha">Campanha:&nbsp;</h3>
+                    <div class="botoesCarac">
+                        <button onclick="pericias()">PERÍCIAS</button>
+                        <button onclick="habilidades()">HABILIDADES</button>
+                        <button onclick="inventario()">INVENTÁRIO</button>
+                        <button onclick="descricaoBtn()">DESCRIÇÃO</button>
+                    </div>
+                    <div class="tracoCarac"></div>
+                    <button onclick="novaInv()" class="novaInvBotao">Adicionar</button>
+                    <div class="containerInventario">
+                    </div>
+                    <div class="carga">
+                        <h3>CARGA MAX.</h3>
+                        <input type="text" id="cargaAtual">
+                        <input type="text" id="Max">
+                    </div>
+                    <div class="criacaoInv" id="criandoInvId" onclick="fecharCriacaoInv()" style="display: none;">
+                        <div class="criandoInv" onclick="event.stopPropagation()">
+                            <h1>Criando Inventario</h1>
+                            <div class="caracteristicasInv">
+                                <p>Nome</p>
+                                <input type="text" id="nomeInv" value="Nova Inventario">
+                                <p>Descrição</p>
+                                <textarea id="descricaoInv"></textarea> <br>
+                                <p>Imagem</p>
+                                <button><img src="assets/imgs/fichas/defaultImage.png" alt="" id="imagemInv"></button>
+                                <div class="botoesInv">
+                                    <button onclick="fecharCriacaoInv()">Cancelar</button>
+                                    <button onclick="confirmarInv()" id="confirmarInvId">Confirmar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="boxDescricao" style="display: none;" id="descricaoTotal">
+                    <h3 class="campanha" id="campanha">Campanha:&nbsp;</h3>    
+                    <div class="botoesCarac">
+                        <button onclick="pericias()">PERÍCIAS</button>
+                        <button onclick="habilidades()">HABILIDADES</button>
+                        <button onclick="inventario()">INVENTÁRIO</button>
+                        <button onclick="descricaoBtn()">DESCRIÇÃO</button>
+                    </div>
+                    <div class="tracoCarac"></div>
+                    <p>Anotações</p>
+                    <textarea id="anotacoes" placeholder="Anotações pessoais"></textarea>
+                    <p>Aparência</p>
+                    <textarea id="aparencia" placeholder="Loiro, alto"></textarea>
+                    <p>Personalidade</p>
+                    <textarea id="personalidade" placeholder="Amigavel, curioso"></textarea>
+                    <p>História</p>
+                    <textarea id="descricao" placeholder="Viveu uma vida normal"></textarea>
+                    <p>Objetivo</p>
+                    <textarea id="objetivo" placeholder="Ganhar um trofeu"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="parte3">
+            <div class="atributos">
+                <img src="assets/imgs/fichas/atributos.png" alt="">
+                <img src="assets/imgs/fichas/atributosEspecialista.png" alt="">
+                <div class="inputAtrib">
+                    <input type="text" id="agil">
+                    <input type="text" id="forc">
+                    <input type="text" id="inte">
+                    <input type="text" id="prec">
+                    <input type="text" id="vigo">
+                    <input type="text" id="espe">
+                    <input type="text" id="tran">
+                    <input type="text" id="fort">
+                    <input type="text" id="conj">
+                    <input type="text" id="emis">
+                    <input type="text" id="mani">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script src="js/usuarioPerfil.js"></script>
+<script src="js/fichasP.js"></script>
+
+</html>
+
+
+
+
+<!-- <div class="boxHabilidadesFicha">
+    <button class="imgFicha"><img src="assets/imgs/fichas/defaultImage.png" alt=""></button>
+    <div class="infoPersonagem">
+        <span><b>${fichas[i].nome}</b></span> <br>
+
+        <button onclick="abrirBotaoHab(${fichas[i].idFicha})">
+            Acessar Habilidade
+        </button>
+    </div>
+</div> -->
+
+
+
+<!-- <div class="boxInventarioFicha">
+    <button class="imgFicha"><img src="assets/imgs/fichas/defaultImage.png" alt=""></button>
+    <div class="infoPersonagem">
+        <span><b>${fichas[i].nome}</b></span> <br>
+
+        <button onclick="abrirBotaoInv(${fichas[i].idFicha})">
+            Acessar Item
+        </button>
+    </div>
+</div> -->

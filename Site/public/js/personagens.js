@@ -1,7 +1,7 @@
-if (!sessionStorage.ID_USUARIO) {
-  alert("Você precisa estar logado!");
-  window.location = "login.html";
-}
+// if (!sessionStorage.ID_USUARIO) {
+//   alert("Você precisa estar logado!");
+//   window.location = "login.html";
+// }
 
 const idUsuario = sessionStorage.ID_USUARIO;
 

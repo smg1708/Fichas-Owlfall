@@ -99,7 +99,8 @@ function atualizarFicha(idFicha, ficha) {
         fort: "fortificador",
         emis: "emissor",
         conj: "conjurador",
-        mani: "manipulador"
+        mani: "manipulador",
+        espe: "especialista"
     }
 
     const sqlAtributo = `

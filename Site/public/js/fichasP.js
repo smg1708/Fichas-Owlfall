@@ -104,31 +104,6 @@ document.querySelectorAll("input, textarea, select").forEach(el => {
     el.addEventListener("input", marcarAlteracao)
 })
 
-function nivel() {
-    nivel = {
-        1:  (100, 3, 128),
-        2:  (30, 1, 128),
-        3:  (30, 1, 128),
-        4:  (30, 1, 128),
-        5:  (100, 3, 128),
-        6:  (30, 1, 128),
-        7:  (30, 1, 128),
-        8:  (30, 1, 128),
-        9:  (30, 1, 128),
-        10: (100, 3, 128),
-        11: (30, 1, 128),
-        12: (30, 1, 128),
-        13: (30, 1, 128),
-        14: (30, 1, 128),
-        15: (200, 6, 128),
-        16: (30, 1, 128),
-        17: (30, 1, 128),
-        18: (30, 1, 128),
-        19: (30, 1, 128),
-        20: (200, 6, 128)
-    }
-}
-
 function subirVida() {
     vidaAtual.value = Number(vidaAtual.value) + 1
 }
@@ -176,6 +151,7 @@ function abaixarNen() {
 function abaixarMaisNen() {
     nenAtual.value = Number(nenAtual.value) - 5
 }
+
 
 function mudarImagemFicha() {
     inpImagemPersonagem.click();
@@ -518,6 +494,7 @@ function carregarFicha() {
             inte.value = dados.atributos.intelecto
             prec.value = dados.atributos.presença
             vigo.value = dados.atributos.vigor
+            espe.value = dados.atributos.especialista
             tran.value = dados.atributos.transmutador
             fort.value = dados.atributos.fortificador
             emis.value = dados.atributos.emissor
@@ -721,6 +698,7 @@ function pegarFicha() {
             inte: inte.value,
             prec: prec.value,
             vigo: vigo.value,
+            espe: espe.value,
             tran: tran.value,
             fort: fort.value,
             emis: emis.value,

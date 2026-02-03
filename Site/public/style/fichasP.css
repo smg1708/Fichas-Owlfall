@@ -358,11 +358,11 @@ input:focus {
 }
 
 .bloqueio {
-    margin-left: -52%;
+    margin-left: -35%;
 }
 
 .esquiva {
-    margin-left: -22%;
+    margin-left: -16%;
 }
 
 .containerDefesa h3,
@@ -915,7 +915,8 @@ input[type=number]::-webkit-inner-spin-button {
 #tran,
 #emis,
 #conj,
-#mani {
+#mani,
+#espe {
     color: black;
     position: absolute;
     font-size: 20px;
@@ -943,6 +944,11 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 #mani {
+    top: 77.2%;
+    right: 42.5%;
+}
+
+#espe {
     top: 77.2%;
     right: 42.5%;
 }
@@ -1032,16 +1038,8 @@ input[type=number]::-webkit-inner-spin-button {
         display: flex;
         flex-direction: row;
         position: absolute;
-        top: 109%;
+        top: 105%;
         left: 15%;
-    }
-
-    .bloqueio {
-        margin-left: -52%;
-    }
-
-    .esquiva {
-        margin-left: -22%;
     }
     
     .imagensSentimental {
@@ -1172,12 +1170,14 @@ input[type=number]::-webkit-inner-spin-button {
     #inte { right: 29.2%; top: 15.5%; }
     #prec { right: 58.7%; top: 31%; }
     #vigo { right: 34.2%; top: 31%; }
+    #espe { right: 34.2%; top: 31%; }
 
     #fort,
     #tran,
     #emis,
     #conj,
-    #mani {
+    #mani,
+    #espe {
         color: black;
         position: absolute;
         font-size: 14px;
@@ -1205,6 +1205,11 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     #mani {
+        top: 77.7%;
+        right: 36%;
+    }
+
+    #espe {
         top: 77.7%;
         right: 36%;
     }
@@ -1314,7 +1319,8 @@ input[type=number]::-webkit-inner-spin-button {
     #transmutador,
     #emissor,
     #conjurador,
-    #manipulador {
+    #manipulador,
+    #especialista {
         position: static;
         color: white;
     }
