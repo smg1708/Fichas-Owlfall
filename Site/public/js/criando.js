@@ -10,13 +10,14 @@ if (!sessionStorage.ID_USUARIO) {
 
 function mundano() {
 
+    const vigorValor = Number(vigor.value)
     classes = "mundano"
     statusMax =  {
-        'vida': 150,
+        'vida': 150 + vigorValor,
         'sanidade': 8,
         'nen': 0
     }
-
+    
     atributosId.style.display = "none"
     classesId.style.display = "none"
     caracteristicasId.style.display = "flex"
@@ -25,9 +26,10 @@ function mundano() {
 
 function fortificador() {
 
+    const vigorValor = Number(vigor.value)
     classes = "fortificador"
     statusMax =  {
-        'vida': 500,
+        'vida': 500 + vigorValor,
         'sanidade': 15,
         'nen': 156
     }
@@ -48,9 +50,10 @@ function fortificador() {
 
 function transmutador() {
 
+    const vigorValor = Number(vigor.value)
     classes = "transmutador"
     statusMax =  {
-        'vida': 470,
+        'vida': 470 + vigorValor,
         'sanidade': 15,
         'nen': 156
     }
@@ -71,9 +74,10 @@ function transmutador() {
 
 function emissor() {
 
+    const vigorValor = Number(vigor.value)
     classes = "emissor"
     statusMax =  {
-        'vida': 460,
+        'vida': 460 + vigorValor,
         'sanidade': 16,
         'nen': 156
     }
@@ -94,9 +98,10 @@ function emissor() {
 
 function manipulador() {
 
+    const vigorValor = Number(vigor.value)
     classes = "manipulador"
     statusMax =  {
-        'vida': 450,
+        'vida': 450 + vigorValor,
         'sanidade': 17,
         'nen': 156
     }
@@ -117,9 +122,10 @@ function manipulador() {
 
 function conjurador() {
 
+    const vigorValor = Number(vigor.value)
     classes = "conjurador"
     statusMax =  {
-        'vida': 450,
+        'vida': 450 + vigorValor,
         'sanidade': 16,
         'nen': 166
     }
@@ -140,9 +146,10 @@ function conjurador() {
 
 function especialista() {
 
+    const vigorValor = Number(vigor.value)
     classes = "especialista"
     statusMax =  {
-        'vida': 420,
+        'vida': 420 + vigorValor,
         'sanidade': 16,
         'nen': 186
     }

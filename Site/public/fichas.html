@@ -380,7 +380,8 @@
                                 <p>Descrição</p>
                                 <textarea id="descricaoHab"></textarea> <br>
                                 <p>Imagem</p>
-                                <button><img src="assets/imgs/fichas/defaultImage.png" alt="" id="imagemHab"></button>
+                                <img  src="assets/imgs/fichas/defaultImage.png" id="imagemHab" onclick="mudarImagemHabilidade()" onerror="this.src='assets/imgs/fichas/defaultImage.png'">
+                                <input type="file" id="inpImagemHab" onchange="salvarImagemHabilidade()">
                                 <div class="botoesHab">
                                     <button onclick="fecharCriacaoHab()">Cancelar</button>
                                     <button onclick="confirmarHab()" id="confirmarHabId">Confirmar</button>
@@ -415,7 +416,8 @@
                                 <p>Descrição</p>
                                 <textarea id="descricaoInv"></textarea> <br>
                                 <p>Imagem</p>
-                                <button><img src="assets/imgs/fichas/defaultImage.png" alt="" id="imagemInv"></button>
+                                <img  src="assets/imgs/fichas/defaultImage.png" id="imagemInv" onclick="mudarImagemInv()" onerror="this.src='assets/imgs/fichas/defaultImage.png'">
+                                <input type="file" id="inpImagemInv" onchange="salvarImagemInv()">
                                 <div class="botoesInv">
                                     <button onclick="fecharCriacaoInv()">Cancelar</button>
                                     <button onclick="confirmarInv()" id="confirmarInvId">Confirmar</button>

@@ -3,6 +3,13 @@ if (!sessionStorage.ID_USUARIO) {
   window.location = "login.html";
 }
 
+var ultimaFicha = null
+var timeoutSave = null
+let vidaBase = 0;
+let sanidadeBase = 0;
+let nenBase = 0;
+const idFicha = sessionStorage.ID_FICHA;
+
 window.onload = () => {
   carregarFicha()
 
@@ -94,64 +101,171 @@ window.onload = () => {
     });
 };
 
-var ultimaFicha = null
-var timeoutSave = null
-
-const idFicha = sessionStorage.ID_FICHA;
-
 document.querySelectorAll("input, textarea, select").forEach(el => {
     el.addEventListener("change", marcarAlteracao)
     el.addEventListener("input", marcarAlteracao)
 })
 
+selectNivel.addEventListener("change", nivel);
+vidaAtual.addEventListener("input", atualizarVidaVisual)
+sanidadeAtual.addEventListener("input", atualizarSanidadeVisual)
+nenAtual.addEventListener("input", atualizarNenVisual)
+
+
+function nivel() {
+    const vigor = Number(vigo.value)
+
+    const bonusNivel = {
+        1:  [0, 0, 0],
+        2:  [20 + vigor, 2, 128],
+        3:  [20 + vigor, 2, 128],
+        4:  [20 + vigor, 2, 128],
+        5:  [70 + vigor, 3, 128],
+        6:  [20 + vigor, 2, 128],
+        7:  [20 + vigor, 2, 128],
+        8:  [20 + vigor, 2, 128],
+        9:  [20 + vigor, 2, 128],
+        10: [70 + vigor, 3, 128],
+        11: [20 + vigor, 2, 128],
+        12: [20 + vigor, 2, 128],
+        13: [20 + vigor, 2, 128],
+        14: [20 + vigor, 2, 128],
+        15: [140 + vigor, 6, 128],
+        16: [20 + vigor, 2, 128],
+        17: [20 + vigor, 2, 128],
+        18: [20 + vigor, 2, 128],
+        19: [20 + vigor, 2, 128],
+        20: [140 + vigor, 6, 128]
+    }
+
+    var vidaGanha = 0;
+    var sanGanha = 0;
+    var nenGanho = 0;
+
+    const nivelAtual = Number(selectNivel.value);
+
+    for (let lvl = 1; lvl <= nivelAtual; lvl++) {
+        const [vd, san, nen] = bonusNivel[lvl];
+        vidaGanha += vd;
+        sanGanha += san;
+        nenGanho += nen;
+    }
+
+    vidaMax.value = Number(vidaBase) + vidaGanha;
+    sanidadeMax.value = Number(sanidadeBase) + sanGanha;
+    nenMax.value = Number(nenBase) + nenGanho;
+
+}
+
+function atualizarVidaVisual() {
+    const infoBarrasCompletarVd = document.querySelector(".infoBarrasCompletarVd")
+    const atual = Number(vidaAtual.value)
+    const max = Number(vidaMax.value)
+    if (max <= 0) return
+    const vermelho = Math.floor((atual / max) * 139)
+    if (vermelho < 0) {
+        vermelho = 0
+    } if (vermelho > 139) {
+        vermelho = 139
+    }
+
+    infoBarrasCompletarVd.style.background = `rgb(${vermelho}, 0, 0)`
+}
+
+function atualizarSanidadeVisual() {
+    const infoBarrasCompletarSan = document.querySelector(".infoBarrasCompletarSan")
+    const atual = Number(sanidadeAtual.value)
+    const max = Number(sanidadeMax.value)
+    if (max <= 0) return
+    const azul = Math.floor((atual / max) * 139)
+    if (azul < 0) {
+        azul = 0
+    } if (azul > 139) {
+        azul = 139
+    }
+
+    infoBarrasCompletarSan.style.background = `rgb(0, 0, ${azul})`
+}
+
+function atualizarNenVisual() {
+    const infoBarrasCompletarNen = document.querySelector(".infoBarrasCompletarNen")
+    const atual = Number(nenAtual.value)
+    const max = Number(nenMax.value)
+    if (max <= 0) return
+    const azul = Math.floor((atual / max) * 120)
+    const verde = Math.floor((atual / max) * 120)
+    if (azul < 0) {
+        azul = 0
+    } if (azul > 120) {
+        azul = 120
+    } if (verde < 0) {
+        verde = 0
+    } if (verde > 120) {
+        verde = 120
+    }
+
+    infoBarrasCompletarNen.style.background = `rgb(0, ${verde}, ${azul})`
+}
+
 function subirVida() {
     vidaAtual.value = Number(vidaAtual.value) + 1
+    atualizarVidaVisual()
 }
 
 function subirMaisVida() {
     vidaAtual.value = Number(vidaAtual.value) + 5
+    atualizarVidaVisual()
 }
 
 function subirSanidade() {
     sanidadeAtual.value = Number(sanidadeAtual.value) + 1
+    atualizarSanidadeVisual()
 }
 
 function subirMaisSanidade() {
     sanidadeAtual.value = Number(sanidadeAtual.value) + 5
+    atualizarSanidadeVisual()
 }
 
 function subirNen() {
     nenAtual.value = Number(nenAtual.value) + 1
+    atualizarNenVisual()
 }
 
 function subirMaisNen() {
     nenAtual.value = Number(nenAtual.value) + 5
+    atualizarNenVisual()
 }
 
 function abaixarVida() {
     vidaAtual.value = Number(vidaAtual.value) - 1
+    atualizarVidaVisual()
 }
 
 function abaixarMaisVida() {
     vidaAtual.value = Number(vidaAtual.value) - 5
+    atualizarVidaVisual()
 }
 
 function abaixarSanidade() {
     sanidadeAtual.value = Number(sanidadeAtual.value) - 1
+    atualizarSanidadeVisual()
 }
 
 function abaixarMaisSanidade() {
     sanidadeAtual.value = Number(sanidadeAtual.value) - 5
+    atualizarSanidadeVisual()
 }
 
 function abaixarNen() {
     nenAtual.value = Number(nenAtual.value) - 1
+    atualizarNenVisual()
 }
 
 function abaixarMaisNen() {
     nenAtual.value = Number(nenAtual.value) - 5
+    atualizarNenVisual()
 }
-
 
 function mudarImagemFicha() {
     inpImagemPersonagem.click();

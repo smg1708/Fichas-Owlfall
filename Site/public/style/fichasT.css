@@ -243,11 +243,17 @@ input:focus {
 }
 
 .infoBarrasCompletarNen {
-    background: #614511;
+    background: rgb(0, 119, 119);
     border: #f0f0f0 0.1px solid;
     height: 18%;
     width: 88%;
     margin-left: 15%
+}
+
+.infoBarrasCompletarVd,
+.infoBarrasCompletarSan,
+.infoBarrasCompletarNen {
+    transition: filter 0.2s linear, width 0.2s linear;
 }
 
 .inputVd,
@@ -256,8 +262,8 @@ input:focus {
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-left: 35%;
-    margin-right: 34%;
+    margin-left: 25%;
+    margin-right: 25%;
     margin-bottom: 1%;
 }
 
@@ -270,7 +276,7 @@ input:focus {
     font-size: 20px;
     text-align: center;
     font-family: 'Atkinson Hyperlegible Mono';
-    width: 40px;
+    width: 60px;
 }
 
 .inputVd span,
@@ -305,7 +311,7 @@ input:focus {
     flex-direction: row;
     width: 50%;
     position: absolute;
-    top: 72%;
+    top: 71%;
     left: 16%;
 }
 
@@ -358,11 +364,11 @@ input:focus {
 }
 
 .bloqueio {
-    margin-left: -52%;
+    margin-left: -37%;
 }
 
 .esquiva {
-    margin-left: -22%;
+    margin-left: -15%;
 }
 
 .containerDefesa h3,
@@ -554,7 +560,7 @@ input:focus {
 #outros {
     position: absolute;
     width: 4.3%;
-    right: 37%;
+    right: 36%;
 }
 
 /* sobe */
@@ -681,10 +687,10 @@ input:focus {
 
 .caracteristicasHab img,
 .caracteristicasInv img {
-    height: 50%;
-    width: 80%;
+    height: auto;
+    width: 20%;
     margin: 2%;
-    margin-left: -16%;
+    margin-left: 2%;
     border-radius: 20px;
 }
 
@@ -693,10 +699,10 @@ input:focus {
     border-radius: 20px;
     transform: scale(1.05);
     transition: 0.2s;
-    height: 50%;
+    height: 20%;
     margin: 2%;
     margin-left: -16%;
-    width: 80%;
+    width: 50%;
 }
 
 .caracteristicasHab input,
@@ -738,9 +744,19 @@ input:focus {
     margin: 1%;
 }
 
+#inpImagemHab,
+#inpImagemInv {
+    opacity: 0.1%;
+    padding-top: 20%;
+    margin-left: -23%;
+    height: 2px;
+}
+
 .botoesHab,
 .botoesInv {
+    margin-top: -2%;
     margin-left: 72%;
+    margin-bottom: 5%;
 }
 
 .novaHabBotao,

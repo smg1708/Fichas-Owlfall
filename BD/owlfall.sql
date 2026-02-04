@@ -41,6 +41,9 @@ CREATE TABLE statusFicha (
     sanidadeMax INT DEFAULT 0,
     nenAtual INT DEFAULT 0,
     nenMax INT DEFAULT 0,
+    vidaBase INT DEFAULT 0,
+    sanidadeBase INT DEFAULT 0,
+    nenBase INT DEFAULT 0,
     FOREIGN KEY (fkFicha) REFERENCES ficha(idFicha)
 );
 
@@ -247,4 +250,4 @@ CREATE VIEW vw_geral AS
 
 select * from vw_geral;
 
-SELECT * FROM fichaAtributo WHERE fkFicha = 2;
+SELECT * FROM statusFicha WHERE fkFicha = 3;

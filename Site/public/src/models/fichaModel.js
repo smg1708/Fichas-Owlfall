@@ -218,7 +218,7 @@ function carregarFicha(idFicha) {
         ficha.base = resultadoFicha[0]
 
         return database.executar(`
-            SELECT vidaAtual, vidaMax, sanidadeAtual, sanidadeMax, nenAtual, nenMax
+            SELECT vidaAtual, vidaMax, sanidadeAtual, sanidadeMax, nenAtual, nenMax, vidaBase, sanidadeBase, nenBase
             FROM statusFicha WHERE fkFicha = ?;
         `, [idFicha])
     })
@@ -302,6 +302,23 @@ function carregarFicha(idFicha) {
 
         return ficha
     })
+}
+
+function confirmarHab(idFicha, nome, descricao, imagem) {
+
+    var instrucaoSql = `
+        insert into habilidade ( fkFicha, nome, descricao, imagem) values (?, ?, ?, ?);
+    `
+    console.log("executando a instrucaoSQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql, [idFicha, nome, descricao, imagem]);
+}
+
+function confirmarInv(idFicha, nome, descricao, imagem) {
+    var instrucaoSql = `
+        insert into item ( fkFicha, nome, descricao, imagem) values (?, ?, ?, ?);
+    `
+    console.log("executando a instrucaoSQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql, [idFicha, nome, descricao, imagem]);
 }
 
 function salvarImagemFicha(idFicha, imagem) {
@@ -417,6 +434,8 @@ function buscarImagemSentimental4(idFicha) {
 module.exports = {
     atualizarFicha,
     carregarFicha,
+    confirmarHab,
+    confirmarInv,
     salvarImagemFicha,
     buscarImagemFicha,
     salvarImagemSentimental1,

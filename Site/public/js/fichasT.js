@@ -3,6 +3,13 @@ if (!sessionStorage.ID_USUARIO) {
   window.location = "login.html";
 }
 
+var ultimaFicha = null
+var timeoutSave = null
+let vidaBase = 0;
+let sanidadeBase = 0;
+let nenBase = 0;
+const idFicha = sessionStorage.ID_FICHA;
+
 window.onload = () => {
   carregarFicha()
 
@@ -94,87 +101,170 @@ window.onload = () => {
     });
 };
 
-var ultimaFicha = null
-var timeoutSave = null
-
-const idFicha = sessionStorage.ID_FICHA;
-
 document.querySelectorAll("input, textarea, select").forEach(el => {
     el.addEventListener("change", marcarAlteracao)
     el.addEventListener("input", marcarAlteracao)
 })
 
+selectNivel.addEventListener("change", nivel);
+vidaAtual.addEventListener("input", atualizarVidaVisual)
+sanidadeAtual.addEventListener("input", atualizarSanidadeVisual)
+nenAtual.addEventListener("input", atualizarNenVisual)
+
+
 function nivel() {
-    nivel = {
-        1:  (100, 3, 128),
-        2:  (30, 1, 128),
-        3:  (30, 1, 128),
-        4:  (30, 1, 128),
-        5:  (100, 3, 128),
-        6:  (30, 1, 128),
-        7:  (30, 1, 128),
-        8:  (30, 1, 128),
-        9:  (30, 1, 128),
-        10: (100, 3, 128),
-        11: (30, 1, 128),
-        12: (30, 1, 128),
-        13: (30, 1, 128),
-        14: (30, 1, 128),
-        15: (200, 6, 128),
-        16: (30, 1, 128),
-        17: (30, 1, 128),
-        18: (30, 1, 128),
-        19: (30, 1, 128),
-        20: (200, 6, 128)
+    const vigor = Number(vigo.value)
+
+    const bonusNivel = {
+        1:  [0, 0, 0],
+        2:  [20 + vigor, 2, 128],
+        3:  [20 + vigor, 2, 128],
+        4:  [20 + vigor, 2, 128],
+        5:  [70 + vigor, 3, 128],
+        6:  [20 + vigor, 2, 128],
+        7:  [20 + vigor, 2, 128],
+        8:  [20 + vigor, 2, 128],
+        9:  [20 + vigor, 2, 128],
+        10: [70 + vigor, 3, 128],
+        11: [20 + vigor, 2, 128],
+        12: [20 + vigor, 2, 128],
+        13: [20 + vigor, 2, 128],
+        14: [20 + vigor, 2, 128],
+        15: [140 + vigor, 6, 128],
+        16: [20 + vigor, 2, 128],
+        17: [20 + vigor, 2, 128],
+        18: [20 + vigor, 2, 128],
+        19: [20 + vigor, 2, 128],
+        20: [140 + vigor, 6, 128]
     }
+
+    var vidaGanha = 0;
+    var sanGanha = 0;
+    var nenGanho = 0;
+
+    const nivelAtual = Number(selectNivel.value);
+
+    for (let lvl = 1; lvl <= nivelAtual; lvl++) {
+        const [vd, san, nen] = bonusNivel[lvl];
+        vidaGanha += vd;
+        sanGanha += san;
+        nenGanho += nen;
+    }
+
+    vidaMax.value = Number(vidaBase) + vidaGanha;
+    sanidadeMax.value = Number(sanidadeBase) + sanGanha;
+    nenMax.value = Number(nenBase) + nenGanho;
+
+}
+
+function atualizarVidaVisual() {
+    const infoBarrasCompletarVd = document.querySelector(".infoBarrasCompletarVd")
+    const atual = Number(vidaAtual.value)
+    const max = Number(vidaMax.value)
+    if (max <= 0) return
+    const vermelho = Math.floor((atual / max) * 139)
+    if (vermelho < 0) {
+        vermelho = 0
+    } if (vermelho > 139) {
+        vermelho = 139
+    }
+
+    infoBarrasCompletarVd.style.background = `rgb(${vermelho}, 0, 0)`
+}
+
+function atualizarSanidadeVisual() {
+    const infoBarrasCompletarSan = document.querySelector(".infoBarrasCompletarSan")
+    const atual = Number(sanidadeAtual.value)
+    const max = Number(sanidadeMax.value)
+    if (max <= 0) return
+    const azul = Math.floor((atual / max) * 139)
+    if (azul < 0) {
+        azul = 0
+    } if (azul > 139) {
+        azul = 139
+    }
+
+    infoBarrasCompletarSan.style.background = `rgb(0, 0, ${azul})`
+}
+
+function atualizarNenVisual() {
+    const infoBarrasCompletarNen = document.querySelector(".infoBarrasCompletarNen")
+    const atual = Number(nenAtual.value)
+    const max = Number(nenMax.value)
+    if (max <= 0) return
+    const azul = Math.floor((atual / max) * 120)
+    const verde = Math.floor((atual / max) * 120)
+    if (azul < 0) {
+        azul = 0
+    } if (azul > 120) {
+        azul = 120
+    } if (verde < 0) {
+        verde = 0
+    } if (verde > 120) {
+        verde = 120
+    }
+
+    infoBarrasCompletarNen.style.background = `rgb(0, ${verde}, ${azul})`
 }
 
 function subirVida() {
     vidaAtual.value = Number(vidaAtual.value) + 1
+    atualizarVidaVisual()
 }
 
 function subirMaisVida() {
     vidaAtual.value = Number(vidaAtual.value) + 5
+    atualizarVidaVisual()
 }
 
 function subirSanidade() {
     sanidadeAtual.value = Number(sanidadeAtual.value) + 1
+    atualizarSanidadeVisual()
 }
 
 function subirMaisSanidade() {
     sanidadeAtual.value = Number(sanidadeAtual.value) + 5
+    atualizarSanidadeVisual()
 }
 
 function subirNen() {
     nenAtual.value = Number(nenAtual.value) + 1
+    atualizarNenVisual()
 }
 
 function subirMaisNen() {
     nenAtual.value = Number(nenAtual.value) + 5
+    atualizarNenVisual()
 }
 
 function abaixarVida() {
     vidaAtual.value = Number(vidaAtual.value) - 1
+    atualizarVidaVisual()
 }
 
 function abaixarMaisVida() {
     vidaAtual.value = Number(vidaAtual.value) - 5
+    atualizarVidaVisual()
 }
 
 function abaixarSanidade() {
     sanidadeAtual.value = Number(sanidadeAtual.value) - 1
+    atualizarSanidadeVisual()
 }
 
 function abaixarMaisSanidade() {
     sanidadeAtual.value = Number(sanidadeAtual.value) - 5
+    atualizarSanidadeVisual()
 }
 
 function abaixarNen() {
     nenAtual.value = Number(nenAtual.value) - 1
+    atualizarNenVisual()
 }
 
 function abaixarMaisNen() {
     nenAtual.value = Number(nenAtual.value) - 5
+    atualizarNenVisual()
 }
 
 function mudarImagemFicha() {
@@ -342,6 +432,7 @@ function getPericia(dados, nome) {
 }
 
 function carregarFicha() {
+
     const inpAnotacoes = document.getElementById("anotacoes")
     const inpAparencia = document.getElementById("aparencia")
     const inpPersonalidade = document.getElementById("personalidade")
@@ -398,6 +489,10 @@ function carregarFicha() {
             sanidadeMax.value = dados.status.sanidadeMax
             nenAtual.value = dados.status.nenAtual
             nenMax.value = dados.status.nenMax
+            
+            vidaBase = dados.status.vidaBase
+            sanidadeBase = dados.status.sanidadeBase
+            nenBase = dados.status.nenBase
             
             defesa.value = dados.reacao.defesa
             equip.value = dados.reacao.equipamento
@@ -524,6 +619,10 @@ function carregarFicha() {
             conj.value = dados.atributos.conjurador
             mani.value = dados.atributos.manipulador
             
+            nivel()
+            atualizarVidaVisual()
+            atualizarSanidadeVisual()
+            atualizarNenVisual()
     })
 }
 
@@ -754,8 +853,71 @@ function usuario() {
     window.location = "usuario.html"
 }
 
+function confirmarHab() {
+    fetch("/habilidade", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idFicha: sessionStorage.ID_FICHA,
+            nome: nomeHab.value,
+            descricao: descricaoHab.value,
+            imagem: imagemHab.value,
+        })
+    })  .then(function (resposta) {
+            console.log("resposta: ", resposta);
+            if (resposta.ok) {
+                alert("Habilidade cadastrado com sucesso")
+                criandoInvId.style.display = "none";
+            } else {
+                throw "Houve um erro ao tentar realizar o cadastrar o habilidade";
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`Erro: ${resposta}`);
+        })
+}
+
+function confirmarInv() {
+    fetch("/inventario", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idFicha: sessionStorage.ID_FICHA,
+            nome: nomeInv.value,
+            descricao: descricaoInv.value,
+            imagem: imagemInv.value,
+        })
+    })  .then(function (resposta) {
+            console.log("resposta: ", resposta);
+            if (resposta.ok) {
+                alert("Item cadastrado com sucesso")
+                criandoInvId.style.display = "none";
+            } else {
+                throw "Houve um erro ao tentar realizar o cadastrar o item";
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`Erro: ${resposta}`);
+        })
+}
+
 function novaHab() {
     criandoHabId.style.display = "flex"
+
+    // <div class="boxHabilidadesFicha">
+    // <button class="imgFicha"><img src="assets/imgs/fichas/defaultImage.png" alt=""></button>
+    // <div class="infoPersonagem">
+    //     <span><b>${fichas[i].nome}</b></span> <br>
+
+    //     <button onclick="abrirBotaoHab(${fichas[i].idFicha})">
+    //         Acessar Habilidade
+    //     </button>
+    // </div>
+    // </div> 
 }
 
 function fecharCriacaoHab() {

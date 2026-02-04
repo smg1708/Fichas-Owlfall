@@ -42,6 +42,62 @@ function carregarFicha(req, res) {
         })
 }
 
+function confirmarHab(req, res) {
+    var idFicha = req.body.idFicha
+    var nome = req.body.nome
+    var descricao = req.body.descricao
+    var imagem = req.body.imagem
+
+    if (nome == undefined || descricao == undefined || idFicha == undefined) {
+        res.status(400).send("Alguma credencial importante não enviada!");
+    } else {
+        fichaModel.confirmarHab(idFicha, nome, descricao, imagem)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ) .catch(
+                function(erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro da Habilidade! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
+function confirmarInv(req, res) {
+    var idFicha = req.body.idFicha
+    var nome = req.body.nome
+    var descricao = req.body.descricao
+    var imagem = req.body.imagem
+
+    if (nome == undefined || descricao == undefined || idFicha == undefined) {
+        res.status(400).send("Alguma credencial importante não enviada!");
+    } else {
+        fichaModel.confirmarInv(idFicha, nome, descricao, imagem)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ) .catch(
+                function(erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro do item! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
 function salvarImagemFicha(req, res) {
   var idFicha = req.body.idFicha;
   const novaImagem = req.file?.filename;
@@ -300,6 +356,8 @@ function buscarImagemSentimental4(req, res) {
 module.exports = {
     atualizarFicha,
     carregarFicha,
+    confirmarHab,
+    confirmarInv,
     salvarImagemFicha,
     buscarImagemFicha,
     salvarImagemSentimental1,

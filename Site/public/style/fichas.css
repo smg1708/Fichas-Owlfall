@@ -681,10 +681,10 @@ input:focus {
 
 .caracteristicasHab img,
 .caracteristicasInv img {
-    height: 50%;
-    width: 80%;
+    height: auto;
+    width: 20%;
     margin: 2%;
-    margin-left: -16%;
+    margin-left: 2%;
     border-radius: 20px;
 }
 
@@ -693,10 +693,10 @@ input:focus {
     border-radius: 20px;
     transform: scale(1.05);
     transition: 0.2s;
-    height: 50%;
+    height: 20%;
     margin: 2%;
     margin-left: -16%;
-    width: 80%;
+    width: 50%;
 }
 
 .caracteristicasHab input,
@@ -738,9 +738,19 @@ input:focus {
     margin: 1%;
 }
 
+#inpImagemHab,
+#inpImagemInv {
+    opacity: 0.1%;
+    padding-top: 20%;
+    margin-left: -23%;
+    height: 2px;
+}
+
 .botoesHab,
 .botoesInv {
+    margin-top: -2%;
     margin-left: 72%;
+    margin-bottom: 5%;
 }
 
 .novaHabBotao,

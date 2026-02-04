@@ -11,6 +11,14 @@ router.get("/carregar", function (req, res) {
     fichaController.carregarFicha(req, res);
 })
 
+router.post("/habilidade", function (req, res) {
+    fichaController.confirmarHab(req, res);
+})
+
+router.post("/inventario", function (req, res) {
+    fichaController.confirmarInv(req, res);
+})
+
 router.put('/imagemFicha', upload.single('fotoFicha'), (req, res) => {
     fichaController.salvarImagemFicha(req, res);
 });

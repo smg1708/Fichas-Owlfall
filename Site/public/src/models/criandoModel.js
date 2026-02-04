@@ -15,15 +15,18 @@ function criarFicha(ficha) {
             const idFicha = resultadoFicha.insertId
 
             const sqlStatus = `
-                INSERT INTO statusFicha (fkFicha, vidaAtual, vidaMax, sanidadeAtual, sanidadeMax, nenAtual, nenMax)
-                VALUES (?, ?, ?, ?, ?, ?, ?);
+                INSERT INTO statusFicha (fkFicha, vidaAtual, vidaMax, sanidadeAtual, sanidadeMax, nenAtual, nenMax, vidaBase, sanidadeBase, nenBase)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
             `
 
             return database.executar(sqlStatus, [
                 idFicha,
                 statusMax.vida, statusMax.vida,
                 statusMax.sanidade, statusMax.sanidade,
-                statusMax.nen, statusMax.nen
+                statusMax.nen, statusMax.nen,
+                statusMax.vida,
+                statusMax.sanidade,
+                statusMax.nen,
             ])
             .then(() => {
                 const promises = []
