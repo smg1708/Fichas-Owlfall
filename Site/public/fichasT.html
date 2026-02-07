@@ -369,7 +369,8 @@
                     </div>
                     <div class="tracoCarac"></div>
                     <button onclick="novaHab()" class="novaHabBotao">Nova Habilidade</button>
-                    <div class="containerHabilidades">
+                    <div class="containerHabilidades" id="boxHabilidade">
+
                     </div>
                     <div class="criacaoHab" id="criandoHabId" onclick="fecharCriacaoHab()" style="display: none;">
                         <div class="criandoHab" onclick="event.stopPropagation()">
@@ -401,6 +402,8 @@
                     <div class="tracoCarac"></div>
                     <button onclick="novaInv()" class="novaInvBotao">Adicionar</button>
                     <div class="containerInventario">
+                        <div id="boxInventario">
+                        </div>
                     </div>
                     <div class="carga">
                         <h3>CARGA MAX.</h3>
@@ -477,13 +480,3 @@
 
 
 
-<!-- <div class="boxInventarioFicha">
-    <button class="imgFicha"><img src="assets/imgs/fichas/defaultImage.png" alt=""></button>
-    <div class="infoPersonagem">
-        <span><b>${fichas[i].nome}</b></span> <br>
-
-        <button onclick="abrirBotaoInv(${fichas[i].idFicha})">
-            Acessar Item
-        </button>
-    </div>
-</div> -->

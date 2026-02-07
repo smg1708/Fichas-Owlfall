@@ -42,6 +42,60 @@ function carregarFicha(req, res) {
         })
 }
 
+function inventarioVer(req, res) {
+    const idFicha = req.params.idFicha;
+
+    if (!idFicha) {
+        return res.status(400).send("ID da ficha não informado!");
+    }
+
+    fichaModel.inventarioVer(idFicha)
+        .then(resultado => {
+            console.log(`Resultados encontrados: ${resultado.length}`);
+
+            if (resultado.length > 0) {
+                res.json(resultado);
+            } else {
+                res.status(204).send([]);
+            }
+        })
+        .catch(erro => {
+            console.error("Erro ao carregar inventário:", erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+function habilidadeVer(req, res) {
+    var idFicha = req.params.idFicha;
+
+    if (idFicha == undefined) {
+        res.status(400).send("Fichas não foram carregadas!");
+    } else {
+
+        fichaModel.inventarioVer(idFicha)
+            .then(
+                function (resultado) {
+                    console.log(`\nResultados encontrados: ${resultado.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultado)}`);
+
+                    if (resultado.length > 0) {
+                        console.log(resultado);
+                        res.json(resultado);
+                    }   else {
+                        res.status(403).send("Inventario não foi carregado!");
+                    }
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao tentar carregar! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
 function confirmarHab(req, res) {
     var idFicha = req.body.idFicha
     var nome = req.body.nome
@@ -367,5 +421,7 @@ module.exports = {
     salvarImagemSentimental3,
     buscarImagemSentimental3,
     salvarImagemSentimental4,
-    buscarImagemSentimental4
+    buscarImagemSentimental4,
+    inventarioVer,
+    habilidadeVer
 }

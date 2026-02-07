@@ -1,17 +1,25 @@
-if (!sessionStorage.ID_USUARIO) {
-  alert("Você precisa estar logado!");
-  window.location = "login.html";
-}
+// if (!sessionStorage.ID_USUARIO) {
+//   alert("Você precisa estar logado!");
+//   window.location = "login.html";
+// }
 
 var ultimaFicha = null
 var timeoutSave = null
 let vidaBase = 0;
 let sanidadeBase = 0;
 let nenBase = 0;
+let nomeHab = "";
+let descricaoHab = "";
+let imagemHab = "";
+let nomeInv = "";
+let descricaoInv = "";
+let imagemInv = "";
 const idFicha = sessionStorage.ID_FICHA;
 
 window.onload = () => {
   carregarFicha()
+  habilidadeVer()
+  inventarioVer()
 
   const idFicha = sessionStorage.ID_FICHA;
 
@@ -157,12 +165,78 @@ function nivel() {
 
 }
 
+function inventarioVer() {
+    boxInventario.innerHTML = "";
+    let mensagem = "";
+
+    fetch(`/mostrarInv/${idFicha}`)
+        .then(resposta => resposta.json())
+        .then(itens => {
+
+            for (var i = 0; i < itens.length; i++) {
+                mensagem += `
+                    <div class="boxInventarioFicha">
+                        <button class="imgFicha">
+                            <img src="${itens[i].imagem || 'assets/imgs/fichas/defaultImage.png'}">
+                        </button>
+
+                        <div class="infoPersonagem">
+                            <span><b>${itens[i].nome}</b></span><br>
+
+                            <button onclick="abrirBotaoInv(${itens[i].idItem})">
+                                Acessar Item
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            boxInventario.innerHTML = mensagem;
+        })
+        .catch(err => {
+            console.error("Erro ao carregar inventário:", err);
+        });
+}
+
+function habilidadeVer() {
+    boxHabilidade.innerHTML = "";
+    let mensagem = "";
+
+    fetch(`/mostrarHab/${idFicha}`)
+        .then(resposta => resposta.json())
+        .then(habilidades => {
+
+            for (var i = 0; i < habilidades.length; i++) {
+                mensagem += `
+                    <div class="boxHabilidadeFicha">
+                        <button class="imgFicha">
+                            <img src="${habilidades[i].imagem || 'assets/imgs/fichas/defaultImage.png'}">
+                        </button>
+
+                        <div class="infoPersonagem">
+                            <span><b>${habilidades[i].nome}</b></span><br>
+
+                            <button onclick="abrirBotaoHab(${habilidades[i].idItem})">
+                                Acessar Item
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            boxHabilidade.innerHTML = mensagem;
+        })
+        .catch(err => {
+            console.error("Erro ao carregar inventário:", err);
+        });
+}
+
 function atualizarVidaVisual() {
     const infoBarrasCompletarVd = document.querySelector(".infoBarrasCompletarVd")
     const atual = Number(vidaAtual.value)
-    const max = Number(vidaMax.value)
+    const max = Number(vidaMax.value) 
     if (max <= 0) return
-    const vermelho = Math.floor((atual / max) * 139)
+    let vermelho = Math.floor((atual / max) * 139)
     if (vermelho < 0) {
         vermelho = 0
     } if (vermelho > 139) {
@@ -177,7 +251,7 @@ function atualizarSanidadeVisual() {
     const atual = Number(sanidadeAtual.value)
     const max = Number(sanidadeMax.value)
     if (max <= 0) return
-    const azul = Math.floor((atual / max) * 139)
+    let azul = Math.floor((atual / max) * 139)
     if (azul < 0) {
         azul = 0
     } if (azul > 139) {
@@ -192,8 +266,8 @@ function atualizarNenVisual() {
     const atual = Number(nenAtual.value)
     const max = Number(nenMax.value)
     if (max <= 0) return
-    const azul = Math.floor((atual / max) * 120)
-    const verde = Math.floor((atual / max) * 120)
+    let azul = Math.floor((atual / max) * 120)
+    let verde = Math.floor((atual / max) * 120)
     if (azul < 0) {
         azul = 0
     } if (azul > 120) {
@@ -501,6 +575,14 @@ function carregarFicha() {
             esquivaDef.value = dados.reacao.esquiva
             protecao.value = dados.reacao.protecao
             resistencia.value = dados.reacao.resistencia
+
+            // nomeHab = dados.habilidades.nome,
+            // descricaoHab = dados.habilidades.descricao,
+            // imagemHab =  dados.habilidades.imagem
+            
+            // nomeInv = dados.item.nome,
+            // descricaoInv = dados.item.descricao,
+            // imagemInv =  dados.item.imagem
 
             inpAnotacoes.value = dados.base.anotacoes
             inpAparencia.value = dados.base.aparencia

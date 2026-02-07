@@ -65,15 +65,15 @@ function atualizarFicha(idFicha, ficha) {
     )
 
     const sqlReacao = `
-    UPDATE reacaoFicha SET
-        defesa = ?,
-        equipamento = ?,
-        outrosDefesa = ?,
-        bloqueio = ?,
-        esquiva = ?,
-        protecao = ?,
-        resistencia = ?
-    WHERE fkFicha = ?;
+        UPDATE reacaoFicha SET
+            defesa = ?,
+            equipamento = ?,
+            outrosDefesa = ?,
+            bloqueio = ?,
+            esquiva = ?,
+            protecao = ?,
+            resistencia = ?
+        WHERE fkFicha = ?;
     `
 
     promises.push(
@@ -110,14 +110,11 @@ function atualizarFicha(idFicha, ficha) {
         WHERE fa.fkFicha = ? AND a.nome = ?;
     `
 
-    for (var nomeAtributo in ficha.atributos) {
+    for (const nomeAtributo in ficha.atributos) {
         const valor = Number(ficha.atributos[nomeAtributo])
         const nomeBanco = Atributos[nomeAtributo]
 
-        if (!nomeBanco) {
-            console.log("Atributo ignorado:", nomeAtributo)
-            continue
-        }
+        if (!nomeBanco) continue
 
         promises.push(
             database.executar(sqlAtributo, [valor, idFicha, nomeBanco])
@@ -148,57 +145,82 @@ function atualizarFicha(idFicha, ficha) {
     }
 
     const sqlPericia = `
-    INSERT INTO fichaPericia (fkFicha, fkPericia, bonus, treino, outros)
-    VALUES (?, (SELECT idPericia FROM pericia WHERE nome = ?), ?, ?, ?)
-    ON DUPLICATE KEY UPDATE bonus = VALUES(bonus), treino = VALUES(treino), outros = VALUES(outros);
+        INSERT INTO fichaPericia (fkFicha, fkPericia, bonus, treino, outros)
+        VALUES (?, (SELECT idPericia FROM pericia WHERE nome = ?), ?, ?, ?)
+        ON DUPLICATE KEY UPDATE
+            bonus = VALUES(bonus),
+            treino = VALUES(treino),
+            outros = VALUES(outros);
     `
 
-    for (let nomePericia in ficha.pericias) {
+    for (const nomePericia in ficha.pericias) {
         const p = ficha.pericias[nomePericia]
         const nomeBanco = Pericias[nomePericia]
 
         if (!nomeBanco) continue
 
-        const bonus = Number(p.bonus) || 0
-        const treino = Number(p.treino) || 0
-        const outros = Number(p.outros) || 0
-
         promises.push(
-            database.executar(sqlPericia, [idFicha, nomeBanco, bonus, treino, outros])
-        )
-    }
-
-    const sqlDeleteHab = `DELETE FROM habilidade WHERE fkFicha = ?;`
-    promises.push(database.executar(sqlDeleteHab, [idFicha]))
-
-    for (var hab of ficha.habilidades) {
-        const sqlHab = `
-            INSERT INTO habilidade (fkFicha, nome, descricao, imagem)
-            VALUES (?, ?, ?, ?);
-        `
-        promises.push(
-            database.executar(sqlHab, [idFicha, hab.nome, hab.descricao, hab.imagem])
-        )
-    }
-
-    const sqlDeleteItem = `DELETE FROM item WHERE fkFicha = ?;`
-    promises.push(database.executar(sqlDeleteItem, [idFicha]))
-
-    for (var item of ficha.inventario) {
-        const sqlItem = `
-            INSERT INTO item (fkFicha, nome, descricao, quantidade, imagem)
-            VALUES (?, ?, ?, ?, ?);
-        `
-        promises.push(
-            database.executar(sqlItem, [
+            database.executar(sqlPericia, [
                 idFicha,
-                item.nome,
-                item.descricao,
-                item.quantidade || 1,
-                item.imagem
+                nomeBanco,
+                Number(p.bonus) || 0,
+                Number(p.treino) || 0,
+                Number(p.outros) || 0
             ])
         )
     }
+
+    const sqlDeleteHabilidade = `DELETE FROM habilidade WHERE fkFicha = ?;`
+    const sqlInsertHabilidade = `
+        INSERT INTO habilidade (fkFicha, nome, descricao)
+        VALUES (?, ?, ?);
+    `
+
+    promises.push(
+        database.executar(sqlDeleteHabilidade, [idFicha])
+        .then(() => {
+            const subPromises = []
+
+            for (const habilidade of ficha.habilidades) {
+                subPromises.push(
+                    database.executar(sqlInsertHabilidade, [
+                        idFicha,
+                        habilidade.nome || null,
+                        habilidade.descricao || ""
+                    ])
+                )
+            }
+
+            return Promise.all(subPromises)
+        })
+    )
+
+    const sqlDeleteItem = `DELETE FROM item WHERE fkFicha = ?;`
+    const sqlInsertItem = `
+        INSERT INTO item (fkFicha, nome, descricao, quantidade, imagem)
+        VALUES (?, ?, ?, ?, ?);
+    `
+
+    promises.push(
+        database.executar(sqlDeleteItem, [idFicha])
+        .then(() => {
+            const subPromises = []
+
+            for (const item of ficha.inventario) {
+                subPromises.push(
+                    database.executar(sqlInsertItem, [
+                        idFicha,
+                        item.nome || null,
+                        item.descricao || "",
+                        item.quantidade ?? 1,
+                        item.imagem ?? "assets/imgs/fichas/defaultImage.png"
+                    ])
+                )
+            }
+
+            return Promise.all(subPromises)
+        })
+    )
 
     return Promise.all(promises)
 }
@@ -302,6 +324,32 @@ function carregarFicha(idFicha) {
 
         return ficha
     })
+}
+
+function inventarioVer(idFicha) {
+    console.log("ACESSEI A VISUALIZAÇÃO DOS ITENS MODEL");
+
+    const sql = `
+        SELECT idItem, fkFicha, nome, descricao, imagem
+        FROM item
+        WHERE fkFicha = ?;
+    `;
+
+    console.log("Executando SQL:", sql);
+    return database.executar(sql, [idFicha]);
+}
+
+function habilidadeVer(idFicha) {
+    console.log("ACESSEI A VISUALIZAÇÃO DAS HABILIDADES MODEL \n \n\t\t > Se aqui der erro, e alguma credencial do banco");
+    
+    var sql = `
+        select fkFicha, nome, descricao, imagem, from vw_habilidade
+            where fkFicha = ${idFicha};
+    `;
+    
+    console.log("Executando a instrução SQL: \n" + sql);
+    return database.executar(sql)
+
 }
 
 function confirmarHab(idFicha, nome, descricao, imagem) {
@@ -445,5 +493,7 @@ module.exports = {
     salvarImagemSentimental3,
     buscarImagemSentimental3,
     salvarImagemSentimental4,
-    buscarImagemSentimental4
+    buscarImagemSentimental4,
+    inventarioVer,
+    habilidadeVer
 }

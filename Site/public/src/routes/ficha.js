@@ -11,6 +11,14 @@ router.get("/carregar", function (req, res) {
     fichaController.carregarFicha(req, res);
 })
 
+router.get("/mostrarInv/:idFicha", function (req, res) {
+    fichaController.inventarioVer(req, res);
+});
+
+router.get("/mostrarHab/:idFicha", function (req, res) {
+    fichaController.habilidadeVer(req, res);
+})
+
 router.post("/habilidade", function (req, res) {
     fichaController.confirmarHab(req, res);
 })
