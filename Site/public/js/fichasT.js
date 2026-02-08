@@ -951,7 +951,7 @@ function confirmarHab() {
             console.log("resposta: ", resposta);
             if (resposta.ok) {
                 alert("Habilidade cadastrado com sucesso")
-                criandoInvId.style.display = "none";
+                criandoHabId.style.display = "none";
             } else {
                 throw "Houve um erro ao tentar realizar o cadastrar o habilidade";
             }
