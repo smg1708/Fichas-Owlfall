@@ -57,4 +57,16 @@ router.put('/imagemSentimental4', upload.single('fotoSentimental4'), (req, res) 
 
 router.get('/imagemSentimental4/:idFicha', fichaController.buscarImagemSentimental4);
 
+router.put('/imagemInventario', upload.single('fotoInventario'), (req, res) => {
+    fichaController.salvarImagemInventario(req, res);
+});
+
+router.get('/imagemInventario/:idFicha', fichaController.buscarImagemInventario);
+
+router.put('/imagemHabilidade', upload.single('fotoHabilidade'), (req, res) => {
+    fichaController.salvarImagemHabilidade(req, res);
+});
+
+router.get('/imagemHabilidade/:idFicha', fichaController.buscarImagemHabilidade);
+
 module.exports = router

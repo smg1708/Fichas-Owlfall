@@ -24,6 +24,7 @@ var fichaRouter = require("./public/src/routes/ficha");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/imgsBD', express.static(path.join(__dirname, 'public/assets/imgsBD')));
 
 app.use(cors());
 

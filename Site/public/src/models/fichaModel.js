@@ -169,60 +169,9 @@ function atualizarFicha(idFicha, ficha) {
             ])
         )
     }
-
-    const sqlDeleteHabilidade = `DELETE FROM habilidade WHERE fkFicha = ?;`
-    const sqlInsertHabilidade = `
-        INSERT INTO habilidade (fkFicha, nome, descricao)
-        VALUES (?, ?, ?);
-    `
-
-    promises.push(
-        database.executar(sqlDeleteHabilidade, [idFicha])
-        .then(() => {
-            const subPromises = []
-
-            for (const habilidade of ficha.habilidades) {
-                subPromises.push(
-                    database.executar(sqlInsertHabilidade, [
-                        idFicha,
-                        habilidade.nome || null,
-                        habilidade.descricao || ""
-                    ])
-                )
-            }
-
-            return Promise.all(subPromises)
-        })
-    )
-
-    const sqlDeleteItem = `DELETE FROM item WHERE fkFicha = ?;`
-    const sqlInsertItem = `
-        INSERT INTO item (fkFicha, nome, descricao, quantidade, imagem)
-        VALUES (?, ?, ?, ?, ?);
-    `
-
-    promises.push(
-        database.executar(sqlDeleteItem, [idFicha])
-        .then(() => {
-            const subPromises = []
-
-            for (const item of ficha.inventario) {
-                subPromises.push(
-                    database.executar(sqlInsertItem, [
-                        idFicha,
-                        item.nome || null,
-                        item.descricao || "",
-                        item.quantidade ?? 1,
-                        item.imagem ?? "assets/imgs/fichas/defaultImage.png"
-                    ])
-                )
-            }
-
-            return Promise.all(subPromises)
-        })
-    )
-
+    
     return Promise.all(promises)
+
 }
 
 function carregarFicha(idFicha) {
@@ -329,10 +278,9 @@ function carregarFicha(idFicha) {
 function inventarioVer(idFicha) {
     console.log("ACESSEI A VISUALIZAÇÃO DOS ITENS MODEL");
 
-    const sql = `
-        SELECT idItem, fkFicha, nome, descricao, imagem
-        FROM item
-        WHERE fkFicha = ?;
+    var sql = `
+        select idItem, fkFicha, nome, descricao, imagem from vw_itens
+            where fkFicha = ?;
     `;
 
     console.log("Executando SQL:", sql);
@@ -340,15 +288,15 @@ function inventarioVer(idFicha) {
 }
 
 function habilidadeVer(idFicha) {
-    console.log("ACESSEI A VISUALIZAÇÃO DAS HABILIDADES MODEL \n \n\t\t > Se aqui der erro, e alguma credencial do banco");
+    console.log("ACESSEI A VISUALIZAÇÃO DAS HABILIDADES MODEL");
     
     var sql = `
-        select fkFicha, nome, descricao, imagem, from vw_habilidade
-            where fkFicha = ${idFicha};
+        select idHabilidade, fkFicha, nome, descricao, imagem from vw_habilidade
+            where fkFicha = ?;
     `;
     
     console.log("Executando a instrução SQL: \n" + sql);
-    return database.executar(sql)
+    return database.executar(sql, [idFicha]);
 
 }
 
@@ -479,6 +427,47 @@ function buscarImagemSentimental4(idFicha) {
 
 }
 
+function salvarImagemHabilidade(idFicha, imagem) {
+  
+  const instrucao = `
+    update habilidade set imagem = ?
+      where fkFicha = ?;
+  `;
+
+  return database.executar(instrucao, [imagem, idFicha]);
+
+}
+
+function buscarImagemHabilidade(idFicha) {
+
+  const sql = `
+    select imagem from habilidade 
+      where fkFicha = ?;
+  `;
+
+    return database.executar(sql, [idFicha]);
+
+}
+
+function salvarImagemInventario(idFicha, imagem) {
+  
+  const instrucao = `
+    update item set imagem = ?
+      where fkFicha = ?;
+  `;
+
+  return database.executar(instrucao, [imagem, idFicha]);
+
+}
+
+function buscarImagemInventario(idFicha) {
+    const sql = `
+        select imagem from item 
+        where fkFicha = ? 
+    `;
+    return database.executar(sql, [idFicha]);
+}
+
 module.exports = {
     atualizarFicha,
     carregarFicha,
@@ -494,6 +483,10 @@ module.exports = {
     buscarImagemSentimental3,
     salvarImagemSentimental4,
     buscarImagemSentimental4,
+    salvarImagemHabilidade,
+    buscarImagemHabilidade,
+    salvarImagemInventario,
+    buscarImagemInventario,
     inventarioVer,
     habilidadeVer
 }

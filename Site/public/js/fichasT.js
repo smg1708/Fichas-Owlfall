@@ -8,18 +8,17 @@ var timeoutSave = null
 let vidaBase = 0;
 let sanidadeBase = 0;
 let nenBase = 0;
-let nomeHab = "";
-let descricaoHab = "";
-let imagemHab = "";
-let nomeInv = "";
-let descricaoInv = "";
-let imagemInv = "";
+let uploadAtivo = false;
 const idFicha = sessionStorage.ID_FICHA;
+const nomeHab = document.getElementById("nomeHab");
+const descricaoHab = document.getElementById("descricaoHab");
+const imagemHab = document.getElementById("imagemHab");
+const nomeInv = document.getElementById("nomeInv");
+const descricaoInv = document.getElementById("descricaoInv");
+const imagemInv = document.getElementById("imagemInv");
 
 window.onload = () => {
   carregarFicha()
-  habilidadeVer()
-  inventarioVer()
 
   const idFicha = sessionStorage.ID_FICHA;
 
@@ -107,6 +106,40 @@ window.onload = () => {
       }
 
     });
+
+  fetch(`/imagemHabilidade/${idFicha}`)
+    .then(res => res.json())
+    .then(dados => {
+      const imagemHab = document.getElementById("imagemHab");
+
+      if (dados.imagem) {
+        if (imagemHab) { 
+          imagemHab.src = `/assets/imgsBd/${dados.imagem}`;
+        }
+      } else {
+        if (imagemHab) { 
+            imagemHab.src = `/assets/imgs/fichas/defaultImage.png`;
+        }
+      }
+
+    });
+
+  fetch(`/imagemInventario/${idFicha}`)
+    .then(res => res.json())
+    .then(dados => {
+      const imagemInv = document.getElementById("imagemInv");
+
+      if (dados.imagem) {
+        if (imagemInv) { 
+          imagemInv.src = `/assets/imgsBd/${dados.imagem}`;
+        }
+      } else {
+        if (imagemInv) { 
+            imagemInv.src = `/assets/imgs/fichas/defaultImage.png`;
+        }
+      }
+
+    });
 };
 
 document.querySelectorAll("input, textarea, select").forEach(el => {
@@ -176,15 +209,19 @@ function inventarioVer() {
             for (var i = 0; i < itens.length; i++) {
                 mensagem += `
                     <div class="boxInventarioFicha">
-                        <button class="imgFicha">
-                            <img src="${itens[i].imagem || 'assets/imgs/fichas/defaultImage.png'}">
+                        <button class="imgItem">
+                            <img src="${itens[i].imagem || 'assets/imgs/fichas/defaultImage.png'}" onclick="mudarImagemInv()">
+                            <input type="file" id="inpImagemInv" onchange="salvarImagemInv()" hidden>
                         </button>
 
-                        <div class="infoPersonagem">
-                            <span><b>${itens[i].nome}</b></span><br>
+                        <div class="infoItem">
+                            <span><b>${itens[i].nome || "Inventario sem nome"}</b></span>
+                            <div style="display: none;" id="descInv-${i}">
+                                <h6>${itens[i].descricao}</h6>
+                            </div>
 
-                            <button onclick="abrirBotaoInv(${itens[i].idItem})">
-                                Acessar Item
+                            <button onclick="abrirBotaoInv(${i})">
+                                descrição
                             </button>
                         </div>
                     </div>
@@ -209,15 +246,19 @@ function habilidadeVer() {
             for (var i = 0; i < habilidades.length; i++) {
                 mensagem += `
                     <div class="boxHabilidadeFicha">
-                        <button class="imgFicha">
-                            <img src="${habilidades[i].imagem || 'assets/imgs/fichas/defaultImage.png'}">
+                        <button class="imgHabilidade">
+                            <img src="${habilidades[i].imagem || 'assets/imgs/fichas/defaultImage.png'}" onclick="mudarImagemHabilidade()">
+                            <input type="file" id="inpImagemHab" onchange="salvarImagemHabilidade()" hidden>
                         </button>
 
-                        <div class="infoPersonagem">
-                            <span><b>${habilidades[i].nome}</b></span><br>
+                        <div class="infoHabilidade">
+                            <span><b>${habilidades[i].nome || "Habilidade sem nome"}</b></span>
+                            <div style="display: none;" id="descHab-${i}">
+                                <h5>${habilidades[i].descricao}</h5>
+                            </div>
 
-                            <button onclick="abrirBotaoHab(${habilidades[i].idItem})">
-                                Acessar Item
+                            <button onclick="abrirBotaoHab(${i})">
+                                descrição
                             </button>
                         </div>
                     </div>
@@ -227,8 +268,26 @@ function habilidadeVer() {
             boxHabilidade.innerHTML = mensagem;
         })
         .catch(err => {
-            console.error("Erro ao carregar inventário:", err);
+            console.error("Erro ao carregar Habilidade:", err);
         });
+}
+
+function abrirBotaoHab(i) {
+    const desc = document.getElementById(`descHab-${i}`);
+    if(desc.style.display == "none") {
+        desc.style.display = "block"
+    } else {
+        desc.style.display = "none"
+    }
+}
+
+function abrirBotaoInv(i) {
+    const desc = document.getElementById(`descInv-${i}`);
+    if(desc.style.display == "none") {
+        desc.style.display = "block"
+    } else {
+        desc.style.display = "none"
+    }
 }
 
 function atualizarVidaVisual() {
@@ -361,6 +420,14 @@ function mudarImagemSentimental4() {
     inpImagemSentimental4.click();
 }
 
+function mudarImagemHabilidade() {
+    inpImagemHab.click();
+}
+
+function mudarImagemInv() {
+    inpImagemInv.click();
+}
+
 function salvarImagemFicha() {
     var foto = inpImagemPersonagem.files[0]
     
@@ -473,14 +540,15 @@ function salvarImagemSentimental3() {
     );
 }
 
-function salvarImagemSentimental4() {
-    var foto = inpImagemSentimental4.files[0]
+function salvarImagemHabilidade() {
+    uploadAtivo = true;
+    var foto = inpImagemHab.files[0]
     
     const formData = new FormData();
     formData.append('idFicha', sessionStorage.ID_FICHA);
-    formData.append('fotoSentimental4', foto)
+    formData.append('fotoHabilidade', foto)
 
-    fetch("/imagemSentimental4", {
+    fetch("/imagemHabilidade", {
         method: "PUT",
         body: formData
     })
@@ -490,10 +558,39 @@ function salvarImagemSentimental4() {
     .then( dados => {
         console.log("Imagem salva:", dados);
         
-        const sentimental4 = document.getElementById("sentimental4");
+        const imagemHab = document.getElementById("imagemHab");
   
- 	if (sentimental4) {
-        sentimental4.src = `${dados.sentimental4}`
+ 	if (imagemHab) {
+        imagemHab.src = `${dados.imagem}`
+      }
+    })
+    .catch(
+        err => console.log(err)
+    );
+}
+
+function salvarImagemInv() {
+    uploadAtivo = true;
+    var foto = inpImagemInv.files[0]
+    
+    const formData = new FormData();
+    formData.append('idFicha', sessionStorage.ID_FICHA);
+    formData.append('fotoInventario', foto)
+
+    fetch("/imagemInventario", {
+        method: "PUT",
+        body: formData
+    })
+    .then(
+        res => res.json()
+    )
+    .then( dados => {
+        console.log("Imagem salva:", dados);
+        
+        const imagemInv = document.getElementById("imagemInv");
+  
+ 	if (imagemInv) {
+        imagemInv.src = `${dados.imagem}`
       }
     })
     .catch(
@@ -709,6 +806,7 @@ function carregarFicha() {
 }
 
 function marcarAlteracao() {
+    if (uploadAtivo) return;
     clearTimeout(timeoutSave)
 
     timeoutSave = setTimeout(() => {
@@ -872,22 +970,6 @@ function pegarFicha() {
             }
         },
     
-        habilidades: [
-            {
-            nome: nomeHab.value,
-            descricao: descricaoHab.value,
-            imagem: imagemHab.value
-            }
-        ],
-    
-        inventario: [
-            {
-            nome: nomeInv.value,
-            descricao: descricaoInv.value,
-            imagem: imagemInv.value
-            }
-        ],
-    
         historia: {
             anotacoes: anotacoes.value,
             aparencia: aparencia.value,
@@ -936,6 +1018,7 @@ function usuario() {
 }
 
 function confirmarHab() {
+
     fetch("/habilidade", {
         method: "POST",
         headers: {
@@ -945,7 +1028,7 @@ function confirmarHab() {
             idFicha: sessionStorage.ID_FICHA,
             nome: nomeHab.value,
             descricao: descricaoHab.value,
-            imagem: imagemHab.value,
+            imagem: imagemHab.src,
         })
     })  .then(function (resposta) {
             console.log("resposta: ", resposta);
@@ -962,6 +1045,7 @@ function confirmarHab() {
 }
 
 function confirmarInv() {
+
     fetch("/inventario", {
         method: "POST",
         headers: {
@@ -971,7 +1055,7 @@ function confirmarInv() {
             idFicha: sessionStorage.ID_FICHA,
             nome: nomeInv.value,
             descricao: descricaoInv.value,
-            imagem: imagemInv.value,
+            imagem: imagemInv.src,
         })
     })  .then(function (resposta) {
             console.log("resposta: ", resposta);
@@ -979,7 +1063,7 @@ function confirmarInv() {
                 alert("Item cadastrado com sucesso")
                 criandoInvId.style.display = "none";
             } else {
-                throw "Houve um erro ao tentar realizar o cadastrar o item";
+                throw "Houve um erro ao tentar realizar o cadastrar o Item";
             }
         })
         .catch(function (resposta) {
@@ -1026,6 +1110,7 @@ function habilidades() {
     habilidadesTotal.style.display = "block";
     inventarioTotal.style.display = "none";
     descricaoTotal.style.display = "none";
+    habilidadeVer()
 }
 
 function inventario() {
@@ -1033,6 +1118,7 @@ function inventario() {
     habilidadesTotal.style.display = "none";
     inventarioTotal.style.display = "block";
     descricaoTotal.style.display = "none";
+    inventarioVer()
 }
 
 function descricaoBtn() {

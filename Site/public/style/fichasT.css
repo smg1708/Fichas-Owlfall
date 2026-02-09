@@ -309,7 +309,7 @@ input:focus {
 .reacao {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 30%;
     position: absolute;
     top: 71%;
     left: 16%;
@@ -364,11 +364,11 @@ input:focus {
 }
 
 .bloqueio {
-    margin-left: -37%;
+    margin-left: -62%;
 }
 
 .esquiva {
-    margin-left: -15%;
+    margin-left: -25%;
 }
 
 .containerDefesa h3,
@@ -563,29 +563,6 @@ input:focus {
     right: 36%;
 }
 
-/* sobe */
-
-.carga {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    top: 32%;
-    left: 39.5%;
-    width: 15%;
-}
-
-.carga input {
-    background: none;
-    border: 2px, solid, white;
-    color: white;
-    font-size: 15px;
-    text-align: center;
-    height: 30px;
-    margin-top: -2%;
-    margin-left: 5%;
-    width: 10%;
-}
-
 .containerHabilidades,
 .containerInventario {
     margin-left: 15%;
@@ -601,35 +578,41 @@ input:focus {
     flex-direction: row;
     align-items: center;
     gap: 20px;
-    height: 60px;
+    height: auto;
     margin-bottom: 15%;
     width: 300px;
 }
 
-.imgFicha img {
+.imgHabilidade img,
+.imgItem img {
     width: 80px;
     height: auto;
 }
 
-.imgFicha:hover img {
+.imgHabilidade:hover img,
+.imgItem:hover img {
     transform: scale(1.05);
     transition: 0.5s;
 }
 
-.imgFicha,
-.imgFicha img {
+.imgHabilidade img,
+.imgItem img,
+.imgHabilidade,
+.imgItem {
     border: none;
     border-radius: 20px;
     cursor: pointer;
 }
 
-.infoPersonagem {
+.infoHabilidade,
+.infoItem {
     margin: 5% 2%;
     font-family: "Pixelify Sans", sans-serif;
     font-size: 18px;
 }
 
-.infoPersonagem button{
+.infoHabilidade button,
+.infoItem button {
     background: #41210A;
     border: none;
     border-radius: 20px;
@@ -730,7 +713,7 @@ input:focus {
     padding-top: 10px;
     padding-left: 10px;
     width: 94%;
-    min-height: 25vh;
+    min-height: 45vh;
     resize: none;
 }
 
@@ -754,7 +737,7 @@ input:focus {
 
 .botoesHab,
 .botoesInv {
-    margin-top: -2%;
+    margin-top: 2%;
     margin-left: 72%;
     margin-bottom: 5%;
 }
@@ -824,7 +807,7 @@ input:focus {
     margin-left: 10%;
 }
 
-.fichaHabilidade,
+.fichaHabilidade img,
 .fichaInventario img {
     width: 80px;
     height: 80px;
@@ -841,12 +824,18 @@ input:focus {
     justify-content: center;
 }
 
-.infoHabilidade,
+.infoHabilidade span,
 .infoInventario span {
     font-size: 18px;
+    letter-spacing: 2px;
 }
 
-.infoHabilidade,
+.infoHabilidade h5 {
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+.infoHabilidade button,
 .infoInventario button {
     margin-top: 10px;
     width: 160px;
@@ -856,7 +845,7 @@ input:focus {
     padding: 8px 0;
     border-radius: 8px;
     font-family: "Pixelify Sans", sans-serif;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .parte3 {
@@ -1128,27 +1117,6 @@ input[type=number]::-webkit-inner-spin-button {
     #outros {
         width: 6.9%;
         right: 30.5%;
-    }
-
-    .carga {
-        display: flex;
-        flex-direction: row;
-        position: absolute;
-        top: 39.5%;
-        left: 39.5%;
-        width: 15%;
-    }
-
-    .carga input {
-        background: none;
-        border: 2px, solid, white;
-        color: white;
-        font-size: 15px;
-        text-align: center;
-        height: 30px;
-        margin-top: -2%;
-        margin-left: 5%;
-        width: 15%;
     }
 
     .boxDescricao textarea {

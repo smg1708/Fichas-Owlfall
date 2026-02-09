@@ -56,7 +56,7 @@ function inventarioVer(req, res) {
             if (resultado.length > 0) {
                 res.json(resultado);
             } else {
-                res.status(204).send([]);
+                res.status(200).json([]);
             }
         })
         .catch(erro => {
@@ -72,27 +72,16 @@ function habilidadeVer(req, res) {
         res.status(400).send("Fichas não foram carregadas!");
     } else {
 
-        fichaModel.inventarioVer(idFicha)
-            .then(
-                function (resultado) {
-                    console.log(`\nResultados encontrados: ${resultado.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultado)}`);
-
-                    if (resultado.length > 0) {
-                        console.log(resultado);
-                        res.json(resultado);
-                    }   else {
-                        res.status(403).send("Inventario não foi carregado!");
-                    }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao tentar carregar! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
+    fichaModel.habilidadeVer(idFicha)
+        .then(resultado => {
+            console.log(`Resultados encontrados: ${resultado.length}`);
+            res.status(200).json(resultado); 
+        })
+        .catch(erro => {
+            console.error("Erro ao carregar habilidades:", erro);
+            res.status(500).json({ erro: erro.sqlMessage });
+        });
+}
 
 }
 
@@ -102,7 +91,7 @@ function confirmarHab(req, res) {
     var descricao = req.body.descricao
     var imagem = req.body.imagem
 
-    if (nome == undefined || descricao == undefined || idFicha == undefined) {
+    if (idFicha == undefined) {
         res.status(400).send("Alguma credencial importante não enviada!");
     } else {
         fichaModel.confirmarHab(idFicha, nome, descricao, imagem)
@@ -130,7 +119,7 @@ function confirmarInv(req, res) {
     var descricao = req.body.descricao
     var imagem = req.body.imagem
 
-    if (nome == undefined || descricao == undefined || idFicha == undefined) {
+    if (idFicha == undefined) {
         res.status(400).send("Alguma credencial importante não enviada!");
     } else {
         fichaModel.confirmarInv(idFicha, nome, descricao, imagem)
@@ -407,6 +396,76 @@ function buscarImagemSentimental4(req, res) {
     .catch(err => res.status(500).json(err));
 }
 
+function salvarImagemHabilidade(req, res) {
+  var idFicha = req.body.idFicha;
+  const novaImagem = req.file?.filename;
+  
+  if (!idFicha || !novaImagem) {
+    return res.status(400).json({ erro: "Nenhuma imagem enviada" });
+  }
+
+  fichaModel.salvarImagemHabilidade(idFicha, novaImagem)
+    .then(resultado => {
+      res.status(200).json({
+        msg: "Imagem enviada com sucesso",
+        imagem: novaImagem
+      });
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).send(err);
+    });
+}
+
+function buscarImagemHabilidade(req, res) {
+  const idFicha = req.params.idFicha;
+
+  fichaModel.buscarImagemHabilidade(idFicha)
+    .then(resultado => {
+      if (resultado.length > 0 && resultado[0].imagem) {
+        res.json({ imagem: resultado[0].imagem });
+      } else {
+        res.json({ imagem: null });
+      }
+    })
+    .catch(err => res.status(500).json(err));
+}
+
+function salvarImagemInventario(req, res) {
+  var idFicha = req.body.idFicha;
+  const novaImagem = req.file?.filename;
+  
+  if (!idFicha || !novaImagem) {
+    return res.status(400).json({ erro: "Nenhuma imagem enviada" });
+  }
+
+  fichaModel.salvarImagemInventario(idFicha, novaImagem)
+    .then(resultado => {
+      res.status(200).json({
+        msg: "Imagem enviada com sucesso",
+        imagem: novaImagem
+      });
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).send(err);
+    });
+}
+
+function buscarImagemInventario(req, res) {
+  const idFicha = req.params.idFicha;
+
+  fichaModel.buscarImagemInventario(idFicha)
+    .then(resultado => {
+      if (resultado.length > 0 && resultado[0].imagem) {
+        res.json({ imagem: resultado[0].imagem });
+      } else {
+        res.json({ imagem: null });
+      }
+    })
+    .catch(err => res.status(500).json(err));
+}
+
 module.exports = {
     atualizarFicha,
     carregarFicha,
@@ -422,6 +481,10 @@ module.exports = {
     buscarImagemSentimental3,
     salvarImagemSentimental4,
     buscarImagemSentimental4,
+    salvarImagemHabilidade,
+    buscarImagemHabilidade,
+    salvarImagemInventario,
+    buscarImagemInventario,
     inventarioVer,
     habilidadeVer
 }
