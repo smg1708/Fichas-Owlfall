@@ -80,7 +80,7 @@ CREATE TABLE fichaPericia (
 CREATE TABLE habilidade (
     idHabilidade INT PRIMARY KEY AUTO_INCREMENT,
     fkFicha INT NOT NULL,
-    nome VARCHAR(80) NOT NULL,
+    nome VARCHAR(80) NULL,
     descricao TEXT,
     imagem VARCHAR(255),
     FOREIGN KEY (fkFicha) REFERENCES ficha(idFicha)
@@ -89,7 +89,7 @@ CREATE TABLE habilidade (
 CREATE TABLE item (
     idItem INT PRIMARY KEY AUTO_INCREMENT,
     fkFicha INT NOT NULL,
-    nome VARCHAR(80) NOT NULL,
+    nome VARCHAR(80) NULL,
     descricao TEXT,
     quantidade INT DEFAULT 1,
     imagem VARCHAR(255),
@@ -220,15 +220,20 @@ CREATE VIEW vw_pericias AS
     
 CREATE VIEW vw_habilidades AS 
 	SELECT 
+		idHabilidade,
+		fkFicha,
 		nome,
-		descricao
+		descricao,
+		imagem
 	FROM habilidade;
 
 CREATE VIEW vw_itens AS
 	SELECT 
+		idItem,
+		fkFicha,
 		nome,
 		descricao,
-		quantidade
+		imagem
 	FROM item;
 
 CREATE VIEW vw_campanhas AS 
@@ -247,7 +252,29 @@ CREATE VIEW vw_geral AS
 		u.email AS emailUsuario
 	FROM ficha f
 	JOIN usuario u ON f.fkUsuario = u.idUsuario;
+    
+CREATE VIEW vw_habilidade AS
+	SELECT 
+		h.idHabilidade,
+		h.fkFicha,
+		h.nome,
+		h.descricao,
+		h.imagem
+	FROM habilidade h;
+    
+CREATE VIEW vw_inventario AS
+	SELECT 
+		i.fkFicha,
+		i.nome,
+		i.descricao,
+		i.imagem
+	FROM item i;
 
 select * from vw_geral;
 
+select * from habilidade;
+
 SELECT * FROM statusFicha WHERE fkFicha = 3;
+
+        select idItem, fkFicha, nome, descricao, imagem from vw_itens
+            where fkFicha = 1;
