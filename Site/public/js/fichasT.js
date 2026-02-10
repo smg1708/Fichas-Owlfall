@@ -1065,22 +1065,22 @@ function confirmarInv() {
             nome: nomeInv.value,
             descricao: descricaoInv.value,
         })
-    })  .then(function (resposta) {
-            console.log("resposta: ", resposta);
-            if (resposta.ok) {
-                alert("Item cadastrado com sucesso")
-                criandoInvId.style.display = "none";
-            } else {
-                throw "Houve um erro ao tentar realizar o cadastrar o Item";
-            }
-        })
-        .then(dados => {
-            sessionStorage.ID_ITEM = dados.idItem;
-            salvarImagemInv(dados.idItem);
-        })
-        .catch(function (resposta) {
-            console.log(`Erro: ${resposta}`);
-        })
+    })    .then(resposta => {
+        if (!resposta.ok) {
+            throw "Erro ao cadastrar item";
+        }
+        return resposta.json();
+    })
+    .then(dados => {
+        alert("Item cadastrada com sucesso");
+        criandoHabId.style.display = "none";
+
+        sessionStorage.ID_ITEM = dados.idItem;
+        salvarImagemInv(dados.idItem);
+    })
+    .catch(err => {
+        console.log("Erro:", err);
+    });
 }
 
 function novaHab() {
