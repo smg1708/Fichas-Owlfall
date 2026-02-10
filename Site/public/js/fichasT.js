@@ -247,8 +247,12 @@ function habilidadeVer() {
                 mensagem += `
                     <div class="boxHabilidadeFicha">
                         <button class="imgHabilidade">
-                            <img src="${habilidades[i].imagem || 'assets/imgs/fichas/defaultImage.png'}" onclick="mudarImagemHabilidade()">
-                            <input type="file" id="inpImagemHab" onchange="salvarImagemHabilidade()" hidden>
+                            <img <img src="${
+                                habilidades[i].imagem
+                                    ? `/assets/imgsBd/${habilidades[i].imagem}`
+                                    : 'assets/imgs/fichas/defaultImage.png'
+                                }" onclick="mudarImagemHabilidade(this)" data-id-habilidade="${habilidades[i].idHabilidade}">
+                            <input type="file" onchange="salvarImagemHabilidade(this)" hidden>
                         </button>
 
                         <div class="infoHabilidade">
@@ -420,8 +424,10 @@ function mudarImagemSentimental4() {
     inpImagemSentimental4.click();
 }
 
-function mudarImagemHabilidade() {
-    inpImagemHab.click();
+function mudarImagemHabilidade(img) {
+    const input = img.parentElement.querySelector('input[type="file"]');
+    input.dataset.idHabilidade = img.dataset.idHabilidade;
+    input.click();
 }
 
 function mudarImagemInv() {
@@ -540,33 +546,33 @@ function salvarImagemSentimental3() {
     );
 }
 
-function salvarImagemHabilidade() {
+function salvarImagemHabilidade(input) {
     uploadAtivo = true;
-    var foto = inpImagemHab.files[0]
-    
+
+    const foto = input.files[0];
+    if (!foto) return;
+
+    const idHabilidade = input.dataset.idHabilidade;
+    if (!idHabilidade) {
+        console.error("ID da habilidade não encontrado");
+        return;
+    }
+
     const formData = new FormData();
-    formData.append('idFicha', sessionStorage.ID_FICHA);
-    formData.append('fotoHabilidade', foto)
+    formData.append('idHabilidade', idHabilidade);
+    formData.append('fotoHabilidade', foto);
 
     fetch("/imagemHabilidade", {
         method: "PUT",
         body: formData
     })
-    .then(
-        res => res.json()
-    )
-    .then( dados => {
+    .then(res => res.json())
+    .then(dados => {
         console.log("Imagem salva:", dados);
-        
-        const imagemHab = document.getElementById("imagemHab");
-  
- 	if (imagemHab) {
-        imagemHab.src = `${dados.imagem}`
-      }
+
+        input.previousElementSibling.src = dados.imagem;
     })
-    .catch(
-        err => console.log(err)
-    );
+    .catch(err => console.log(err));
 }
 
 function salvarImagemInv() {
@@ -1028,20 +1034,23 @@ function confirmarHab() {
             idFicha: sessionStorage.ID_FICHA,
             nome: nomeHab.value,
             descricao: descricaoHab.value,
-            imagem: imagemHab.src,
         })
-    })  .then(function (resposta) {
-            console.log("resposta: ", resposta);
-            if (resposta.ok) {
-                alert("Habilidade cadastrado com sucesso")
-                criandoHabId.style.display = "none";
-            } else {
-                throw "Houve um erro ao tentar realizar o cadastrar o habilidade";
-            }
-        })
-        .catch(function (resposta) {
-            console.log(`Erro: ${resposta}`);
-        })
+    })    .then(resposta => {
+        if (!resposta.ok) {
+            throw "Erro ao cadastrar habilidade";
+        }
+        return resposta.json();
+    })
+    .then(dados => {
+        alert("Habilidade cadastrada com sucesso");
+        criandoHabId.style.display = "none";
+
+        sessionStorage.ID_HABILIDADE = dados.idHabilidade;
+        salvarImagemHabilidade(dados.idHabilidade);
+    })
+    .catch(err => {
+        console.log("Erro:", err);
+    });
 }
 
 function confirmarInv() {
@@ -1055,7 +1064,6 @@ function confirmarInv() {
             idFicha: sessionStorage.ID_FICHA,
             nome: nomeInv.value,
             descricao: descricaoInv.value,
-            imagem: imagemInv.src,
         })
     })  .then(function (resposta) {
             console.log("resposta: ", resposta);
@@ -1065,6 +1073,10 @@ function confirmarInv() {
             } else {
                 throw "Houve um erro ao tentar realizar o cadastrar o Item";
             }
+        })
+        .then(dados => {
+            sessionStorage.ID_ITEM = dados.idItem;
+            salvarImagemInv(dados.idItem);
         })
         .catch(function (resposta) {
             console.log(`Erro: ${resposta}`);

@@ -397,14 +397,14 @@ function buscarImagemSentimental4(req, res) {
 }
 
 function salvarImagemHabilidade(req, res) {
-  var idFicha = req.body.idFicha;
+  var idHabilidade = req.body.idHabilidade;
   const novaImagem = req.file?.filename;
   
-  if (!idFicha || !novaImagem) {
+  if (!idHabilidade || !novaImagem) {
     return res.status(400).json({ erro: "Nenhuma imagem enviada" });
   }
 
-  fichaModel.salvarImagemHabilidade(idFicha, novaImagem)
+  fichaModel.salvarImagemHabilidade(idHabilidade, novaImagem)
     .then(resultado => {
       res.status(200).json({
         msg: "Imagem enviada com sucesso",
@@ -432,14 +432,14 @@ function buscarImagemHabilidade(req, res) {
 }
 
 function salvarImagemInventario(req, res) {
-  var idFicha = req.body.idFicha;
+  var idItem = req.body.idItem;
   const novaImagem = req.file?.filename;
   
-  if (!idFicha || !novaImagem) {
+  if (!idItem || !novaImagem) {
     return res.status(400).json({ erro: "Nenhuma imagem enviada" });
   }
 
-  fichaModel.salvarImagemInventario(idFicha, novaImagem)
+  fichaModel.salvarImagemInventario(idItem, novaImagem)
     .then(resultado => {
       res.status(200).json({
         msg: "Imagem enviada com sucesso",

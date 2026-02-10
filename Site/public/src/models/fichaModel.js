@@ -427,14 +427,14 @@ function buscarImagemSentimental4(idFicha) {
 
 }
 
-function salvarImagemHabilidade(idFicha, imagem) {
+function salvarImagemHabilidade(idHabilidade, imagem) {
   
   const instrucao = `
     update habilidade set imagem = ?
-      where fkFicha = ?;
+      where idHabilidade = ?;
   `;
 
-  return database.executar(instrucao, [imagem, idFicha]);
+  return database.executar(instrucao, [imagem, idHabilidade]);
 
 }
 
@@ -442,28 +442,28 @@ function buscarImagemHabilidade(idFicha) {
 
   const sql = `
     select imagem from habilidade 
-      where fkFicha = ?;
+      where idFicha = ?;
   `;
 
     return database.executar(sql, [idFicha]);
 
 }
 
-function salvarImagemInventario(idFicha, imagem) {
+function salvarImagemInventario(idItem, imagem) {
   
   const instrucao = `
     update item set imagem = ?
-      where fkFicha = ?;
+      where idItem = ?;
   `;
 
-  return database.executar(instrucao, [imagem, idFicha]);
+  return database.executar(instrucao, [imagem, idItem]);
 
 }
 
 function buscarImagemInventario(idFicha) {
     const sql = `
         select imagem from item 
-        where fkFicha = ? 
+        where idFicha = ? 
     `;
     return database.executar(sql, [idFicha]);
 }
