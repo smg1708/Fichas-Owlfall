@@ -210,8 +210,12 @@ function inventarioVer() {
                 mensagem += `
                     <div class="boxInventarioFicha">
                         <button class="imgItem">
-                            <img src="${itens[i].imagem || 'assets/imgs/fichas/defaultImage.png'}" onclick="mudarImagemInv()">
-                            <input type="file" id="inpImagemInv" onchange="salvarImagemInv()" hidden>
+                            <img <img src="${
+                                itens[i].imagem
+                                    ? `/assets/imgsBd/${itens[i].imagem}`
+                                    : 'assets/imgs/fichas/defaultImage.png'
+                                }" onclick="mudarImagemInv(this)" data-id-item="${itens[i].idItem}">
+                            <input type="file" onchange="salvarImagemInv(this)" hidden>
                         </button>
 
                         <div class="infoItem">
@@ -430,8 +434,10 @@ function mudarImagemHabilidade(img) {
     input.click();
 }
 
-function mudarImagemInv() {
-    inpImagemInv.click();
+function mudarImagemInv(img) {
+    const input = img.parentElement.querySelector('input[type="file"]');
+    input.dataset.idItem = img.dataset.idItem;
+    input.click();
 }
 
 function salvarImagemFicha() {
@@ -575,33 +581,33 @@ function salvarImagemHabilidade(input) {
     .catch(err => console.log(err));
 }
 
-function salvarImagemInv() {
+function salvarImagemInv(input) {
     uploadAtivo = true;
-    var foto = inpImagemInv.files[0]
-    
+
+    const foto = input.files[0];
+    if (!foto) return;
+
+    const idItem = input.dataset.idItem;
+    if (!idItem) {
+        console.error("ID da habilidade não encontrado");
+        return;
+    }
+
     const formData = new FormData();
-    formData.append('idFicha', sessionStorage.ID_FICHA);
-    formData.append('fotoInventario', foto)
+    formData.append('idItem', idItem);
+    formData.append('fotoInventario', foto);
 
     fetch("/imagemInventario", {
         method: "PUT",
         body: formData
     })
-    .then(
-        res => res.json()
-    )
-    .then( dados => {
+    .then(res => res.json())
+    .then(dados => {
         console.log("Imagem salva:", dados);
-        
-        const imagemInv = document.getElementById("imagemInv");
-  
- 	if (imagemInv) {
-        imagemInv.src = `${dados.imagem}`
-      }
+
+        input.previousElementSibling.src = dados.imagem;
     })
-    .catch(
-        err => console.log(err)
-    );
+    .catch(err => console.log(err));
 }
 
 function getPericia(dados, nome) {
