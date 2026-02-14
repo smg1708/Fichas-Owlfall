@@ -1037,7 +1037,7 @@ input[type=number]::-webkit-inner-spin-button {
         display: flex;
         flex-direction: row;
         position: absolute;
-        top: 104%;
+        top: 108%;
         left: 15%;
     }
 
@@ -1056,6 +1056,24 @@ input[type=number]::-webkit-inner-spin-button {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         width: 26%;
+    }
+
+    .imagemPersonagem img {
+        cursor: pointer;
+        width: 90%;
+        border-radius: 70%;
+        object-fit: cover;
+        object-position: top;
+        height: 13.5vw;
+    }
+
+    .imagensSentimental img {
+        cursor: pointer;
+        width: 90%;
+        border-radius: 70%;
+        object-fit: cover;
+        object-position: top;
+        height: 11vw;
     }
 
     .parte2 {
@@ -1117,6 +1135,64 @@ input[type=number]::-webkit-inner-spin-button {
     #outros {
         width: 6.9%;
         right: 30.5%;
+    }
+
+    .boxHabilidadeFicha,
+    .boxInventarioFicha {
+        background-color: #1e1e1e;
+        border-radius: 10px;
+        padding: 20px;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        height: auto;
+        margin-bottom: 15%;
+        width: 250px;
+    }
+
+    .imgHabilidade img,
+    .imgItem img {
+        width: 70px;
+        height: auto;
+    }
+
+    .imgHabilidade:hover img,
+    .imgItem:hover img {
+        transform: scale(1.05);
+        transition: 0.5s;
+    }
+
+    .imgHabilidade img,
+    .imgItem img,
+    .imgHabilidade,
+    .imgItem {
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    .infoHabilidade,
+    .infoItem {
+        margin: 5% 2%;
+        font-family: "Pixelify Sans", sans-serif;
+        font-size: 18px;
+    }
+
+    .infoHabilidade button,
+    .infoItem button {
+        background: #41210A;
+        border: none;
+        border-radius: 20px;
+        color: white;
+        cursor: pointer;
+        font-family: "Pixelify Sans", sans-serif;
+        font-size: 16px;
+        margin-top: 7%;
+        margin-left: 8%;
+        width: 80%;
+        height: 40px;
     }
 
     .boxDescricao textarea {
@@ -1198,7 +1274,7 @@ input[type=number]::-webkit-inner-spin-button {
 
     .botoesHab,
     .botoesInv {
-        margin-top: 2%;
+        margin-top: 1%;
         margin-left: 72%;
         margin-bottom: 5%;
     }
