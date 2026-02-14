@@ -369,7 +369,8 @@
                     </div>
                     <div class="tracoCarac"></div>
                     <button onclick="novaHab()" class="novaHabBotao">Nova Habilidade</button>
-                    <div class="containerHabilidades">
+                    <div class="containerHabilidades" id="boxHabilidade">
+
                     </div>
                     <div class="criacaoHab" id="criandoHabId" onclick="fecharCriacaoHab()" style="display: none;">
                         <div class="criandoHab" onclick="event.stopPropagation()">
@@ -379,9 +380,6 @@
                                 <input type="text" id="nomeHab" value="Nova Habilidade">
                                 <p>Descrição</p>
                                 <textarea id="descricaoHab"></textarea> <br>
-                                <p>Imagem</p>
-                                <img  src="assets/imgs/fichas/defaultImage.png" id="imagemHab" onclick="mudarImagemHabilidade()" onerror="this.src='assets/imgs/fichas/defaultImage.png'">
-                                <input type="file" id="inpImagemHab" onchange="salvarImagemHabilidade()">
                                 <div class="botoesHab">
                                     <button onclick="fecharCriacaoHab()">Cancelar</button>
                                     <button onclick="confirmarHab()" id="confirmarHabId">Confirmar</button>
@@ -401,6 +399,8 @@
                     <div class="tracoCarac"></div>
                     <button onclick="novaInv()" class="novaInvBotao">Adicionar</button>
                     <div class="containerInventario">
+                        <div id="boxInventario">
+                        </div>
                     </div>
                     <div class="criacaoInv" id="criandoInvId" onclick="fecharCriacaoInv()" style="display: none;">
                         <div class="criandoInv" onclick="event.stopPropagation()">
@@ -410,12 +410,9 @@
                                 <input type="text" id="nomeInv" value="Nova Inventario">
                                 <p>Descrição</p>
                                 <textarea id="descricaoInv"></textarea> <br>
-                                <p>Imagem</p>
-                                <img  src="assets/imgs/fichas/defaultImage.png" id="imagemInv" onclick="mudarImagemInv()" onerror="this.src='assets/imgs/fichas/defaultImage.png'">
-                                <input type="file" id="inpImagemInv" onchange="salvarImagemInv()">
                                 <div class="botoesInv">
                                     <button onclick="fecharCriacaoInv()">Cancelar</button>
-                                    <button onclick="confirmarInv()" id="confirmarInvId">Confirmar</button>
+                                    <button onclick="confirmarInv()" id="confirmarInvId">Confirmar</button> <img src="assets/imgs/fichas/de" alt="">
                                 </div>
                             </div>
                         </div>

@@ -22,6 +22,14 @@ function mundano() {
     classesId.style.display = "none"
     caracteristicasId.style.display = "flex"
 
+    completarEscondido.innerHTML = `
+        <input type="hidden" id="fort" value="0">
+        <input type="hidden" id="tran" value="0">
+        <input type="hidden" id="emis" value="0">
+        <input type="hidden" id="conj" value="0">
+        <input type="hidden" id="mani" value="0">
+    `
+
 }
 
 function fortificador() {

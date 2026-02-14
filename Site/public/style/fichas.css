@@ -243,11 +243,17 @@ input:focus {
 }
 
 .infoBarrasCompletarNen {
-    background: #614511;
+    background: rgb(0, 119, 119);
     border: #f0f0f0 0.1px solid;
     height: 18%;
     width: 88%;
     margin-left: 15%
+}
+
+.infoBarrasCompletarVd,
+.infoBarrasCompletarSan,
+.infoBarrasCompletarNen {
+    transition: filter 0.2s linear, width 0.2s linear;
 }
 
 .inputVd,
@@ -256,8 +262,8 @@ input:focus {
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-left: 35%;
-    margin-right: 34%;
+    margin-left: 25%;
+    margin-right: 25%;
     margin-bottom: 1%;
 }
 
@@ -267,10 +273,10 @@ input:focus {
     background: none;
     border: none;
     color: white;
-    text-align: center;
     font-size: 20px;
+    text-align: center;
     font-family: 'Atkinson Hyperlegible Mono';
-    width: 40px;
+    width: 60px;
 }
 
 .inputVd span,
@@ -303,9 +309,9 @@ input:focus {
 .reacao {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 30%;
     position: absolute;
-    top: 72%;
+    top: 71%;
     left: 16%;
 }
 
@@ -358,11 +364,11 @@ input:focus {
 }
 
 .bloqueio {
-    margin-left: -35%;
+    margin-left: -62%;
 }
 
 .esquiva {
-    margin-left: -16%;
+    margin-left: -25%;
 }
 
 .containerDefesa h3,
@@ -554,30 +560,7 @@ input:focus {
 #outros {
     position: absolute;
     width: 4.3%;
-    right: 37%;
-}
-
-/* sobe */
-
-.carga {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    top: 32%;
-    left: 39.5%;
-    width: 15%;
-}
-
-.carga input {
-    background: none;
-    border: 2px, solid, white;
-    color: white;
-    font-size: 15px;
-    text-align: center;
-    height: 30px;
-    margin-top: -2%;
-    margin-left: 5%;
-    width: 10%;
+    right: 36%;
 }
 
 .containerHabilidades,
@@ -585,7 +568,7 @@ input:focus {
     margin-left: 15%;
 }
 
-.boxHabilidadesFicha,
+.boxHabilidadeFicha,
 .boxInventarioFicha {
     background-color: #1e1e1e;
     border-radius: 10px;
@@ -595,35 +578,41 @@ input:focus {
     flex-direction: row;
     align-items: center;
     gap: 20px;
-    height: 60px;
+    height: auto;
     margin-bottom: 15%;
     width: 300px;
 }
 
-.imgFicha img {
+.imgHabilidade img,
+.imgItem img {
     width: 80px;
     height: auto;
 }
 
-.imgFicha:hover img {
+.imgHabilidade:hover img,
+.imgItem:hover img {
     transform: scale(1.05);
     transition: 0.5s;
 }
 
-.imgFicha,
-.imgFicha img {
+.imgHabilidade img,
+.imgItem img,
+.imgHabilidade,
+.imgItem {
     border: none;
     border-radius: 20px;
     cursor: pointer;
 }
 
-.infoPersonagem {
+.infoHabilidade,
+.infoItem {
     margin: 5% 2%;
     font-family: "Pixelify Sans", sans-serif;
     font-size: 18px;
 }
 
-.infoPersonagem button{
+.infoHabilidade button,
+.infoItem button {
     background: #41210A;
     border: none;
     border-radius: 20px;
@@ -724,7 +713,7 @@ input:focus {
     padding-top: 10px;
     padding-left: 10px;
     width: 94%;
-    min-height: 25vh;
+    min-height: 45vh;
     resize: none;
 }
 
@@ -748,7 +737,7 @@ input:focus {
 
 .botoesHab,
 .botoesInv {
-    margin-top: -2%;
+    margin-top: 2%;
     margin-left: 72%;
     margin-bottom: 5%;
 }
@@ -818,7 +807,7 @@ input:focus {
     margin-left: 10%;
 }
 
-.fichaHabilidade,
+.fichaHabilidade img,
 .fichaInventario img {
     width: 80px;
     height: 80px;
@@ -835,12 +824,18 @@ input:focus {
     justify-content: center;
 }
 
-.infoHabilidade,
+.infoHabilidade span,
 .infoInventario span {
     font-size: 18px;
+    letter-spacing: 2px;
 }
 
-.infoHabilidade,
+.infoHabilidade h5 {
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+.infoHabilidade button,
 .infoInventario button {
     margin-top: 10px;
     width: 160px;
@@ -850,7 +845,7 @@ input:focus {
     padding: 8px 0;
     border-radius: 8px;
     font-family: "Pixelify Sans", sans-serif;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .parte3 {
@@ -863,12 +858,12 @@ input:focus {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    margin-top: 22%;
+    margin-top: 3%;
     margin-left: 20.6%;
 }
 
 .atributos img {
-    width: 85%;
+    width: 65%;
     height: 80%;
 }
 
@@ -877,7 +872,7 @@ input:focus {
     background: none;
     border: none;
     color: white;
-    font-size: 2.9vw;
+    font-size: 1.9vw;
     text-align: center;
     width: 5%;
     height: 8%;
@@ -897,64 +892,28 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 #agil {
-    right: 43.5%;
-    top: 33.2%;
+    right: 51.5%;
+    top: 7.4%;
 }
 
 #forc {
-    right: 24.8%;
-    top: 46.2%;
+    right: 65.6%;
+    top: 15.4%;
 }
 
 #inte {
-    right: 62.2%;
-    top: 46.2%;
+    right: 37%;
+    top: 15.4%;
 }
 
 #prec {
-    right: 57.2%;
-    top: 69.8%;
+    right: 41.2%;
+    top: 30.4%;
 }
 
 #vigo {
-    right: 30.2%;
-    top: 69.8%;
-}
-
-#fort,
-#tran,
-#emis,
-#conj,
-#mani {
-    color: black;
-    position: absolute;
-    font-size: 20px;
-    font-family: 'Atkinson Hyperlegible Mono';
-}
-
-#tran {
-    top: 51.5%;
-    right: 50%;
-}
-
-#fort {
-    top: 66.8%;
-    right: 60.8%;
-}
-
-#conj {
-    top: 64.3%;
-    right: 36%;
-}
-
-#emis {
-    top: 77.2%;
-    right: 58%;
-}
-
-#mani {
-    top: 77.2%;
-    right: 42.5%;
+    right: 61.6%;
+    top: 30.4%;
 }
 
 @media (max-width: 1366px) {
@@ -966,7 +925,7 @@ input[type=number]::-webkit-inner-spin-button {
         flex-direction: row;
         font-family: "Pixelify Sans", sans-serif;
         width: 100%;
-        min-height: 12  2.1vh;
+        min-height: 185.1vh;
     }
 
     .container-navbar img {
@@ -991,14 +950,14 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     .infoBarras {
-        margin-left: 8%;
+        margin-left: 6%;
     }
 
     .infoBarrasCompletarVd,
     .infoBarrasCompletarSan,
     .infoBarrasCompletarNen {
         width: 76%;
-        margin-left: 22%;
+        margin-left: 20%;
     }
 
     .vida,
@@ -1012,10 +971,10 @@ input[type=number]::-webkit-inner-spin-button {
 
     .vdTexto,
     .nenTexto {
-        margin-left: 56.5%;
+        margin-left: 55.5%;
     }
     .sanTexto {
-        margin-left: 51.5%;
+        margin-left: 50.5%;
     }
 
     .boxCarac {
@@ -1042,8 +1001,16 @@ input[type=number]::-webkit-inner-spin-button {
         display: flex;
         flex-direction: row;
         position: absolute;
-        top: 105%;
+        top: 108%;
         left: 15%;
+    }
+
+    .bloqueio {
+        margin-left: -52%;
+    }
+
+    .esquiva {
+        margin-left: -22%;
     }
     
     .imagensSentimental {
@@ -1053,6 +1020,24 @@ input[type=number]::-webkit-inner-spin-button {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         width: 26%;
+    }
+
+    .imagemPersonagem img {
+        cursor: pointer;
+        width: 90%;
+        border-radius: 70%;
+        object-fit: cover;
+        object-position: top;
+        height: 13.5vw;
+    }
+
+    .imagensSentimental img {
+        cursor: pointer;
+        width: 90%;
+        border-radius: 70%;
+        object-fit: cover;
+        object-position: top;
+        height: 11vw;
     }
 
     .parte2 {
@@ -1116,25 +1101,62 @@ input[type=number]::-webkit-inner-spin-button {
         right: 30.5%;
     }
 
-    .carga {
+    .boxHabilidadeFicha,
+    .boxInventarioFicha {
+        background-color: #1e1e1e;
+        border-radius: 10px;
+        padding: 20px;
+        color: white;
         display: flex;
         flex-direction: row;
-        position: absolute;
-        top: 39.5%;
-        left: 39.5%;
-        width: 15%;
+        align-items: center;
+        gap: 20px;
+        height: auto;
+        margin-bottom: 15%;
+        width: 250px;
     }
 
-    .carga input {
-        background: none;
-        border: 2px, solid, white;
+    .imgHabilidade img,
+    .imgItem img {
+        width: 70px;
+        height: auto;
+    }
+
+    .imgHabilidade:hover img,
+    .imgItem:hover img {
+        transform: scale(1.05);
+        transition: 0.5s;
+    }
+
+    .imgHabilidade img,
+    .imgItem img,
+    .imgHabilidade,
+    .imgItem {
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    .infoHabilidade,
+    .infoItem {
+        margin: 5% 2%;
+        font-family: "Pixelify Sans", sans-serif;
+        font-size: 18px;
+    }
+
+    .infoHabilidade button,
+    .infoItem button {
+        background: #41210A;
+        border: none;
+        border-radius: 20px;
         color: white;
-        font-size: 15px;
-        text-align: center;
-        height: 30px;
-        margin-top: -2%;
-        margin-left: 5%;
-        width: 15%;
+        cursor: pointer;
+        font-family: "Pixelify Sans", sans-serif;
+        font-size: 16px;
+        margin-top: 7%;
+        margin-left: 8%;
+        width: 80%;
+        height: 40px;
     }
 
     .boxDescricao textarea {
@@ -1159,56 +1181,55 @@ input[type=number]::-webkit-inner-spin-button {
     .atributos {
         gap: 20px;
         margin-right: 15%;
+        margin-top: 20%;
     }
 
     .atributos img {
-        width: 96%;
+        width: 126%;
     }
 
     .atributos input {
-        font-size: 2vw;
+        font-size: 2.5vw;
+        text-align: center;
+        width: 3vw;
     }
 
-    #agil { right: 46.5%; top: 7.3%; }
-    #forc { right: 63.5%; top: 15.5%; }
-    #inte { right: 29.2%; top: 15.5%; }
-    #prec { right: 58.7%; top: 31%; }
-    #vigo { right: 34.2%; top: 31%; }
+    #agil { right: 34.5%; top: 30.3%; }
+    #forc { right: 56.8%; top: 44.5%; }
+    #inte { right: 11.8%; top: 44.5%; }
+    #prec { right: 18.3%; top: 70%; }
+    #vigo { right: 50.4%; top: 70%; }
 
-    #fort,
-    #tran,
-    #emis,
-    #conj,
-    #mani {
-        color: black;
-        position: absolute;
-        font-size: 14px;
-        font-family: 'Atkinson Hyperlegible Mono';
+    .botoesHab,
+    .botoesInv {
+        margin-top: 1%;
+        margin-left: 72%;
+        margin-bottom: 5%;
     }
 
-    #tran {
-        top: 51.5%;
-        left: 50.5%;
+    .novaHabBotao,
+    .novaInvBotao {
+        background-color: #41210A;
+        border: none;
+        border-radius: 20px;
+        color: white;
+        cursor: pointer;
+        font-family: "Pixelify Sans", sans-serif;
+        font-size: 18px;
+        height: 60px;
+        width: 40%;
+        margin: 8%;
+        margin-bottom: 12%;
+        margin-left: 85%;
     }
 
-    #fort {
-        top: 67.3%;
-        right: 57.4%;
-    }
-
-    #conj {
-        top: 64.7%;
-        right: 28%;
-    }
-
-    #emis {
-        top: 77.5%;
-        right: 54.5%;
-    }
-
-    #mani {
-        top: 77.7%;
-        right: 36%;
+    #confirmarHabId,
+    #confirmarInvId {
+        background-color: #41210A;
+        border-radius: 20px;
+        height: 5vh;
+        width: 46%;
+        margin-left: 5%;
     }
 }
 
