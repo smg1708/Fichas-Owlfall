@@ -961,7 +961,7 @@ input[type=number]::-webkit-inner-spin-button {
         flex-direction: row;
         font-family: "Pixelify Sans", sans-serif;
         width: 100%;
-        min-height: 12  2.1vh;
+        min-height: 185.1vh;
     }
 
     .container-navbar img {
@@ -986,14 +986,14 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     .infoBarras {
-        margin-left: 8%;
+        margin-left: 6%;
     }
 
     .infoBarrasCompletarVd,
     .infoBarrasCompletarSan,
     .infoBarrasCompletarNen {
         width: 76%;
-        margin-left: 22%;
+        margin-left: 20%;
     }
 
     .vida,
@@ -1007,10 +1007,10 @@ input[type=number]::-webkit-inner-spin-button {
 
     .vdTexto,
     .nenTexto {
-        margin-left: 56.5%;
+        margin-left: 55.5%;
     }
     .sanTexto {
-        margin-left: 51.5%;
+        margin-left: 50.5%;
     }
 
     .boxCarac {
@@ -1037,7 +1037,7 @@ input[type=number]::-webkit-inner-spin-button {
         display: flex;
         flex-direction: row;
         position: absolute;
-        top: 109%;
+        top: 104%;
         left: 15%;
     }
 
@@ -1149,13 +1149,15 @@ input[type=number]::-webkit-inner-spin-button {
 
     .atributos input {
         font-size: 2vw;
+        text-align: center;
+        width: 3vw;
     }
 
-    #agil { right: 46.5%; top: 7.3%; }
-    #forc { right: 63.5%; top: 15.5%; }
-    #inte { right: 29.2%; top: 15.5%; }
-    #prec { right: 58.7%; top: 31%; }
-    #vigo { right: 34.2%; top: 31%; }
+    #agil { right: 44%; top: 7.3%; }
+    #forc { right: 61.4%; top: 15.5%; }
+    #inte { right: 27.1%; top: 15.5%; }
+    #prec { right: 56.4%; top: 31%; }
+    #vigo { right: 32.1%; top: 31%; }
 
     #fort,
     #tran,
@@ -1164,33 +1166,66 @@ input[type=number]::-webkit-inner-spin-button {
     #mani {
         color: black;
         position: absolute;
-        font-size: 14px;
+        font-size: 18px;
         font-family: 'Atkinson Hyperlegible Mono';
+        text-align: center;
     }
 
     #tran {
         top: 51.5%;
-        left: 50.5%;
+        left: 48.1%;
     }
 
     #fort {
         top: 67.3%;
-        right: 57.4%;
+        right: 55.4%;
     }
 
     #conj {
         top: 64.7%;
-        right: 28%;
+        right: 26%;
     }
 
     #emis {
-        top: 77.5%;
-        right: 54.5%;
+        top: 77.9%;
+        right: 52.2%;
     }
 
     #mani {
-        top: 77.7%;
-        right: 36%;
+        top: 78.1%;
+        right: 34%;
+    }
+
+    .botoesHab,
+    .botoesInv {
+        margin-top: 2%;
+        margin-left: 72%;
+        margin-bottom: 5%;
+    }
+
+    .novaHabBotao,
+    .novaInvBotao {
+        background-color: #41210A;
+        border: none;
+        border-radius: 20px;
+        color: white;
+        cursor: pointer;
+        font-family: "Pixelify Sans", sans-serif;
+        font-size: 18px;
+        height: 60px;
+        width: 40%;
+        margin: 8%;
+        margin-bottom: 12%;
+        margin-left: 85%;
+    }
+
+    #confirmarHabId,
+    #confirmarInvId {
+        background-color: #41210A;
+        border-radius: 20px;
+        height: 5vh;
+        width: 46%;
+        margin-left: 5%;
     }
 }
 

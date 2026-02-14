@@ -129,9 +129,6 @@ html, body {
     text-decoration: none;
 }
 
-/* ===============================
-   BREAKPOINT ATÉ 1366px
-================================ */
 @media (max-width: 1366px) {
 
   .container-navbar img {
@@ -141,7 +138,6 @@ html, body {
       border-radius: 50%;
   }
 
-  /* ===== BOX LOGIN ===== */
   .boxLogin {
     width: 38%;
     height: auto;
@@ -168,12 +164,8 @@ html, body {
   }
 }
 
-/* ===============================
-   BREAKPOINT ATÉ 768px (MOBILE)
-================================ */
 @media (max-width: 768px) {
 
-  /* ===== HEADER ===== */
   .navbar {
     display: none;
   }
@@ -187,12 +179,10 @@ html, body {
     width: 12%;
   }
 
-  /* ===== CONTAINER ===== */
   .container {
     padding: 20px;
   }
 
-  /* ===== BOX LOGIN ===== */
   .boxLogin {
     width: 90%;
     height: auto;

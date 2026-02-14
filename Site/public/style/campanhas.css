@@ -236,7 +236,6 @@ html, body {
       border-radius: 50%;
   }
 
-  /* ===== BOTÃO NOVA CAMPANHA ===== */
   .novaCampanha {
     position: absolute;
     right: 150px;
@@ -252,13 +251,11 @@ html, body {
     font-size: 18px;
   }
 
-  /* ===== CONTADOR ===== */
   .contador {
     margin: 6% 10% 0;
     font-size: 22px;
   }
 
-  /* ===== GRID DE CAMPANHAS ===== */
   .boxCampanhas {
     grid-template-columns: repeat(2, 1fr);
     margin-left: 10%;
@@ -270,7 +267,6 @@ html, body {
     height: 28vh;
   }
 
-  /* ===== MODAL ===== */
   .criando {
     width: 75%;
     height: 85%;
@@ -308,7 +304,6 @@ html, body {
 
 @media (max-width: 768px) {
 
-  /* ===== HEADER ===== */
   .navbar {
     display: none;
   }
@@ -317,7 +312,6 @@ html, body {
     padding-left: 15px;
   }
 
-  /* ===== NOVA CAMPANHA ===== */
   .novaCampanha {
     margin-top: 100px;
   }
@@ -327,13 +321,11 @@ html, body {
     font-size: 18px;
   }
 
-  /* ===== CONTADOR ===== */
   .contador {
     margin: 30px auto;
     text-align: center;
   }
 
-  /* ===== GRID ===== */
   .boxCampanhas {
     grid-template-columns: 1fr;
     margin-left: 5%;
@@ -345,7 +337,6 @@ html, body {
     height: 30vh;
   }
 
-  /* ===== MODAL ===== */
   .criando {
     width: 90%;
     height: 90%;
@@ -373,7 +364,6 @@ html, body {
 
 @media (max-width: 768px) {
 
-  /* ===== HEADER ===== */
   .navbar {
     display: none;
   }
@@ -382,7 +372,6 @@ html, body {
     padding-left: 15px;
   }
 
-  /* ===== NOVA CAMPANHA ===== */
   .novaCampanha {
     margin-top: 100px;
   }
@@ -392,13 +381,11 @@ html, body {
     font-size: 18px;
   }
 
-  /* ===== CONTADOR ===== */
   .contador {
     margin: 30px auto;
     text-align: center;
   }
 
-  /* ===== GRID ===== */
   .boxCampanhas {
     grid-template-columns: 1fr;
     margin-left: 5%;
@@ -410,7 +397,6 @@ html, body {
     height: 30vh;
   }
 
-  /* ===== MODAL ===== */
   .criando {
     width: 90%;
     height: 90%;
