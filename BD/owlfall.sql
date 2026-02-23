@@ -100,6 +100,7 @@ CREATE TABLE campanha (
     idCampanha INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(80) NOT NULL,
     descricao TEXT,
+    codigo VARCHAR(6),
     fkMestre INT NOT NULL,
     criadoEm TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (fkMestre) REFERENCES usuario(idUsuario)
