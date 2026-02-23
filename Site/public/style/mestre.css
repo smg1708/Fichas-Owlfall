@@ -1,0 +1,355 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+.header {
+    background-color: #0c0c0c;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    z-index: 9999;
+}
+
+.container-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 30px;
+    font-family: "Pixelify Sans", sans-serif;
+    padding-top: 20px;
+}
+
+.container-navbar a {
+    font-style: normal;
+    text-decoration: none;
+    color: white;
+}
+
+.container-navbar img {
+    background: none;
+    width: 50%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.container-navbar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 5%;
+}
+
+#nomeMaior {
+    padding-left: 55px;
+}
+
+.navbar {
+    display: flex;
+    padding-right: 60px;
+    padding-top: 7px;
+    font-size: 18px;
+    gap: 30px;
+}
+
+.traco {
+    background-color: white;
+    width: 100%;
+    height: 85px;
+}
+
+.container {
+    background-color: #121212;
+    color: white;
+    display: flex;
+    font-family: "Pixelify Sans", sans-serif;
+    width: 100%;
+    flex-direction: column;
+    min-height: 92.1vh;
+}
+
+.botoes {
+    display: flex;
+    gap: 25px;
+    margin: 0% 25%;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    height: 6vh;
+}
+
+.botoes button{
+    background-color: #41210A;
+    border: none;
+    border-radius: 10px;
+    color: #eeecec;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Pixelify Sans", sans-serif;
+    width: 32%;
+}
+
+.campanha {
+    margin-left: 10%;
+}
+
+.campanha h1 {
+    margin-bottom: 2%;
+}
+
+.campanha img {
+    border: 5px, solid, #41210A;
+    border-radius: 10px;
+    height: auto;
+    width: 25%;
+}
+
+.convidados {
+    display: flex;
+    gap: 35px;
+    margin-top: 0%;
+    height: 6vh;
+}
+
+.convidados button{
+    background: none;
+    border: #41210A, 3px, solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    color: #eeecec;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: "Pixelify Sans", sans-serif;
+    padding-top: 1%;
+    width: 8%;
+}
+
+.criacaoCodigo {
+    position: fixed;
+    inset: 0;
+    background-color: #00000080;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.criandoCodigo {
+    width: 30%;
+    height: 30%;
+    background-color: #171717;
+    border-radius: 20px;
+    padding: 30px;
+    color: white;
+    font-family: 'Atkinson Hyperlegible Mono';
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 1.5px;
+}
+
+.criandoCodigo h1 {
+    font-size: 38px;
+    margin-bottom: 3%;
+    margin-left: 13.5%;
+}
+
+.criandoCodigo h2 {
+    font-size: 30px;
+    margin: 14% 40%;
+}
+
+.criacaoFoto {
+    position: fixed;
+    inset: 0;
+    background-color: #00000080;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.criandoFoto {
+    width: 20%;
+    height: 20%;
+    background-color: #171717;
+    border-radius: 20px;
+    padding: 30px;
+    color: white;
+    font-family: 'Atkinson Hyperlegible Mono';
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 1.5px;
+}
+
+.criandoFoto h1 {
+    font-size: 32px;
+    margin-bottom: 3%;
+    margin-left: 15%;
+}
+
+.criandoFoto button {
+    background-color: #41210A;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 20px;
+    margin: 10% 30%;
+    width: 40%;
+    height: 10vh;
+}
+
+.editar {
+    position: fixed;
+    inset: 0;
+    background-color: #00000080;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.criandoEditar {
+    width: 60%;
+    height: 80%;
+    background-color: #171717;
+    border-radius: 20px;
+    padding: 30px;
+    color: white;
+    font-family: 'Atkinson Hyperlegible Mono';
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 1.5px;
+}
+
+.criandoEditar h1 {
+    margin-bottom: 3%;
+}
+
+.caracteristicasEditar {
+    margin-left: 3%;
+    justify-content: center;
+}
+
+.caracteristicasEditar p {
+    font-size: 20px;
+    margin-bottom: 1%;
+}
+
+.caracteristicasEditar input {
+    background-color: #0c0c0c;
+    border: none;
+    color: white;
+    font-size: 22px;
+    height: 5vh;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    padding-left: 10px;
+    width: 30%;
+}
+
+.caracteristicasEditar textarea {
+    background-color: #0c0c0c;
+    border: none;
+    color: white;
+  font-size: 22px;
+    margin-bottom: 2%;
+    margin-left: 1%;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 94%;
+    min-height: 50vh;
+    resize: none;
+}
+
+.caracteristicasEditar button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+.botoesEditar {
+    margin-left: 72%;
+}
+
+#confirmarEdit {
+    background-color: #41210A;
+    border-radius: 20px;
+    height: 5vh;
+    width: 40%;
+    margin-left: 5%;
+}
+
+.boxPersonagens {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0.5%;
+    margin-left: 10%;
+    gap: 0.5%;
+}
+
+.box-ficha-personagens {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    height: 140px;
+    margin-top: 15%;
+    width: 70%;
+}
+
+.box-ficha-personagens img {
+    width: 110px;
+    height: 110px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: top;
+    background-color: #333;
+}
+
+.info-personagem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-personagem span {
+    font-size: 18px;
+    letter-spacing: 1.5px;
+}
+
+.info-personagem button {
+    margin-top: 10px;
+    width: 120px;
+    background-color: #41210A;
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding: 8px 0;
+    border-radius: 8px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 15px;
+}
+
+#classe {
+    font-size: 15px;
+    margin-top: 2%;
+}
+
+#registro {
+    color: #bebebe ;
+    font-size: 12px;
+    margin-top: 4%;
+}

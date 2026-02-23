@@ -20,6 +20,7 @@ var usuarioImgRouter = require("./public/src/routes/usuarioImg");
 var criandoRouter = require("./public/src/routes/criando");
 var personagensRouter = require("./public/src/routes/personagens");
 var fichaRouter = require("./public/src/routes/ficha");
+var campanhaRouter = require("./public/src/routes/campanha");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -33,6 +34,7 @@ app.use("/", usuarioImgRouter);
 app.use("/", criandoRouter);
 app.use("/", personagensRouter);
 app.use("/", fichaRouter);
+app.use("/", campanhaRouter);
 
 
 app.listen(PORTA_APP, function () {

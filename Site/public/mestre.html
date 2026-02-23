@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br" id="html">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> Campanha | Owlfall </title>
+
+    <link rel="stylesheet" type="text/css" href="style/mestre.css">
+    <link rel="icon" href="./assets/icon/coruja.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kavoon&display=swap" rel="stylesheet"/>
+
+</head>
+<body id="body">
+    
+    <div class="header">
+        <div class="container-navbar">
+            <a href="index.html" id="nomeMaior">Owlfall</a>
+            <div class="navbar">
+                <a href="index.html">Home</a>
+                <a href="personagens.html">Personagens</a>
+                <a href="campanhas.html">Campanhas</a>
+                <a href="login.html">Login</a>
+            </div>
+            <button onclick="usuario()"><img src="assets/imgs/todos/usuario.png" alt="" id="imgPerfilNav"></button>
+        </div>
+    </div>
+    <div class="traco"></div>
+    <div class="container">
+        <div class="botoes">
+            <button onclick="adicionar()">Adicionar personagem</button>
+            <button onclick="convidar()">Convidar jogadores</button>
+            <button onclick="editar()">Editar Campanha</button>
+            <button onclick="foto()">Foto de capa</button>
+        </div>
+        <div class="campanha">
+            <h1>Asas da coruja</h1>
+            <img src="assets/imgs/campanhas/background.png" alt="">
+            <div class="convidados">
+                <button onclick="personagens()">Personagens</button>
+                <button onclick="jogadores()">Jogadores</button>
+            </div>
+        </div>
+        <div class="boxPersonagens">
+        </div>
+        <div class="criacaoCodigo" id="addCodigo" onclick="fecharCriacaoCodigo()" style="display: none;">
+            <div class="criandoCodigo" onclick="event.stopPropagation()">
+                <h1>Convidar Jogador</h1>
+                <h2 id="codigoConvite"></h2>
+            </div>
+        </div>
+        <div class="criacaoFoto" id="addFoto" onclick="fecharCriacaoFoto()" style="display: none;">
+            <div class="criandoFoto" onclick="event.stopPropagation()">
+                <h1>Foto de Capa</h1>
+                <button id="imgCampanha" onclick="mudarImagemCampanha()">Selecionar Imagem</button>
+                <input type="file" id="inpImagemCampanha" onchange="salvarImagemCampanha()" hidden>
+            </div>
+        </div>
+        <div class="editar" id="edit" onclick="fecharEditar()" style="display: none;">
+            <div class="criandoEditar" onclick="event.stopPropagation()">
+                <h1>Editando Campanha</h1>
+                <div class="caracteristicasEditar">
+                    <p>Nome</p>
+                    <input type="text" id="nomeEditar">
+                    <p>Descrição</p>
+                    <textarea id="descricaoEditar"></textarea> <br>
+                    <div class="botoesEditar">
+                        <button onclick="fecharEdicao()">Cancelar</button>
+                        <button onclick="confirmarEdicao()" id="confirmarEdit">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script src="js/usuarioPerfil.js"></script>
+<script src="js/mestre.js" ></script>
+
+<!-- <div class="box-ficha-personagens">
+    
+    <img src="/assets/imgsBd/${fichas[i].imagem}">
+
+    <div class="info-personagem">
+        <span><b>${fichas[i].nome}</b></span>
+        <span>Classe: ${fichas[i].classe || "???"}</span>
+
+       <button onclick="abrirFicha(${fichas[i].idFicha})">
+           Acessar Ficha
+       </button>
+   </div>
+</div> -->
+</html>
