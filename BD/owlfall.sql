@@ -277,5 +277,6 @@ select * from habilidade;
 
 SELECT * FROM statusFicha WHERE fkFicha = 3;
 
-        select idItem, fkFicha, nome, descricao, imagem from vw_itens
-            where fkFicha = 1;
+select idItem, fkFicha, nome, descricao, imagem from vw_itens
+	where fkFicha = 1;
+    

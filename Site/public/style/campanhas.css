@@ -147,6 +147,7 @@ html, body {
     width: 120px;
     background-color: #41210A;
     color: white;
+    cursor: pointer;
     border: none;
     padding: 8px 0;
     border-radius: 8px;

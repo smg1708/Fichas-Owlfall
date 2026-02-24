@@ -3,68 +3,114 @@
 //   window.location = "login.html";
 // }
 
+const idUsuario = sessionStorage.ID_USUARIO;
+
+window.onload = mostrar;
+
 function confirmar() {
 
-    fetch("/campanha", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            idUsuario: sessionStorage.ID_USUARIO,
-            nome: nome.value,
-            descricao: descricao.value,
+    if (nome.value.trim() == "") {
+        alert("Nome da campanha vazio!!!");
+        return
+    } else {
+        fetch("/campanha", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuario: sessionStorage.ID_USUARIO,
+                nome: nome.value,
+                descricao: descricao.value,
+            })
+        })    .then(resposta => {
+            if (!resposta.ok) {
+                throw "Erro ao cadastrar campanha";
+            }
+            return resposta.json();
         })
-    })    .then(resposta => {
-        if (!resposta.ok) {
-            throw "Erro ao cadastrar campanha";
-        }
-        return resposta.json();
-    })
-    .then(dados => {
-        alert("Campanha cadastrada com sucesso");
-        criandoId.style.display = "none";
+        .then(dados => {
+            alert("Campanha cadastrada com sucesso");
+            criandoId.style.display = "none";
+    
+            sessionStorage.ID_FICHA = dados.idFicha;
+        })
+        .catch(err => {
+            console.log("Erro:", err);
+        });
+    }
 
-        sessionStorage.ID_FICHA = dados.idFicha;
-    })
-    .catch(err => {
-        console.log("Erro:", err);
-    });
 }
 
 function confirmarCodigo() {
-    codigo = carregarCodigo.value
-
-    fetch("/cadastrarCampanha", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },body: JSON.stringify({
-            codigoServer: codigo
+    const codigo = carregarCodigo.value
+    if (!codigo.trim()) {
+        alert("Informe o codigo da campanha!!!");
+        return
+    } else {
+        fetch("/cadastrarCampanha", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },body: JSON.stringify({
+                idUsuario: sessionStorage.ID_USUARIO,
+                codigoServer: codigo
+            })
         })
-    })
-    .then(function(resposta) {
-        console.log("resposta: " + resposta);
+        .then(function(resposta) {
+            console.log("resposta: " + resposta);
+    
+            if (resposta.ok) {
+                return resposta.json();
+            } else {
+                alert("Houve um erro ao tentar entrar na campanha!")
+                throw "Houve um erro ao tentar entrar na campanha!";
+            }
+        })
+        .then(function(dados) {
+            sessionStorage.ID_CAMPANHA = dados.idCampanha;
+            alert("Você entrou na campanha com sucesso!")
+        })
+        .catch(function(resposta) {
+            console.log("Erro: " + resposta)
+        })
+    }
 
-        if (resposta.ok) {
-            return resposta.json();
-        } else {
-            alert("Houve um erro ao tentar entrar na campanha!")
-            throw "Houve um erro ao tentar entrar na campanha!";
-        }
-    })
-    .then(function(dados) {
+}
 
-        sessionStorage.ID_USUARIO = dados[0].idUsuario;
-        sessionStorage.ID_FICHA = dados[0].idFicha;
-        sessionStorage.ID_CAMPANHA = dados[0].idCampanha;
+function mostrar() {
+    var mensagem = "";
 
-        alert("Você entrou na campanha com sucesso!")
+    fetch(`/mostrarCampanhas/${idUsuario}`, {
+    })
+      .then(function (resposta) {
+        return resposta.json();
+      })
+      .then(function (campanhas) {
+        boxCampanha.innerHTML = "";
 
-    })
-    .catch(function(resposta) {
-        console.log("Erro: " + resposta)
-    })
+        for (var i = 0; i < campanhas.length; i++) {
+          mensagem += `
+            <div class="boxFichaCampanhas">
+                <img src="/assets/imgsBd/${campanhas[i].imagem}">
+
+                <div class="infoCampanha">
+                    <span><b>${campanhas[i].nome}</b></span>
+                    <span id="registro">Registro: ${campanhas[i].criado || "???"}</span>
+                <button onclick="abrirCampanha(${campanhas[i].idCampanha})">
+                    Acessar Campanha
+                </button>
+                </div>
+            </div>
+        `}
+        boxCampanha.innerHTML = mensagem;
+    });
+}
+
+function abrirCampanha(idCampanha) {
+    sessionStorage.ID_CAMPANHA = idCampanha
+
+    window.location = "mestre.html?id=" + idCampanha;
 }
 
 function entrar() {
@@ -91,15 +137,15 @@ function fecharCriacao() {
     criandoId.style.display = "none";
 }
 
-// <!-- <div class="boxFichaCampanhas">
+// <div class="boxFichaCampanhas">
 //     <img src="/assets/imgsBd/${fichas[i].imagem}">
-
+// 
 //     <div class="infoCampanha">
 //         <span><b>${fichas[i].nome}</b></span>
 //         <span>Classe: ${fichas[i].classe || "???"}</span>
-
+// 
 //     <button onclick="abrirFicha(${fichas[i].idFicha})">
 //         Acessar Ficha
 //     </button>
 //     </div>
-// </div> -->
+// </div>

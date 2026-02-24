@@ -25,10 +25,21 @@ window.onload = () => {
     });
     
     fetch(`/carregarCodigo/${idCampanha}`)
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) return null;
+            return res.json();
+        })
         .then(dados => {
-            codigo = dados.codigo
-    })
+            if (dados && dados.length > 0 && dados[0].codigo) {
+                codigo = dados[0].codigo;
+            } else {
+                codigo = null;
+            }
+        })
+        .catch(err => {
+            console.log("Erro ao carregar código:", err);
+            codigo = null;
+    });
 }
 
 function salvarImagemCampanha() {
@@ -76,6 +87,33 @@ function convidar() {
         }
         codigoConvite.innerHTML = `${codigo}`
         addCodigo.style.display = "flex"
+
+        fetch("/cadastrarCodigo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },body: JSON.stringify({
+                idCampanha: sessionStorage.ID_CAMPANHA,
+                codigoServer: codigo
+            })
+        })
+        .then(function(resposta) {
+            console.log("resposta: " + resposta);
+    
+            if (resposta.ok) {
+                return resposta.json();
+            } else {
+                alert("Houve um erro ao tentar criar o convite da campanha!")
+                throw "Houve um erro ao tentar criar o convite da campanha!";
+            }
+        })
+        .then(function(dados) {
+            sessionStorage.ID_CAMPANHA = dados.idCampanha;
+            alert("Você criou a campanha com sucesso!")
+        })
+        .catch(function(resposta) {
+            console.log("Erro: " + resposta)
+        })
     } else {
         codigoConvite.innerHTML = `${codigo}`
         addCodigo.style.display = "flex"
