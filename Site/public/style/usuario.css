@@ -121,19 +121,18 @@ html, body {
     letter-spacing: 1px;
 }
 
-.imagem  {
+.imgCaracter  {
     cursor: pointer;
     border-radius: 220px;
-    width: 18.5%;
-    height: 37.6vh;
+    width: 10.5%;
     opacity: 100%;
     margin-right: 35%;
 }
 
 #imgPerfil {
   padding: 10%;
-  width: 400px;
-  height: 400px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%; 
   object-fit: cover;  
   cursor: pointer;

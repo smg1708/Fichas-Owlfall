@@ -101,6 +101,7 @@ CREATE TABLE campanha (
     nome VARCHAR(80) NOT NULL,
     descricao TEXT,
     codigo VARCHAR(6),
+    imagem VARCHAR(255),
     fkMestre INT NOT NULL,
     criadoEm TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (fkMestre) REFERENCES usuario(idUsuario)
@@ -277,5 +278,6 @@ select * from habilidade;
 
 SELECT * FROM statusFicha WHERE fkFicha = 3;
 
-        select idItem, fkFicha, nome, descricao, imagem from vw_itens
-            where fkFicha = 1;
+select idItem, fkFicha, nome, descricao, imagem from vw_itens
+	where fkFicha = 1;
+    

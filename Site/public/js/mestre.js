@@ -8,7 +8,7 @@ let codigo = null;
 window.onload = () => {
     const idCampanha = sessionStorage.ID_CAMPANHA;
     
-    fetch(`/ImagemCampanha/${idCampanha}`)
+    fetch(`/imagemCampanha/${idCampanha}`)
         .then(res => res.json())
         .then(dados => {
             const imagemCampanha = document.getElementById("imgCampanha");
@@ -109,7 +109,7 @@ function convidar() {
         })
         .then(function(dados) {
             sessionStorage.ID_CAMPANHA = dados.idCampanha;
-            alert("Você criou a campanha com sucesso!")
+            alert("Você criou o convite com sucesso!!")
         })
         .catch(function(resposta) {
             console.log("Erro: " + resposta)

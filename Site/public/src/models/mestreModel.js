@@ -23,7 +23,31 @@ function convidar(idCampanha, codigo) {
     return database.executar(instrucaoSql, [codigo, idCampanha]);
 }
 
+function salvarImagemCampanha(idCampanha, imagem) {
+  
+  const instrucao = `
+    update campanha set imagem = ?
+      where idCampanha = ?;
+  `;
+
+  return database.executar(instrucao, [imagem, idCampanha]);
+
+}
+
+function buscarImagemCampanha(idCampanha) {
+
+  const sql = `
+    select imagem from campanha 
+      where idCampanha = ${idCampanha};
+  `;
+
+  return database.executar(sql);
+
+}
+
 module.exports = {
     carregarCampanha,
-    convidar
+    convidar,
+    salvarImagemCampanha,
+    buscarImagemCampanha
 }

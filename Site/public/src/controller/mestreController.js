@@ -57,7 +57,60 @@ function convidar(req, res) {
     }
 }
 
+function salvarImagemCampanha(req, res) {
+  var idCampanha = req.body.idCampanha;
+  const novaImagem = req.file?.filename;
+  
+  if (!idCampanha || !novaImagem) {
+    return res.status(400).json({ erro: "Nenhuma imagem enviada" });
+  }
+
+  mestreModel.buscarImagemCampanha(idCampanha)
+    .then(resultado => {
+      const imagemAntiga = resultado[0]?.imagem;
+
+      if (imagemAntiga && imagemAntiga !== "background.png") {
+        const caminhoImagem = path.join(__dirname, "../../assets/imgsBd", imagemAntiga);
+
+        fs.unlink(caminhoImagem, (err) => {
+          if (err) {
+            console.log("Erro ao apagar imagem antiga:", err.message);
+          } else {
+            console.log("Imagem antiga apagada:", imagemAntiga);
+          }
+        });
+      }
+
+      return mestreModel.salvarImagemCampanha(idCampanha, novaImagem);
+    })
+    .then(resultado => {
+      res.status(200).json({
+        msg: "Imagem enviada com sucesso",
+        imagem: novaImagem
+      });
+    }).catch(err => {
+      console.error(err);
+      res.status(500).send(err);
+    });
+}
+
+function buscarImagemCampanha(req, res) {
+  const idCampanha = req.params.idCampanha;
+
+  mestreModel.buscarImagemCampanha(idCampanha)
+    .then(resultado => {
+      if (resultado.length > 0 && resultado[0].imagem) {
+        res.json({ imagem: resultado[0].imagem });
+      } else {
+        res.json({ imagem: null });
+      }
+    })
+    .catch(err => res.status(500).json(err));
+}
+
 module.exports = {
     carregarCampanha,
-    convidar
+    convidar,
+    salvarImagemCampanha,
+    buscarImagemCampanha
 }

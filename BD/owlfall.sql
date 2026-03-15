@@ -101,6 +101,7 @@ CREATE TABLE campanha (
     nome VARCHAR(80) NOT NULL,
     descricao TEXT,
     codigo VARCHAR(6),
+    imagem VARCHAR(255),
     fkMestre INT NOT NULL,
     criadoEm TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (fkMestre) REFERENCES usuario(idUsuario)
