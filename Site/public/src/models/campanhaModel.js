@@ -1,14 +1,14 @@
 var database = require("../database/config")
 
-function confirmar(idUsuario, nome, descricao) {
+function confirmar(idUsuario, nome, descricao, codigo) {
     console.log(
         "ACESSEI A CAMPANHA MODEL \n \n\t\t > Se aqui der erro, e alguma credencial do banco"
     )
     var instrucaoSql = `
-        insert into campanha (nome, descricao, fkMestre) values (?, ?, ?);
+        insert into campanha (nome, descricao, fkMestre, codigo) values (?, ?, ?, ?);
     `
     console.log("executando a instrucaoSQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql, [nome, descricao, idUsuario]);
+    return database.executar(instrucaoSql, [nome, descricao, idUsuario, codigo]);
 }
 
 function confirmarCodigo(idUsuario, codigo) {

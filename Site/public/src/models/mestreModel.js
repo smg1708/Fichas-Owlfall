@@ -1,6 +1,6 @@
 var database = require("../database/config")
 
-function carregarCampanha(idCampanha) {
+function carregarCodigo(idCampanha) {
     console.log("ACESSEI A CAMPANHA MODEL \n \n\t\t > Se aqui der erro, e alguma credencial do banco");
     
     var sql = `
@@ -10,17 +10,6 @@ function carregarCampanha(idCampanha) {
     
     return database.executar(sql, [idCampanha]);
 
-}
-
-function convidar(idCampanha, codigo) {
-    console.log(
-        "ACESSEI A CAMPANHA MODEL \n \n\t\t > Se aqui der erro, e alguma credencial do banco"
-    )
-    var instrucaoSql = `
-        update campanha set codigo = ?
-        where idCampanha = ?;
-    `;
-    return database.executar(instrucaoSql, [codigo, idCampanha]);
 }
 
 function salvarImagemCampanha(idCampanha, imagem) {
@@ -46,8 +35,7 @@ function buscarImagemCampanha(idCampanha) {
 }
 
 module.exports = {
-    carregarCampanha,
-    convidar,
+    carregarCodigo,
     salvarImagemCampanha,
     buscarImagemCampanha
 }

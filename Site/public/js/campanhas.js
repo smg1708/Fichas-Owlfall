@@ -9,6 +9,13 @@ window.onload = mostrar;
 
 function confirmar() {
 
+    codigo = ""
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+
+    for (let i = 0; i < 6; i++) {
+        codigo += caracteres[Math.floor(Math.random() * caracteres.length)];
+    }
+
     if (nome.value.trim() == "") {
         alert("Nome da campanha vazio!!!");
         return
@@ -22,6 +29,7 @@ function confirmar() {
                 idUsuario: sessionStorage.ID_USUARIO,
                 nome: nome.value,
                 descricao: descricao.value,
+                codigo: codigo
             })
         })    .then(resposta => {
             if (!resposta.ok) {

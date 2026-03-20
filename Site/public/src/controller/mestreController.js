@@ -1,13 +1,13 @@
 var mestreModel = require("../models/mestreModel");
 
-function carregarCampanha(req, res) {
-    var idCampanha = req.params.idCampanha;
+function carregarCodigo(req, res) {
+    var idCampanha = req.body.idCampanha;
 
     if (idCampanha == undefined) {
         res.status(400).send("Campanha não foi carregada!");
     } else {
 
-        mestreModel.carregarCampanha(idCampanha)
+        mestreModel.carregarCodigo(idCampanha)
             .then(
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);
@@ -29,32 +29,6 @@ function carregarCampanha(req, res) {
             );
     }
 
-}
-
-function convidar(req, res) {
-    var idCampanha = req.body.idCampanha;
-    var codigo = req.body.codigoServer
-
-    if (!idCampanha) {
-        res.status(400).send("Id da campanha não enviado");
-    } else if (!codigo || !codigo.trim()) {
-        return res.status(401).send("Seu codigo está undefined!");
-    } else {
-        mestreModel.convidar(idCampanha, codigo)
-            .then(
-                function(resultado) {
-                    res.json(resultado)
-                }
-            ) .catch(
-                function(erro) {
-                    console.log(erro);
-                    console.log(
-                        "Houve um erro ao entrar na campanha! Erro: " + erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage)
-                }
-            )
-    }
 }
 
 function salvarImagemCampanha(req, res) {
@@ -109,8 +83,7 @@ function buscarImagemCampanha(req, res) {
 }
 
 module.exports = {
-    carregarCampanha,
-    convidar,
+    carregarCodigo,
     salvarImagemCampanha,
     buscarImagemCampanha
 }

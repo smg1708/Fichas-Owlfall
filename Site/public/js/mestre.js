@@ -24,22 +24,6 @@ window.onload = () => {
             }
     });
     
-    fetch(`/carregarCodigo/${idCampanha}`)
-        .then(res => {
-            if (!res.ok) return null;
-            return res.json();
-        })
-        .then(dados => {
-            if (dados && dados.length > 0 && dados[0].codigo) {
-                codigo = dados[0].codigo;
-            } else {
-                codigo = null;
-            }
-        })
-        .catch(err => {
-            console.log("Erro ao carregar código:", err);
-            codigo = null;
-    });
 }
 
 function salvarImagemCampanha() {
@@ -79,45 +63,27 @@ function usuario() {
 }
 
 function convidar() {
-    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-    if (!codigo) {
-        codigo = ""
-        for (let i = 0; i < 6; i++) {
-            codigo += caracteres[Math.floor(Math.random() * caracteres.length)];
-        }
-        codigoConvite.innerHTML = `${codigo}`
-        addCodigo.style.display = "flex"
+    const idCampanha = sessionStorage.ID_CAMPANHA;
 
-        fetch("/cadastrarCodigo", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },body: JSON.stringify({
-                idCampanha: sessionStorage.ID_CAMPANHA,
-                codigoServer: codigo
-            })
+    fetch(`/carregarCodigo/${idCampanha}`)
+        .then(res => {
+            if (!res.ok) return null;
+            return res.json();
         })
-        .then(function(resposta) {
-            console.log("resposta: " + resposta);
-    
-            if (resposta.ok) {
-                return resposta.json();
+        .then(dados => {
+            if (dados && dados.length > 0 && dados[0].codigo) {
+                codigo = dados[0].codigo;
             } else {
-                alert("Houve um erro ao tentar criar o convite da campanha!")
-                throw "Houve um erro ao tentar criar o convite da campanha!";
+                codigo = null;
             }
+            console.log(codigo)
+            codigoConvite.innerHTML = `${codigo}`
+            addCodigo.style.display = "flex"
         })
-        .then(function(dados) {
-            sessionStorage.ID_CAMPANHA = dados.idCampanha;
-            alert("Você criou o convite com sucesso!!")
-        })
-        .catch(function(resposta) {
-            console.log("Erro: " + resposta)
-        })
-    } else {
-        codigoConvite.innerHTML = `${codigo}`
-        addCodigo.style.display = "flex"
-    }
+        .catch(err => {
+            console.log("Erro ao carregar código:", err);
+            codigo = null;
+    });
 }
 
 function fecharCriacaoCodigo() {

@@ -4,13 +4,16 @@ function confirmar(req, res) {
     var idUsuario = req.body.idUsuario;
     var nome = req.body.nome
     var descricao = req.body.descricao
+    var codigo = req.body.codigo
 
     if (!nome || !nome.trim()) {
         res.status(400).send("Seu nome está undefined!");
     } else if (!idUsuario) {
         return res.status(401).send("Usuário não autenticado");
+    } else if (!codigo) {
+        res.status(400).send("Seu codigo está undefined!");
     } else {
-        campanhaModel.confirmar(idUsuario, nome, descricao)
+        campanhaModel.confirmar(idUsuario, nome, descricao, codigo)
             .then(resultado => {
                 res.json({ idCampanha: resultado.insertId });
             })
