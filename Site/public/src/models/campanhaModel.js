@@ -27,7 +27,7 @@ function mostrar(idUsuario) {
     console.log("ACESSEI A CAMPANHA MODEL \n \n\t\t > Se aqui der erro, e alguma credencial do banco");
     
     var sql = `
-        select idCampanha, nome, DATE_FORMAT(criadoEm, '%d/%m/%Y') as criado from campanha
+        select idCampanha, nome, imagem, DATE_FORMAT(criadoEm, '%d/%m/%Y') as criado from campanha
             where fkMestre = ${idUsuario};
     `;
     

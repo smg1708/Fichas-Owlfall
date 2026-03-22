@@ -1,7 +1,9 @@
+const fs = require("fs");
+const path = require("path");
 var mestreModel = require("../models/mestreModel");
 
 function carregarCodigo(req, res) {
-    var idCampanha = req.body.idCampanha;
+    var idCampanha = req.params.idCampanha;
 
     if (idCampanha == undefined) {
         res.status(400).send("Campanha não foi carregada!");
@@ -29,6 +31,54 @@ function carregarCodigo(req, res) {
             );
     }
 
+}
+
+function carregarEdicao(req, res) {
+    var idCampanha = req.params.idCampanha;
+
+    if (idCampanha == undefined) {
+        res.status(400).send("Campanha não foi carregada!");
+    } else {
+
+        mestreModel.carregarEdicao(idCampanha)
+          .then(
+              function (resultado) {
+                  console.log(`\nResultados encontrados: ${resultado.length}`);
+                  console.log(`Resultados: ${JSON.stringify(resultado)}`);
+
+                  if (resultado.length > 0) {
+                      console.log(resultado);
+                      res.json(resultado);
+                  }   else {
+                      res.status(403).send("Campanha não foi carregada!");
+                  }
+              }
+          ).catch(
+              function (erro) {
+                  console.log(erro);
+                  console.log("\nHouve um erro ao tentar carregar! Erro: ", erro.sqlMessage);
+                  res.status(500).json(erro.sqlMessage);
+              }
+          );
+    }
+
+}
+
+function carregarCampanha(req, res) {
+    const idCampanha = req.params.idCampanha
+
+    if (!idCampanha) {
+        return res.status(400).send("ID da Campanha não enviado")
+    }
+
+    mestreModel.carregarCampanha(idCampanha)
+        .then(resultado => 
+            res.json(resultado)
+        )
+        .catch(erro => {
+            console.log(erro)
+            res.status(500).json(erro.sqlMessage)
+        })
 }
 
 function salvarImagemCampanha(req, res) {
@@ -82,8 +132,26 @@ function buscarImagemCampanha(req, res) {
     .catch(err => res.status(500).json(err));
 }
 
+function editar(req, res) {
+
+    const idCampanha = req.params.idCampanha
+    const dados = req.body
+
+    mestreModel.editar(idCampanha, dados)
+        .then(resultado => {
+            res.json(resultado)
+        })
+        .catch(erro => {
+            console.log(erro)
+            res.status(500).json(erro)
+        })
+}
+
 module.exports = {
     carregarCodigo,
+    carregarCampanha,
+    carregarEdicao,
     salvarImagemCampanha,
-    buscarImagemCampanha
+    buscarImagemCampanha,
+    editar
 }

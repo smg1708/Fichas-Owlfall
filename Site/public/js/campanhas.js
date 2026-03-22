@@ -40,6 +40,7 @@ function confirmar() {
         .then(dados => {
             alert("Campanha cadastrada com sucesso");
             criandoId.style.display = "none";
+            mostrar()
     
             sessionStorage.ID_FICHA = dados.idFicha;
         })
@@ -100,8 +101,6 @@ function mostrar() {
         for (var i = 0; i < campanhas.length; i++) {
           mensagem += `
             <div class="boxFichaCampanhas">
-                <img src="/assets/imgsBd/${campanhas[i].imagem}">
-
                 <div class="infoCampanha">
                     <span><b>${campanhas[i].nome}</b></span>
                     <span id="registro">Registro: ${campanhas[i].criado || "???"}</span>

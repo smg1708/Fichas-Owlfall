@@ -12,6 +12,29 @@ function carregarCodigo(idCampanha) {
 
 }
 
+function carregarEdicao(idCampanha) {
+    console.log("ACESSEI A CAMPANHA MODEL \n \n\t\t > Se aqui der erro, e alguma credencial do banco");
+    
+    var sql = `
+        select nome, descricao from campanha
+            where idCampanha = ?;
+    `;
+    
+    return database.executar(sql, [idCampanha]);
+
+}
+
+function carregarCampanha(idCampanha) {
+
+    var instrucaoSql = `
+        SELECT nome, descricao FROM campanha
+          WHERE idCampanha = ${idCampanha};
+    `;
+
+    console.log("Executando SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function salvarImagemCampanha(idCampanha, imagem) {
   
   const instrucao = `
@@ -26,16 +49,30 @@ function salvarImagemCampanha(idCampanha, imagem) {
 function buscarImagemCampanha(idCampanha) {
 
   const sql = `
-    select imagem from campanha 
-      where idCampanha = ${idCampanha};
+    select imagem from campanha
+      where idCampanha = ?;
   `;
 
-  return database.executar(sql);
+  return database.executar(sql, [idCampanha]);
+}
 
+function editar(idCampanha, dados) {
+
+    const sql = `
+        UPDATE campanha SET
+            nome = '${dados.nome}',
+            descricao = '${dados.descricao}'
+        WHERE idCampanha = ?;
+    `;
+
+    return database.executar(sql, [idCampanha]);
 }
 
 module.exports = {
     carregarCodigo,
+    carregarEdicao,
+    carregarCampanha,
     salvarImagemCampanha,
-    buscarImagemCampanha
+    buscarImagemCampanha,
+    editar
 }
