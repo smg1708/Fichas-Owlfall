@@ -26,4 +26,8 @@ router.put("/editar/:idCampanha", function (req, res) {
     mestreController.editar(req, res);
 });
 
+router.get("/mostrarFichaCampanha/:idCampanha", function (req, res) {
+    mestreController.mostrarPersonagens(req, res);
+})
+
 module.exports = router;

@@ -5,14 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title> Usuario | Owlfall </title>
+    <title> Personagens | Owlfall </title>
 
-    <link rel="stylesheet" type="text/css" href="style/usuario.css">
+    <link rel="stylesheet" type="text/css" href="style/escolherPers.css">
     <link rel="icon" href="./assets/icon/coruja.jpg" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
@@ -40,34 +37,28 @@
     </div>
     <div class="traco"></div>
     <div class="container">
-        <div class="boxConfiguracoes">
-            <div class="imagem">
-                <img src="assets/imgs/todos/usuario.png" id="imgPerfil" onclick="mudarImagemPerfil()" onerror="this.src='assets/imgs/todos/usuario.png'">
-                <input type="file" id="inpImagem" onchange="salvarImagemPerfil()" hidden>
-            </div>
-            <div class="configuracoes">
-                <h2>Nome</h2>
-                <input type="text" id="nome">
-
-                <h2>Senha</h2>
-                <input type="password" id="senha">
-
-                <h2>Email</h2>
-                <input type="email" id="dtNasc">
-
-                <button onclick="confirmar()">Confirmar</button>
-            </div>
+        <div class="novoPersonagem"><button onclick="novo()">Novo Personagem</button></div>
+        <h2 class="contador">Personagens: <span id="contador"></span></h2>
+        <div class="boxPersonagens" id="boxPersonagens">
         </div>
     </div>
-
+    
 </body>
 
 <script src="js/usuarioPerfil.js"></script>
-<script>
-    if (!sessionStorage.ID_USUARIO) {
-        alert("Você precisa estar logado!");
-        window.location = "login.html";
-    }
-</script>
+<script src="js/escolherPers.js" ></script>
 
+<!-- <div class="box-ficha-personagens">
+    
+    <img src="/assets/imgsBd/${fichas[i].imagem}">
+
+    <div class="info-personagem">
+        <span><b>${fichas[i].nome}</b></span>
+        <span>Classe: ${fichas[i].classe || "???"}</span>
+
+       <button onclick="abrirFicha(${fichas[i].idFicha})">
+           Acessar Ficha
+       </button>
+   </div>
+</div> -->
 </html>

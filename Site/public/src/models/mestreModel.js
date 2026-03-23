@@ -68,11 +68,28 @@ function editar(idCampanha, dados) {
     return database.executar(sql, [idCampanha]);
 }
 
+function mostrarPersonagens(idCampanha) {
+    console.log("ACESSEI A VISUALIZAÇÃO DOS PERSONAGENS MODEL \n \n\t\t > Se aqui der erro, e alguma credencial do banco");
+    
+    var sql = `
+        select v.idFicha, v.nomePersonagem, v.classe, v.imagem, DATE_FORMAT(v.criado, '%d/%m/%Y') as criado from vw_personagens v join fichaCampanha f
+            on f.fkFicha = v.idFicha
+            join campanha c
+            on c.idCampanha = f.fkCampanha
+            where c.idCampanha = ${idCampanha};
+    `;
+    
+    console.log("Executando a instrução SQL: \n" + sql);
+    return database.executar(sql)
+
+}
+
 module.exports = {
     carregarCodigo,
     carregarEdicao,
     carregarCampanha,
     salvarImagemCampanha,
     buscarImagemCampanha,
+    mostrarPersonagens,
     editar
 }

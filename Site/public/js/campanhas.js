@@ -98,9 +98,11 @@ function mostrar() {
       .then(function (campanhas) {
         boxCampanha.innerHTML = "";
 
+
         for (var i = 0; i < campanhas.length; i++) {
+          const imagem = `/assets/imgsBd/${campanhas[i].imagem}` || "/assets/imgs/campanhas/background.png";
           mensagem += `
-            <div class="boxFichaCampanhas">
+            <div class="boxFichaCampanhas" style="background-image:url('${imagem}')">
                 <div class="infoCampanha">
                     <span><b>${campanhas[i].nome}</b></span>
                     <span id="registro">Registro: ${campanhas[i].criado || "???"}</span>
@@ -109,7 +111,8 @@ function mostrar() {
                 </button>
                 </div>
             </div>
-        `}
+            `
+        }
         boxCampanha.innerHTML = mensagem;
     });
 }

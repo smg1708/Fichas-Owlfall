@@ -30,7 +30,9 @@
                 <a href="campanhas.html">Campanhas</a>
                 <a href="login.html">Login</a>
             </div>
-            <button onclick="usuario()"><img src="assets/imgs/todos/usuario.png" alt="" id="imgPerfilNav"></button>
+            <div class="teste">
+                <button onclick="usuario()"><img src="assets/imgs/todos/usuario.png" alt="" id="imgPerfilNav"></button>
+            </div>
         </div>
     </div>
     <div class="traco"></div>
@@ -46,10 +48,9 @@
             <img src="assets/imgs/campanhas/background.png" alt="" id="imgCampanha">
             <div class="convidados">
                 <button onclick="personagens()">Personagens</button>
-                <button onclick="jogadores()">Jogadores</button>
             </div>
         </div>
-        <div class="boxPersonagens">
+        <div class="boxPersonagens" id="boxPersonagens">
         </div>
         <div class="criacaoCodigo" id="addCodigo" onclick="fecharCriacaoCodigo()" style="display: none;">
             <div class="criandoCodigo" onclick="event.stopPropagation()">

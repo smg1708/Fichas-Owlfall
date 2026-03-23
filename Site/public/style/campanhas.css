@@ -30,11 +30,22 @@ html, body {
     color: white;
 }
 
-.container-navbar img {
+.teste  {
     background: none;
-    width: 50%;
-    height: auto;
+    border: none;
+    cursor: pointer;
+    width: 5%;
+    margin-top: -10px;
+}
+
+.container-navbar img {
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 .container-navbar button {
@@ -129,6 +140,7 @@ html, body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    border: 5px, solid, #1f1f1f;
     border-radius: 10px;
     color: white;
     display: flex;
@@ -139,6 +151,7 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    margin-left: 10px;
 }
 
 .infoCampanha button {

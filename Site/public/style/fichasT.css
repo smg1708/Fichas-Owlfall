@@ -30,11 +30,22 @@ html, body {
     color: white;
 }
 
-.container-navbar img {
+.teste  {
     background: none;
-    width: 50%;
-    height: auto;
+    border: none;
+    cursor: pointer;
+    width: 5%;
+    margin-top: -10px;
+}
+
+.container-navbar img {
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 .container-navbar button {
@@ -100,6 +111,7 @@ html, body {
 
 .imagemPersonagem {
     width: 340px;
+    margin-top: 3%;
     margin-left: 22%;
     margin-right: 5%;
     background: none;
@@ -108,10 +120,14 @@ html, body {
 }
 
 .imagemPersonagem img{
-    width: 100%;
-    border-radius: 70%;
+    cursor: pointer;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
+    margin: 10px auto;
+    display: block;
 }
 
 .imagemPersonagem:hover img {
@@ -439,10 +455,13 @@ input:focus {
 
 .imagensSentimental img {
     cursor: pointer;
-    width: 80%;
-    border-radius: 70%;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
+    margin: 10px auto;
+    display: block;
 }
 
 .imagensSentimental :hover {

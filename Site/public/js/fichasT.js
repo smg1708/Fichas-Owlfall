@@ -460,7 +460,7 @@ function salvarImagemFicha() {
         const imagemFicha = document.getElementById("imgPersonagem");
   
         if (imagemFicha) {
-            imagemFicha.src = `${dados.imagem}`;
+            imagemFicha.src = `/assets/imgsBd/${dados.imagem}`;
         }
       })
     .catch(
@@ -488,7 +488,7 @@ function salvarImagemSentimental1() {
         const sentimental1 = document.getElementById("sentimental1");
   
  	if (sentimental1) {
-        sentimental1.src = `${dados.sentimental1}`
+        sentimental1.src = `/assets/imgsBd/${dados.sentimental1}`
       }
     })
     .catch(
@@ -516,7 +516,7 @@ function salvarImagemSentimental2() {
         const sentimental2 = document.getElementById("sentimental2");
   
  	if (sentimental2) {
-        sentimental2.src = `${dados.sentimental2}`
+        sentimental2.src = `/assets/imgsBd/${dados.sentimental2}`
       }
     })
     .catch(
@@ -544,7 +544,35 @@ function salvarImagemSentimental3() {
         const sentimental3 = document.getElementById("sentimental3");
   
  	if (sentimental3) {
-        sentimental3.src = `${dados.sentimental3}`
+        sentimental3.src = `/assets/imgsBd/${dados.sentimental3}`
+      }
+    })
+    .catch(
+        err => console.log(err)
+    );
+}
+
+function salvarImagemSentimental4() {
+    var foto = inpImagemSentimental4.files[0]
+    
+    const formData = new FormData();
+    formData.append('idFicha', sessionStorage.ID_FICHA);
+    formData.append('fotoSentimental4', foto)
+
+    fetch("/imagemSentimental4", {
+        method: "PUT",
+        body: formData
+    })
+    .then(
+        res => res.json()
+    )
+    .then( dados => {
+        console.log("Imagem salva:", dados);
+        
+        const sentimental4 = document.getElementById("sentimental4");
+  
+ 	if (sentimental4) {
+        sentimental4.src = `/assets/imgsBd/${dados.sentimental4}`
       }
     })
     .catch(

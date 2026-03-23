@@ -22,6 +22,7 @@ var personagensRouter = require("./public/src/routes/personagens");
 var fichaRouter = require("./public/src/routes/ficha");
 var campanhaRouter = require("./public/src/routes/campanha");
 var mestreRouter = require("./public/src/routes/mestre");
+var escolhaRouter = require("./public/src/routes/escolherPers");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -37,6 +38,7 @@ app.use("/", personagensRouter);
 app.use("/", fichaRouter);
 app.use("/", campanhaRouter);
 app.use("/", mestreRouter);
+app.use("/", escolhaRouter);
 
 
 app.listen(PORTA_APP, function () {

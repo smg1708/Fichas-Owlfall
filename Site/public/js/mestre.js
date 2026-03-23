@@ -8,6 +8,7 @@ let codigo = null;
 window.onload = () => {
     carregarCampanha()
     carregarImagem()
+    mostrarPersonagens()
 }
 
 function salvarImagemCampanha() {
@@ -32,7 +33,7 @@ function salvarImagemCampanha() {
         if (imagemCampanha) {
             imagemCampanha.src = `${dados.imagem}`;
         }
-        carregarImagem
+        carregarImagem()
       })
     .catch(
         err => console.log(err)
@@ -91,18 +92,6 @@ function convidar() {
     });
 }
 
-function fecharCriacaoCodigo() {
-    addCodigo.style.display = "none";
-}
-
-function foto() {
-    addFoto.style.display = "flex"
-}
-
-function fecharCriacaoFoto() {
-    addFoto.style.display = "none";
-}
-
 function carregarCampanha() {
     const idCampanha = sessionStorage.ID_CAMPANHA;
     
@@ -116,6 +105,67 @@ function carregarCampanha() {
         document.getElementById("nomeCampanha").innerHTML = campanha.nome
     
     })
+}
+
+function mostrarPersonagens() {
+    const idCampanha = sessionStorage.ID_CAMPANHA;
+    var mensagem = "";
+
+    fetch(`/mostrarFichaCampanha/${idCampanha}`, {
+    })
+      .then(function (resposta) {
+        return resposta.json();
+      })
+      .then(function (fichas) {
+        boxPersonagens.innerHTML = "";
+
+        for (var i = 0; i < fichas.length; i++) {
+          mensagem += `
+            <div class="box-ficha-personagens">
+                
+                <img src="${fichas[i].imagem}">
+
+                <div class="info-personagem">
+                    <span><b>${fichas[i].nomePersonagem}</b></span>
+                    <span id="classe">${primeiraLetraMaiuscula(fichas[i].classe || "???")}</span>
+                    <span id="registro">Registro: ${fichas[i].criado || "???"}</span>
+
+                <button onclick="abrirFicha(${fichas[i].idFicha}, '${fichas[i].classe}')">
+                    Acessar Ficha
+                </button>
+                </div>
+            </div>
+        `}
+        boxPersonagens.innerHTML = mensagem;
+    });
+}
+
+function primeiraLetraMaiuscula(texto) {
+    return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
+}
+
+function abrirFicha(idFicha, classe) {
+  sessionStorage.ID_FICHA = idFicha
+
+  classe = classe.toLowerCase()
+
+  if (classe == "mundano") {
+    window.location = "fichas.html?id=" + idFicha;
+  } else if (classe == "fortificador") {
+    window.location = "fichasF.html?id=" + idFicha;
+  } else if (classe == "transmutador") {
+    window.location = "fichasT.html?id=" + idFicha;
+  } else if (classe == "emissor") {
+    window.location = "fichasE.html?id=" + idFicha;
+  } else if (classe == "manipulador") {
+    window.location = "fichasM.html?id=" + idFicha;
+  } else if (classe == "conjurador") {
+    window.location = "fichasC.html?id=" + idFicha;
+  } else if (classe == "especialista") {
+    window.location = "fichasP.html?id=" + idFicha;
+  } else {
+    alert("Classe inválida: " + classe)
+  }
 }
 
 function editar() {
@@ -160,6 +210,22 @@ function confirmarEdicao() {
         carregarCampanha()
     })
     .catch(err => console.log(err))
+}
+
+function adicionar() {
+    window.location = "escolherPers.html"
+}
+
+function fecharCriacaoCodigo() {
+    addCodigo.style.display = "none";
+}
+
+function foto() {
+    addFoto.style.display = "flex"
+}
+
+function fecharCriacaoFoto() {
+    addFoto.style.display = "none";
 }
 
 function fecharEdicao() {

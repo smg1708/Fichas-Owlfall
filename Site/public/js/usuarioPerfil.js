@@ -24,8 +24,8 @@ function salvarImagemPerfil() {
         const imgPerfil = document.getElementById("imgPerfil");
         const imgPerfilNav = document.getElementById("imgPerfilNav");
   
-        if (imgPerfil) imgPerfil.src = `../assets/imgsBd/${dados.imagem}`;
-        if (imgPerfilNav) imgPerfilNav.src = `../assets/imgsBd/${dados.imagem}`;
+        if (imgPerfil) imgPerfil.src = `/assets/imgsBd/${dados.imagem}`;
+        if (imgPerfilNav) imgPerfilNav.src = `/assets/imgsBd/${dados.imagem}`;
       })
     .catch(
         err => console.log(err)
@@ -43,10 +43,10 @@ window.onload = () => {
 
       if (dados.imagem) {
         if (imgPerfil) { 
-          imgPerfil.src = `../assets/imgsBd/${dados.imagem}`;
+          imgPerfil.src = `/assets/imgsBd/${dados.imagem}`;
         }
         if (imgPerfilNav) { 
-          imgPerfilNav.src = `../assets/imgsBd/${dados.imagem}`;
+          imgPerfilNav.src = `/assets/imgsBd/${dados.imagem}`;
         }
       } else {
         if (imgPerfil) { 

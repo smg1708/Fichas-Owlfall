@@ -29,8 +29,8 @@ function mostrarPersonagens() {
                     <span id="classe">${primeiraLetraMaiuscula(fichas[i].classe || "???")}</span>
                     <span id="registro">Registro: ${fichas[i].criado || "???"}</span>
 
-                <button onclick="abrirFicha(${fichas[i].idFicha}, '${fichas[i].classe}')">
-                    Acessar Ficha
+                <button onclick="selecionarFicha(${fichas[i].idFicha}, '${fichas[i].classe}')">
+                    Escolher Ficha
                 </button>
                 </div>
             </div>
@@ -43,28 +43,35 @@ function primeiraLetraMaiuscula(texto) {
     return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 }
 
-function abrirFicha(idFicha, classe) {
-  sessionStorage.ID_FICHA = idFicha
+function selecionarFicha() {
+    fetch("/cadastrarFicha", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },body: JSON.stringify({
+            idFicha: sessionStorage.ID_FICHA,
+            idCampanha: sessionStorage.ID_CAMPANHA
+        })
+    })
+    .then(function(resposta) {
+        console.log("resposta: " + resposta);
 
-  classe = classe.toLowerCase()
+        if (resposta.ok) {
+            return resposta.json();
+        } else {
+            alert("Houve um erro ao tentar entrar na campanha!")
+            throw "Houve um erro ao tentar entrar na campanha!";
+        }
+    })
+    .then(function(dados) {
+        sessionStorage.ID_CAMPANHA = dados.idCampanha;
+        alert("Você entrou na campanha com sucesso!")
+    })
+    .catch(function(resposta) {
+        console.log("Erro: " + resposta)
+    })
 
-  if (classe == "mundano") {
-    window.location = "fichas.html?id=" + idFicha;
-  } else if (classe == "fortificador") {
-    window.location = "fichasF.html?id=" + idFicha;
-  } else if (classe == "transmutador") {
-    window.location = "fichasT.html?id=" + idFicha;
-  } else if (classe == "emissor") {
-    window.location = "fichasE.html?id=" + idFicha;
-  } else if (classe == "manipulador") {
-    window.location = "fichasM.html?id=" + idFicha;
-  } else if (classe == "conjurador") {
-    window.location = "fichasC.html?id=" + idFicha;
-  } else if (classe == "especialista") {
-    window.location = "fichasP.html?id=" + idFicha;
-  } else {
-    alert("Classe inválida: " + classe)
-  }
+    window.location = "mestre.html?id=" + sessionStorage.ID_CAMPANHA;
 }
 
 
