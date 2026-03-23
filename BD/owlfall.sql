@@ -100,7 +100,7 @@ CREATE TABLE campanha (
     idCampanha INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(80) NOT NULL,
     descricao TEXT,
-    codigo VARCHAR(6),
+    codigo VARCHAR(6) UNIQUE,
     imagem VARCHAR(255),
     fkMestre INT NOT NULL,
     criadoEm TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -112,6 +112,14 @@ CREATE TABLE fichaCampanha (
     fkCampanha INT NOT NULL,
     PRIMARY KEY (fkFicha, fkCampanha),
     FOREIGN KEY (fkFicha) REFERENCES ficha(idFicha),
+    FOREIGN KEY (fkCampanha) REFERENCES campanha(idCampanha)
+);
+
+CREATE TABLE usuarioCampanha (
+    fkUsuario INT NOT NULL,
+    fkCampanha INT NOT NULL,
+    PRIMARY KEY (fkUsuario, fkCampanha),
+    FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
     FOREIGN KEY (fkCampanha) REFERENCES campanha(idCampanha)
 );
 
@@ -281,3 +289,20 @@ SELECT * FROM statusFicha WHERE fkFicha = 3;
 select idItem, fkFicha, nome, descricao, imagem from vw_itens
 	where fkFicha = 1;
     
+    select * from fichaCampanha;
+    
+            UPDATE campanha SET
+            nome = 'teste sadsd',
+            descricao = ' testanndo'
+        WHERE idCampanha = 1;
+    
+        select nome, descricao from campanha
+            where idCampanha = 1;    
+            
+		select * from ficha;
+                select c.idCampanha, c.nome, c.imagem, DATE_FORMAT(c.criadoEm, '%d/%m/%Y') as criado from usuarioCampanha u join campanha c
+            on u.fkCampanha = c.idCampanha
+            join usuario s
+            on u.fkUsuario = s.Usuario
+            where s.idUsuario = 1;
+            
