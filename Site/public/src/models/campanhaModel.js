@@ -27,9 +27,9 @@ function mostrar(idUsuario) {
     
     var sql = `
         select c.idCampanha, c.nome, c.imagem, DATE_FORMAT(c.criadoEm, '%d/%m/%Y') as criado from campanha c join usuarioCampanha u
-            on u.fkCampanha = c.idCampanha
+            on c.idCampanha = u.fkCampanha
             join usuario s
-            on u.fkUsuario = s.Usuario
+            on u.fkUsuario = s.idUsuario
             where s.idUsuario = ${idUsuario};
     `;
     
