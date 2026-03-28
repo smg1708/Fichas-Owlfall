@@ -30,7 +30,7 @@ function mostrar(idUsuario) {
             on c.idCampanha = u.fkCampanha
             join usuario s
             on u.fkUsuario = s.idUsuario
-            where s.idUsuario = ${idUsuario};
+            where u.fkUsuario = ${idUsuario};
     `;
     
     console.log("Executando a instrução SQL: \n" + sql);
