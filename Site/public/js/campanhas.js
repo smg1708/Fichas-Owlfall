@@ -40,6 +40,7 @@ function confirmar() {
         .then(dados => {
             alert("Campanha cadastrada com sucesso");
             criandoId.style.display = "none";
+            debugUsuario()
             mostrar()
     
             sessionStorage.ID_FICHA = dados.idFicha;
@@ -49,6 +50,44 @@ function confirmar() {
         });
     }
 
+}
+
+function debug() {
+    fetch(`/buscarIdCampanha/${idUsuario}`, {
+    })
+      .then(function (resposta) {
+        return resposta.json();
+    })
+    .then(function (campanhas) {
+        const ultimoId = campanhas[campanhas.length - 1].idCampanha
+        console.log(ultimoId)
+    })
+
+    fetch("/debugUsuario", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },body: JSON.stringify({
+            idUsuario: sessionStorage.ID_USUARIO,
+            idCampanha: ultimoId
+        })
+    })
+    .then(function(resposta) {
+        console.log("resposta: " + resposta);
+    
+        if (resposta.ok) {
+            return resposta.json();
+        } else {
+            alert("Houve um erro ao tentar entrar na campanha!")
+            throw "Houve um erro ao tentar entrar na campanha!";
+        }
+    })
+    .then(function(dados) {
+        sessionStorage.ID_CAMPANHA = dados.idCampanha;
+    })
+    .catch(function(resposta) {
+        console.log("Erro: " + resposta)
+    })
 }
 
 function confirmarCodigo() {

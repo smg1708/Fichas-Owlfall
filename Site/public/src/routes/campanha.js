@@ -15,4 +15,12 @@ router.get("/mostrarCampanhas/:idUsuario", function (req, res) {
     campanhaController.mostrar(req, res);
 })
 
+router.get("/buscarIdCampanha/:idUsuario", function (req, res) {
+    campanhaController.buscarIdCampanha(req, res);
+})
+
+router.post("/debugUsuario", function (req, res) {
+    campanhaController.debug(req, res);
+})
+
 module.exports = router;

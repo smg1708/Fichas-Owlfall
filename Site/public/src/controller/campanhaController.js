@@ -61,35 +61,80 @@ function mostrar(req, res) {
     var idUsuario = req.params.idUsuario;
 
     if (idUsuario == undefined) {
-        res.status(400).send("Campanhas não foram carregadas!");
-    } else {
-
-        campanhaModel.mostrar(idUsuario)
-            .then(
-                function (resultado) {
-                    console.log(`\nResultados encontrados: ${resultado.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultado)}`);
-
-                    if (resultado.length > 0) {
-                        console.log(resultado);
-                        res.json(resultado);
-                    }   else {
-                        res.status(403).send("Campanhas não foram carregadas!");
-                    }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao tentar carregar! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+        return res.status(400).json({ erro: "idUsuario indefinido" });
     }
 
+    campanhaModel.mostrar(idUsuario)
+        .then(function (resultado) {
+
+            console.log(`Resultados encontrados: ${resultado.length}`);
+
+            if (resultado.length > 0) {
+                res.json(resultado);
+            } else {
+                res.json([]);
+            }
+
+        })
+        .catch(function (erro) {
+            console.log("Erro:", erro.sqlMessage);
+            res.status(500).json({ erro: erro.sqlMessage });
+        });
+}
+
+function buscarIdCampanha(req,res) {
+    var idUsuario = req.body.idUsuario;
+
+    if (!idUsuario) {
+        res.status(400).send("Usuário não autenticado");
+    } else {
+        campanhaModel.buscarIdCampanha(idUsuario)
+            .then(
+                function(resultado) {
+                    res.json(resultado)
+                }
+            ) .catch(
+                function(erro) {
+                    console.log(erro);
+                    console.log(
+                        "Houve um erro ao entrar na campanha! Erro: " + erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage)
+                }
+            )
+    }
+}
+
+function debug(req, res) {
+    var idUsuario = req.body.idUsuario;
+    var idCampanha = req.body.idCampanha
+
+    if (!idUsuario) {
+        res.status(400).send("Usuário não autenticado");
+    } else if (!idCampanha) {
+        return res.status(401).send("Seu codigo está undefined!");
+    } else {
+        campanhaModel.debug(idUsuario, idCampanha)
+            .then(
+                function(resultado) {
+                    res.json(resultado)
+                }
+            ) .catch(
+                function(erro) {
+                    console.log(erro);
+                    console.log(
+                        "Houve um erro ao entrar na campanha! Erro: " + erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage)
+                }
+            )
+    }
 }
 
 module.exports = {
     confirmar,
     confirmarCodigo,
-    mostrar
+    mostrar,
+    buscarIdCampanha,
+    debug
 }
