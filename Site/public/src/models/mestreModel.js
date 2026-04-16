@@ -72,11 +72,17 @@ function mostrarPersonagens(idCampanha) {
     console.log("ACESSEI A VISUALIZAÇÃO DOS PERSONAGENS MODEL \n \n\t\t > Se aqui der erro, e alguma credencial do banco");
     
     var sql = `
-        select v.idFicha, v.nomePersonagem, v.classe, v.imagem, DATE_FORMAT(v.criado, '%d/%m/%Y') as criado from vw_personagens v join fichaCampanha f
-            on f.fkFicha = v.idFicha
-            join campanha c
-            on c.idCampanha = f.fkCampanha
-            where c.idCampanha = ${idCampanha};
+        SELECT 
+            f.idFicha,
+            f.nomePersonagem,
+            f.classe,
+            f.imagem,
+            u.nome AS jogador,
+            DATE_FORMAT(f.criado, '%d/%m/%Y') AS criado
+        FROM ficha f
+        JOIN fichaCampanha fc ON fc.fkFicha = f.idFicha
+        JOIN usuario u ON u.idUsuario = f.fkUsuario
+        WHERE fc.fkCampanha = ${idCampanha};
     `;
     
     console.log("Executando a instrução SQL: \n" + sql);

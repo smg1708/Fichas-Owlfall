@@ -27,15 +27,16 @@ function mostrar(idUsuario) {
     console.log("ACESSEI A CAMPANHA MODEL \n \n\t\t > Se aqui der erro, e alguma credencial do banco");
     
     var sql = `
-        select 
+        SELECT DISTINCT
             c.idCampanha,
             c.nome,
+            c.descricao,
             c.imagem,
-            date_format(c.criadoEm, '%d/%m/%Y') as criado
-        from usuarioCampanha uc
-        join campanha c 
-            on uc.fkCampanha = c.idCampanha
-        where uc.fkUsuario = ${idUsuario};
+            DATE_FORMAT(c.criadoEm, '%d/%m/%Y') AS criado
+        FROM campanha c
+        LEFT JOIN usuarioCampanha uc ON uc.fkCampanha = c.idCampanha
+        WHERE c.fkMestre = ${idUsuario}
+        OR uc.fkUsuario = ${idUsuario};
     `;
     
     console.log("Executando a instrução SQL: \n" + sql);
